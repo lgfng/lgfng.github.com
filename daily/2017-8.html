@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="three.js 几种填充屏幕的曲线算法gosper curveDragon curveHilbert curve 材质BaseMaterialdepthMaterialfaceMateriallambertMaterialPhoneMaterialShaderMaterialcombinedMaterialNormalMateriallineMateriallineMaterialDash 几何">
+<meta property="og:type" content="website">
+<meta property="og:title" content="听风楼">
+<meta property="og:url" content="http://yoursite.com/daily/2017-8.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="three.js 几种填充屏幕的曲线算法gosper curveDragon curveHilbert curve 材质BaseMaterialdepthMaterialfaceMateriallambertMaterialPhoneMaterialShaderMaterialcombinedMaterialNormalMateriallineMateriallineMaterialDash 几何">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-13T05:00:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="听风楼">
+<meta name="twitter:description" content="three.js 几种填充屏幕的曲线算法gosper curveDragon curveHilbert curve 材质BaseMaterialdepthMaterialfaceMateriallambertMaterialPhoneMaterialShaderMaterialcombinedMaterialNormalMateriallineMateriallineMaterialDash 几何">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/daily/2017-8.html" class="article-date">
+  <time datetime="2019-11-20T11:44:53.026Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>three.js</p>
+<p>几种填充屏幕的曲线算法<br>gosper curve<br>Dragon curve<br>Hilbert curve</p>
+<h1 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h1><p>BaseMaterial<br>depthMaterial<br>faceMaterial<br>lambertMaterial<br>PhoneMaterial<br>ShaderMaterial<br>combinedMaterial<br>NormalMaterial<br>lineMaterial<br>lineMaterialDash</p>
+<h1 id="几何体"><a href="#几何体" class="headerlink" title="几何体"></a>几何体</h1><h2 id="2D几何体"><a href="#2D几何体" class="headerlink" title="2D几何体"></a>2D几何体</h2><p>Plane<br>Circle<br>Shape </p>
+<pre><code>+ moveTo
++ lineTo
++ quadricCurveTo 二次曲线
++ bezierCurveTo 贝塞尔曲线
++ splineThru 样条曲线
++ arc  圆弧
++ absarc 同圆弧，圆心坐标是绝对位置
++ ellipse 椭圆
++ absellipse
+* holes
+</code></pre><h2 id="3D几何体"><a href="#3D几何体" class="headerlink" title="3D几何体"></a>3D几何体</h2><p>Cube    立方体<br>Sphere   球体<br>Cylinder 圆柱/类圆柱<br>Torus   圆环<br>TorusKnot  环面扭结<br>Icosahedron 二十面体<br>Tetrahedron 正四面体<br>octahedron 正八面体<br>dodecahedron 正十二面体</p>
+<h2 id="高级几何体"><a href="#高级几何体" class="headerlink" title="高级几何体"></a>高级几何体</h2><p>Convex  根据一系列点， 创见一个凸包<br>Lathe  扫描体, 一个曲线， 绕轴旋转得到<br>Extrude 将一个二维图形， 沿z轴拉伸<br>Tube 将一个二维图形，沿着由多个点生成的样条曲线拉伸</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/daily/2017-8.html" data-id="ck537r5n90004pgs6rzgqkm8c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
