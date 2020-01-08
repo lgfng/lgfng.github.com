@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="script 的起始个结束标签都不能省略 webgl程序基本流程12345678910111213//获取到canvas结点var ele = document.getElementById(&quot;canvas&quot;);//获取绘制上下文var gl = ele.getContext(&quot;webgl&quot;)//然后就可以通过这个gl来使用webgl接口了//初始化着色器initShaders();//设置背景色">
+<meta property="og:type" content="website">
+<meta property="og:title" content="听风楼">
+<meta property="og:url" content="http://leafflow.com/post/render/webgl学习.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="script 的起始个结束标签都不能省略 webgl程序基本流程12345678910111213//获取到canvas结点var ele = document.getElementById(&quot;canvas&quot;);//获取绘制上下文var gl = ele.getContext(&quot;webgl&quot;)//然后就可以通过这个gl来使用webgl接口了//初始化着色器initShaders();//设置背景色">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-13T05:00:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="听风楼">
+<meta name="twitter:description" content="script 的起始个结束标签都不能省略 webgl程序基本流程12345678910111213//获取到canvas结点var ele = document.getElementById(&quot;canvas&quot;);//获取绘制上下文var gl = ele.getContext(&quot;webgl&quot;)//然后就可以通过这个gl来使用webgl接口了//初始化着色器initShaders();//设置背景色">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://leafflow.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/post/render/webgl学习.html" class="article-date">
+  <time datetime="2019-11-20T11:44:53.015Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>script 的起始个结束标签都不能省略</p>
+<p>webgl程序基本流程<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取到canvas结点</span></span><br><span class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</span><br><span class="line"><span class="comment">//获取绘制上下文</span></span><br><span class="line"><span class="keyword">var</span> gl = ele.getContext(<span class="string">"webgl"</span>)</span><br><span class="line"><span class="comment">//然后就可以通过这个gl来使用webgl接口了</span></span><br><span class="line"><span class="comment">//初始化着色器</span></span><br><span class="line">initShaders();</span><br><span class="line"><span class="comment">//设置背景色</span></span><br><span class="line">gl.clearColor(r, g, b, a)</span><br><span class="line"><span class="comment">//清除所有颜色</span></span><br><span class="line">gl.clear()</span><br><span class="line"><span class="comment">//绘制</span></span><br><span class="line">draw()</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API" target="_blank" rel="noopener">MSDN WEBGL</a><br>Khronos Group 开放标准的应用程序接口API<br><a href="https://www.khronos.org/webgl/" target="_blank" rel="noopener">khronos webgl</a></p>
+<p><a href="https://sites.google.com/site/webglbook/" target="_blank" rel="noopener">webgl编程指南示例地址</a><br><a href="http://rodger.global-linguist.com/webgl/lib" target="_blank" rel="noopener">webgl编程指南代码库地址</a></p>
+<p>#勘误<br>35页, webgl坐标系统的Y轴应该是“正方向为下”<br>48页代码56行应该使用width, 57行应该是用height</p>
+<p>#接口<br>gl.clearColor(r, g, b, a)<br>gl.clear(glenum bufferType)<br>gl.drawArrays(mode, first, count)</p>
+<p>#着色器</p>
+<p>##顶点着色器</p>
+<p>###内置变量<br>特殊的输出变量<br>vec4 gl_Position<br>float gl_PointSize<br>float gl_ClipDistances[]</p>
+<p>####传参函数族<br>gl.vertexAttrib[1234][fi]<a href="location, params">?v</a></p>
+<p>##片元着色器</p>
+<p>###内置变量<br>内置变量<br>vec4 gl_FragCoord; //片元坐标<br>vec2 gl_PointCoord; //片元在被绘制的点内的坐标<br>bool gl_FrontFacing; //是否正面， 非多边形图元上的点都视为正面。<br>输出变量<br>vec4 gl_FragColor; //片元颜色<br>gl_FragDepth</p>
+<h2 id="内置uniform-变量"><a href="#内置uniform-变量" class="headerlink" title="内置uniform 变量"></a>内置uniform 变量</h2><p>uniform gl_DepthRangeParameters gl_DepthRange;</p>
+<h3 id="attribute-变量"><a href="#attribute-变量" class="headerlink" title="attribute 变量"></a>attribute 变量</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.在着色器中声明变量</span></span><br><span class="line">attribute vec4 a_point;</span><br><span class="line"><span class="comment">//2.在着色器中使用变量</span></span><br><span class="line">gl_Position = a_point;</span><br><span class="line"><span class="comment">//3.在JS代码中想变量传输数据</span></span><br><span class="line"><span class="keyword">var</span> location = gl.getAttribLocation(glProgram, <span class="string">"a_point"</span>);</span><br><span class="line">gl.vertexAttrib3f(location, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="uniform变量"><a href="#uniform变量" class="headerlink" title="uniform变量"></a>uniform变量</h2><p>gl.getUniformLocation(name);<br>gl.uniform[1234]<a href="location, params">fi</a>;</p>
+<h2 id="varying变量"><a href="#varying变量" class="headerlink" title="varying变量"></a>varying变量</h2><p>用于从顶点着色器向片元着色器传输数据。<br>如果在顶点着色器和片元着色器中有着相同类型和命名的varying型变量，<br>那么在顶点着色器中给该变量赋的值会被自动地传入片元着色器。</p>
+<ul>
+<li><p>右手坐标系<br>旋转的方向， 用右手法则来判断， 右手握拳， 大拇指伸直并使其指向旋转轴的正方向， 那么右手其余手指的旋转方向为旋转的正方向。</p>
+</li>
+<li><p>JavaScript程序和着色器程序是协同运行的</p>
+</li>
+<li><p>webgl 函数是向颜色缓冲区中绘制内容， 而颜色缓冲区在每一次显示到屏幕上之后会被清空。<br>所以每一次重新绘制时， 都需要重新绘制所有内容， 而不仅仅是变化的部分。</p>
+</li>
+</ul>
+<h2 id="arrayBuffer"><a href="#arrayBuffer" class="headerlink" title="arrayBuffer"></a>arrayBuffer</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = gl.createBuffer();</span><br><span class="line"><span class="keyword">var</span> a_point = gl.getAttribLocation(gl.program, <span class="string">"a_point"</span>);</span><br><span class="line">gl.bindBuffer(gl.ARRAY_BUFFER, buffer);</span><br><span class="line">gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);</span><br><span class="line">gl.vertexAttribPointer(a_point, size, gl.Float, normalized, stride, offset);</span><br><span class="line">gl.enableVertexAttribArray(a_point);</span><br></pre></td></tr></table></figure>
+<h2 id="其他渲染管线流程"><a href="#其他渲染管线流程" class="headerlink" title="其他渲染管线流程"></a>其他渲染管线流程</h2><p>###图元装配</p>
+<p>###图元光栅化<br>rasterzation process</p>
+<h1 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h1><p>webgl 和 opengl 中的矩阵都是按照列主序存储在数组中的。<br>所以以下矩阵都使用列矩阵形式表示</p>
+<h2 id="平移矩阵"><a href="#平移矩阵" class="headerlink" title="平移矩阵"></a>平移矩阵</h2><p>[<br>    1, 0, 0, 0<br>    0, 1, 0, 0<br>    0, 0, 1, 0<br>    x, y, z, 1<br>]</p>
+<h2 id="旋转矩阵"><a href="#旋转矩阵" class="headerlink" title="旋转矩阵"></a>旋转矩阵</h2><h3 id="绕-z-轴旋转"><a href="#绕-z-轴旋转" class="headerlink" title="绕 z 轴旋转"></a>绕 z 轴旋转</h3><p>x’ = x <em> cos(B) - y </em> sin(B)<br>y’ = x <em> sin(B) + y </em> cos(B)<br>z’ = z<br>[<br>    cos(B), sin(B), 0, 0<br>    -sin(B), cos(B),  0, 0<br>    0,      0        1, 0<br>    0,      0,       0, 1<br>]</p>
+<h3 id="缩放矩阵"><a href="#缩放矩阵" class="headerlink" title="缩放矩阵"></a>缩放矩阵</h3><p>[<br>    sx, 0, 0, 0<br>    0, sy, 0, 0<br>    0, 0, sz, 0<br>    0, 0,  0, 1<br>]</p>
+<h2 id="矩阵与的乘法"><a href="#矩阵与的乘法" class="headerlink" title="矩阵与的乘法"></a>矩阵与的乘法</h2><p>乘法之后的维度变化<br>(m x n) * (m’ x n’) = m x n’</p>
+<h2 id="在着色器中使用矩阵"><a href="#在着色器中使用矩阵" class="headerlink" title="在着色器中使用矩阵"></a>在着色器中使用矩阵</h2><p>p’ = matrix * p<br>使用矩阵matrix 可将点p变换到点p’;<br>可通过 gl.uniformMatrix4fv往着色器程序传矩阵参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明uniform变量</span></span><br><span class="line">uniform mat4 u_matrix;</span><br><span class="line">attribute vec4 a_point;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">gl_Position = u_matrix * a_point;</span><br><span class="line"><span class="comment">//js中传递参数</span></span><br><span class="line"><span class="keyword">var</span> u_matrix = gl.getUniformLocation(gl.program, <span class="string">"u_matrix"</span>);</span><br><span class="line"><span class="keyword">var</span> matrix = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="comment">/*矩阵数据*/</span>]);</span><br><span class="line">gl.uniformMatrix4fv(u_matrix, <span class="literal">false</span>, matrix);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求一次异步函数调用</span></span><br><span class="line"><span class="keyword">var</span> requestId = requestAnimationFrame(callback)</span><br><span class="line">cancelAnimationFrame(requestId);</span><br></pre></td></tr></table></figure>
+<h1 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h1><h2 id="浏览器配置"><a href="#浏览器配置" class="headerlink" title="浏览器配置"></a>浏览器配置</h2><p>浏览器中, 由于安全原因，默认是不允许访问本地文件的。<br>为了能继续调试学习，我们需要解除这一限制。<br>当然也可以通过在本地安装web服务器来实现（nginx, node/http-server）， 这里不赘述。</p>
+<h3 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h3><p>启动的时候， 传入–allow-file-access-from-files参数。<br>在windows中可通过修改 “右键-&gt;属性-&gt;目标” 中的值来实现。<br>linux 中可在启动程序的命令之后附加参数.</p>
+<h2 id="st-uv-坐标系统"><a href="#st-uv-坐标系统" class="headerlink" title="st/uv 坐标系统"></a>st/uv 坐标系统</h2><p>原点在左下角， s轴向左， t轴向上， s和t的值域都为[0, 1];</p>
+<p>##<br>gl.TEXTURE[0-8] 多个内置纹理单元<br>gl.TEXTURE_2D 二维纹理<br>gl.TEXTURE_CUBE_MAP 立方体纹理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建纹理</span></span><br><span class="line"><span class="keyword">var</span> texture = gl.createTexture();</span><br><span class="line"><span class="comment">//纹理可被删除</span></span><br><span class="line"><span class="comment">//gl.deleteTexture(texture);</span></span><br><span class="line"><span class="comment">//反转纹理Y轴, 因为webgl的坐标系统与png、jpg等格式的图片的坐标系统y轴是相反的，</span></span><br><span class="line"><span class="comment">//所以需要反转。 或者通过在着色器中反转t轴坐标也可以。</span></span><br><span class="line">gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, <span class="number">1</span>);</span><br><span class="line"><span class="comment">//是否预乘Alpha</span></span><br><span class="line"><span class="comment">//gl.pixelStorei(gl.UNPACK_PREMULTIPLU_ALPHA_WEBGL, 1)</span></span><br><span class="line"><span class="comment">//激活/绑定纹理</span></span><br><span class="line">gl.activeTexture(gl.TEXTURE[<span class="number">0</span><span class="number">-8</span>]);</span><br><span class="line">gl.bindTextre(gl.TEXTURE_2D, texture);</span><br><span class="line"><span class="comment">//设置纹理参数, pname: gl.TEXTURE_MIN_FILTER, gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T</span></span><br><span class="line">gl.texParameteri(gl.TEXTURE_2D, pname, param);</span><br><span class="line"><span class="comment">//将纹理图像分配给纹理对象</span></span><br><span class="line">gl.texImage2D(gl.TEXTURE_2D, <span class="number">0</span>, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);</span><br><span class="line"></span><br><span class="line"><span class="comment">//片元着色器中的方法</span></span><br><span class="line">uniform sampler2D u_sampler;</span><br><span class="line">gl_FragColor = texture2D(u_sampler, v_textureCoord);</span><br></pre></td></tr></table></figure>
+<h1 id="三维世界"><a href="#三维世界" class="headerlink" title="三维世界"></a>三维世界</h1><h2 id="视点和视线"><a href="#视点和视线" class="headerlink" title="视点和视线"></a>视点和视线</h2><p>视点：观察者坐标(eyeX, eyeY, eyeZ)<br>观察目标点： 被观察目标所在点(atX, atY, atZ)<br>上方向： 最终绘制在屏幕上的影像中的向上的方向 (upX, upY, upZ)</p>
+<p>视图矩阵： 通过上面三个矢量， 计算出的物体绘制时的变换矩阵<br>模型矩阵： 模型通过各种仿射变换之后得到的最终变换矩阵<br>模型视图矩阵： 视图矩阵 * 模型矩阵， 因为对于同一模型的所有顶点都一样， 所以预乘节省运算</p>
+<h1 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h1><p>正视投影<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="number">2</span>/(right - left),       <span class="number">0</span>,          <span class="number">0</span>,      -(right + left) / (right -left),</span><br><span class="line">    <span class="number">0</span>,                <span class="number">2</span>/(top-bottom),   <span class="number">0</span>,      -(top + bottom) / (top - bottom),</span><br><span class="line">    <span class="number">0</span>,                    <span class="number">0</span>,    <span class="number">-2</span>/(far - near), -(far + near) / (far - near),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>透视投影<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="number">1</span>/(aspect * tan(fov/<span class="number">2</span>)),    <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">    <span class="number">0</span>, <span class="number">1</span>/tan(fov/<span class="number">2</span>), <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, -(far + near)/(far - near), <span class="number">-2</span>* far * near/(far - near),</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>MVP矩阵 = 投影矩阵 <em> 视图矩阵 </em> 模型矩阵</p>
+<h1 id="深度缓冲"><a href="#深度缓冲" class="headerlink" title="深度缓冲"></a>深度缓冲</h1><p>gl.enable(gl.DEPTH_TEST);<br>gl.clear(gl.DEPTH_BUFFER_BIT);</p>
+<h1 id="多边形便宜"><a href="#多边形便宜" class="headerlink" title="多边形便宜"></a>多边形便宜</h1><p>gl.enable(gl.POLYGON_OFFSET_FILL)</p>
+<h1 id="光照"><a href="#光照" class="headerlink" title="光照"></a>光照</h1><h2 id="光源"><a href="#光源" class="headerlink" title="光源"></a>光源</h2><p>点光源<br>平行光<br>环境光</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>color = color_diffuse + color_ambient</p>
+<ul>
+<li>环境光<br>color = light_color * face_color</li>
+<li>平行光<br>color = light_color <em> face_color </em> cos(a)<br>cos(a) = v_normal * v_light_direct</li>
+<li>点光源<br>需要计算光源到顶点的方向， 然后按照平行光的公式处理<br>记住计算处理的方向要归一化<br>v_light_direct = normalize(a_light_position - a_position)</li>
+</ul>
+<h2 id="平面法向量"><a href="#平面法向量" class="headerlink" title="平面法向量"></a>平面法向量</h2><p>从平面的正方向看去， 顶点顺序是顺时针的。 可以使用左手握拳， 找到法向量方向。<br>使用平面任意两向量叉乘可计算出平面法向量</p>
+<h2 id="逆转置"><a href="#逆转置" class="headerlink" title="逆转置"></a>逆转置</h2><p>逆转置矩阵可以用于计算平面法向量的变化。</p>
+<h2 id="逐片元光照"><a href="#逐片元光照" class="headerlink" title="逐片元光照"></a>逐片元光照</h2><p>对顶点进行光照处理，可能表现效果会不那么自然。 可以在片元器里处理光照，表现的更自然。<br>这需要通过varying变量， 将 v_Color, v_Normal, v_Position, v_Light等信息传递到片元着色器。</p>
+<h1 id="着色器程序"><a href="#着色器程序" class="headerlink" title="着色器程序"></a>着色器程序</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shader = gl.createShader(gl.VERTEX_SHADER || gl.FRAGMENT_SHADER)</span><br><span class="line">gl.deleteShader(shader);</span><br><span class="line">gl.shaderSource(shader, source);</span><br><span class="line">gl.compileShader(shader);</span><br><span class="line">gl.getShaderParameter(shader, pname); <span class="comment">//查看shader状态</span></span><br><span class="line">gl.getShaderInfoLog(); <span class="comment">//获取shader输出的日志信息</span></span><br><span class="line">gl.createProgram();</span><br><span class="line">gl.deleteProhram(program);</span><br><span class="line">gl.attachShader(program, shader);</span><br><span class="line">gl.detachShader(program, shader);</span><br><span class="line">gl.linkProgram(program);</span><br><span class="line">gl.useProgram(program); <span class="comment">//可以使用该函数， 在不同的着色器程序之间来回切换</span></span><br><span class="line">gl.getProgramParameter(program, pname);</span><br><span class="line">gl.getProgramInfoLog(program);</span><br></pre></td></tr></table></figure>
+<h1 id="获取指定范围内的颜色值"><a href="#获取指定范围内的颜色值" class="headerlink" title="获取指定范围内的颜色值"></a>获取指定范围内的颜色值</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gl.readPixels(x, y, w, h, format, type, pixels);</span><br><span class="line"><span class="comment">//example</span></span><br><span class="line"><span class="keyword">var</span> w = <span class="number">1</span>, h = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> pixels = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(w * h * <span class="number">4</span>);</span><br><span class="line">gl.readPixels(x, y, w, h, gl.RGBA, gl.UNSIGNED_BYTE, pixels);</span><br></pre></td></tr></table></figure>
+<h1 id="其他高级策略"><a href="#其他高级策略" class="headerlink" title="其他高级策略"></a>其他高级策略</h1><h2 id="检查物体是否被点击"><a href="#检查物体是否被点击" class="headerlink" title="检查物体是否被点击"></a>检查物体是否被点击</h2><p>点击时通过uniform传递一个参数到着色器程序， 将物体绘制成指定颜色，然后从缓冲区读取点击点的颜色， 判断是否为指定颜色， 如果是， 表示选中了。<br>检查完之后， 记得将对应的参数重置， 然后重新绘制。</p>
+<h2 id="检查表面是否被点击"><a href="#检查表面是否被点击" class="headerlink" title="检查表面是否被点击"></a>检查表面是否被点击</h2><p>可以将表面信息传入到着色器中， 然后根据不同表面绘制不同的颜色， 思路跟上面类似， 通过检查指定点颜色来判断。</p>
+<h2 id="平视显示器"><a href="#平视显示器" class="headerlink" title="平视显示器"></a>平视显示器</h2><p>将两个canvas叠加， 2D信息部分用一个canvas显示， 叠加在3D图像上。</p>
+<h2 id="将3D物体显示在2d内容上"><a href="#将3D物体显示在2d内容上" class="headerlink" title="将3D物体显示在2d内容上"></a>将3D物体显示在2d内容上</h2><p>类似上例， 不过需要将上面的3dcanvas 的背景色alpha值设为0</p>
+<h2 id="雾化"><a href="#雾化" class="headerlink" title="雾化"></a>雾化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">float factor = (a_end - distance) /(a_end - a_start);</span><br><span class="line">v_Color = 光照之后的颜色 * factor + a_FrogColor * ( <span class="number">1</span> - factor);</span><br><span class="line"><span class="comment">//使用w分量来近似视点的距离</span></span><br><span class="line"><span class="comment">//在视图坐标系中，w = 顶点的视图坐标z分量* -1, 视点在原点， 所以可以通过w来近似距离。</span></span><br><span class="line">v_Dist = gl_Position.w;</span><br></pre></td></tr></table></figure>
+<h2 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h2><p>在绘制的时候， 可以设置颜色混合策略<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gl.enable(gl.BLEND);</span><br><span class="line">gl.blendFunc(src_factor, dst_factor);</span><br><span class="line"><span class="comment">//color = src_color * src_factor + dst_color * dst_factor;</span></span><br><span class="line"><span class="comment">//最常用的, a_color = color_src * a_src + color_dest * (1 - a_src) </span></span><br><span class="line">gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);</span><br></pre></td></tr></table></figure></p>
+<p>混合参数可选值<br>gl.ZERO, gl.ONE, gl.SRC_COLOR, gl.ONE_MINUS_SRC_COLOR, gl.DST_COLOR, gl.ONE_MINUS_DRS_COLOR,<br>gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.DST_ALPHA, gl.ONE_MINUS_DST_ALPHA,<br>gl.SRC_ALPHA_SATURATE</p>
+<p>使用颜色混合的时候需要关闭深度缓存， 否则前面的颜色直接覆盖了后面的颜色， 也就无从混合了。</p>
+<h3 id="如何同时使用深度缓存和颜色混合呢？"><a href="#如何同时使用深度缓存和颜色混合呢？" class="headerlink" title="如何同时使用深度缓存和颜色混合呢？"></a>如何同时使用深度缓存和颜色混合呢？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开启深度缓存</span></span><br><span class="line">gl.enable(gl.DEPTH_TEST);</span><br><span class="line"><span class="comment">//绘制所有透明度 &gt;= 1.0 的物体</span></span><br><span class="line"><span class="comment">//锁定深度缓存区， 使之只读</span></span><br><span class="line">gl.depthMask(<span class="literal">true</span>);</span><br><span class="line"><span class="comment">//绘制所有半透明物体</span></span><br><span class="line"><span class="comment">//解锁深度缓存区</span></span><br><span class="line">gl.depthMask(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//当不透明的物体后面有透明物体时， 因为深度缓存的原因， 会直接被遮挡。 而不透明的颜色则可以继续混合。</span></span><br></pre></td></tr></table></figure>
+<h2 id="渲染到纹理"><a href="#渲染到纹理" class="headerlink" title="渲染到纹理"></a>渲染到纹理</h2><h3 id="帧缓冲区对象和渲染缓冲区对象"><a href="#帧缓冲区对象和渲染缓冲区对象" class="headerlink" title="帧缓冲区对象和渲染缓冲区对象"></a>帧缓冲区对象和渲染缓冲区对象</h3><p>帧缓冲区对象包含三种不同的对象， 用于实现不同的功能， 颜色关联对象用于代替颜色缓冲区，深度关联对象用于代替深度缓冲区， 模板关联对象用于代替模板缓冲区。<br>这几种对象可以是两种类型的： 纹理对象或渲染缓冲区对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如何配置一个离屏渲染的帧缓冲区</span></span><br><span class="line"><span class="comment">//1.创建帧缓冲区对象</span></span><br><span class="line"><span class="keyword">var</span> framebuffer = gl.createFrameBuffer();</span><br><span class="line"><span class="comment">//2.创建纹理对象并设置其尺寸和参数</span></span><br><span class="line"><span class="keyword">var</span> texture = gl.createTexture();</span><br><span class="line">gl.bindTexture(gl.TEXTURE_2D, texture);</span><br><span class="line">gl.texImage2D(gl.TEXTURE_2D, <span class="number">0</span>, gl.RGBA, width, height, <span class="number">0</span>, gl.RGBA, gl.UNSIGNED_BYTE, <span class="literal">null</span>);</span><br><span class="line"><span class="comment">//gl.texParameteri();</span></span><br><span class="line"><span class="comment">//3.创建渲染缓冲区对象</span></span><br><span class="line"><span class="keyword">var</span> depthBuffer = gl.createRenderbuffer();</span><br><span class="line"><span class="comment">//4.绑定渲染缓冲区对象并设置其尺寸</span></span><br><span class="line">gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer);</span><br><span class="line">gl.renderbufferStorage(gl.RENDERBUFFER, g.DEPTH_COMPONENT16, width, height);</span><br><span class="line"><span class="comment">//5.绑定帧缓冲区</span></span><br><span class="line">gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);</span><br><span class="line"><span class="comment">//5.将帧缓冲区的颜色关联对象指定为纹理对象</span></span><br><span class="line">gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACTMENT0, gl.TEXTURE_2D, texture, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//6.将帧缓冲区的深度关联对象指定为渲染缓冲区对象</span></span><br><span class="line">gl.framebufferRenderbuffer(gl.FRAMEBUFFER, GL.DEPTH_ATTACHMENT, gl.RENDER_BUFFER, depthBuffer);</span><br><span class="line"><span class="comment">//7.检查帧缓冲区是否正确配置</span></span><br><span class="line">gl.checkFramebufferStatus(gl.FRAMEBUFFER);</span><br><span class="line"><span class="comment">//8.绘制到帧缓冲区</span></span><br><span class="line">gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);</span><br><span class="line">gl.viewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line"></span><br><span class="line"><span class="comment">//切换会默认的颜色缓冲区</span></span><br><span class="line">gl.bindFramebuffer(gl.FRAMEBUFFER, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//帧缓冲区对象可以被删除</span></span><br><span class="line">gl.deleteFrameBuffer(frameBuffer);</span><br><span class="line"><span class="comment">//渲染缓冲区对象也可以被删除</span></span><br><span class="line">gl.deleteRenderbuffer(depthBuffer)</span><br></pre></td></tr></table></figure></p>
+<h2 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h2><p>思路： 使用两对着色器，第一对着色器，用于生成阴影贴图。第二对着色器根据片元在光照坐标系上的z值与光照贴图的值比较， 如果z值较大， 则处于阴影之中。 </p>
+<ol>
+<li>将视点移至光源位置， 然后使用着色器1绘制。 这里将要被绘制的片元都是被光照到的最前面的，将该片元的z值通过帧缓冲区绘制到阴影贴图中。</li>
+<li>将视点移回原来的位置， 然后使用着色器2绘制。计算出片元在光源坐标系下的z值， 与阴影贴图上的记录的z值比较是否被光照到。</li>
+</ol>
+<p>Tips: 比较的时候， 需要在读取出来的z值上加上 0.005, 否则可能会出现马赫带。<br>    马赫带出现的原因是因为纹理贴图上的颜色分量精度为1/256， 而着色器的精度值为1/65535。所以可能会出现完全相同的坐标，阴影贴图的z值比着色器中的小， 而误以为它是阴影区域。所以需要在读出来的z值上添加一个略大于精度值单位的值。</p>
+<p>将z值全部放在一个分量上可能会遇到分量值域太小不够用的情况， 我们可以考虑将颜色的4个分量都用来存储。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vec4 bitShift = vec4(<span class="number">1.0</span>, <span class="number">256.0</span>, <span class="number">256.0</span> * <span class="number">256.0</span>, <span class="number">256.0</span> * <span class="number">256.0</span> * <span class="number">256.0</span>);</span><br><span class="line"><span class="keyword">const</span> vec4 bitMask = vec4(<span class="number">1.0</span> / <span class="number">256.0</span>, <span class="number">1.0</span> / <span class="number">256.0</span>, <span class="number">1.0</span> / <span class="number">256.0</span>, <span class="number">0.0</span>);</span><br><span class="line">vec4 rgbaDepth = fract(gl_FragCoord.z * bitShift);</span><br><span class="line">rgbaDepth -= rgbaDepth.gbaa * bitMask;</span><br><span class="line">gl_FragColor = rgbaDepth;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unpackDepth</span>(<span class="params">const in vec4 rgbaDepth</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> vec4 bitShift = vec4(<span class="number">1.0</span>, <span class="number">1.0</span> / <span class="number">256.0</span>, <span class="number">1.0</span>/(<span class="number">256.0</span> * <span class="number">256.0</span>), <span class="number">1.0</span>/(<span class="number">256.0</span> * <span class="number">256.0</span> * <span class="number">256.0</span>));</span><br><span class="line">    float depth = doc(rgbaDepth, bitShift);</span><br><span class="line">    <span class="keyword">return</span> depth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="加载三维模型"><a href="#加载三维模型" class="headerlink" title="加载三维模型"></a>加载三维模型</h2><h3 id="Blender建模软件"><a href="#Blender建模软件" class="headerlink" title="Blender建模软件"></a>Blender建模软件</h3><h3 id="Obj格式"><a href="#Obj格式" class="headerlink" title="Obj格式"></a>Obj格式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># //注释 </span><br><span class="line">mtllib filename <span class="comment">//引用mtl文件</span></span><br><span class="line">o name  <span class="comment">//声明一个名为name的模型</span></span><br><span class="line">v vertexs <span class="comment">//顶点们</span></span><br><span class="line">usemtl Material <span class="comment">//使用材质Material</span></span><br><span class="line">f indexes  <span class="comment">//使用了材质的表面， 表面是由纹理坐标和法线的索引序列定义的， 索引从1开始</span></span><br></pre></td></tr></table></figure>
+<h3 id="mtl-文件格式"><a href="#mtl-文件格式" class="headerlink" title="mtl 文件格式"></a>mtl 文件格式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">newmtl Material <span class="comment">//定义新的材质</span></span><br><span class="line">Ka <span class="number">0.000000</span> <span class="number">0.000000</span> <span class="number">0.000000</span> <span class="comment">//环境色</span></span><br><span class="line">Kd <span class="number">1.000000</span> <span class="number">0.000000</span> <span class="number">0.000000</span> <span class="comment">//漫射色</span></span><br><span class="line">Ks <span class="number">0.000000</span> <span class="number">0.000000</span> <span class="number">0.000000</span> <span class="comment">//高光色</span></span><br><span class="line">Ns <span class="number">96.078431</span>                  <span class="comment">//高光色权重</span></span><br><span class="line">Ni <span class="number">1.000000</span>                   <span class="comment">//表面光学密度</span></span><br><span class="line">d <span class="number">1.000000</span>                    <span class="comment">//透明度</span></span><br><span class="line">illum <span class="number">0</span>                       <span class="comment">//光照模型</span></span><br></pre></td></tr></table></figure>
+<h2 id="上下文丢失"><a href="#上下文丢失" class="headerlink" title="上下文丢失"></a>上下文丢失</h2><p>通过监听webglcontextlost, webglcontextrestored 这两个事件来响应上下文丢失和恢复的情况。<br>在恢复时，重新设置webgl状态<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">canvas.addEventListener(<span class="string">"webglcontextlost"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">    cancelAnimationFrame(requestId);</span><br><span class="line">    <span class="comment">//默认是不在触发restore事件， 所以要阻止默认行为</span></span><br><span class="line">    ev.preventDefault();</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">canvas.addEventListener(<span class="string">"webglcontextrestored"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//重新设置webgl 相关状态， 变量位置</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="opengl-默认的裁剪空间中，-使用的左手坐标系"><a href="#opengl-默认的裁剪空间中，-使用的左手坐标系" class="headerlink" title="opengl 默认的裁剪空间中， 使用的左手坐标系"></a>opengl 默认的裁剪空间中， 使用的左手坐标系</h2><p>常用的第三方库使用的是右手坐标系。<br>可以通过在投影矩阵的z轴缩放因子上 * -1, 将传统库使用的右手坐标系， 转变为裁剪坐标系需要的左手坐标系。</p>
+<h2 id="逆转置矩阵"><a href="#逆转置矩阵" class="headerlink" title="逆转置矩阵"></a>逆转置矩阵</h2><p>逆转置矩阵可以用与将平面的法向量变换到正确的值。<br>当不包含 缩放因子不一致 的缩放变换时， 可以直接使用模型矩阵的3x3子矩阵来变化法向量。<br>当包含缩放因子不一致 的缩放变换时，则必须使用逆转置矩阵来变换。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://leafflow.com/post/render/webgl学习.html" data-id="ck552s3ge000438s6irlf889h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
