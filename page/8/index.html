@@ -113,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/db/mongo/" data-id="ck5gj2hgu000x5ds6142c2j73" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/db/mongo/" data-id="ck5gjo3q6000xces6el4hqdso" class="article-share-link">Share</a>
       
       
     </footer>
@@ -123,9 +123,9 @@
 
 
   
-    <article id="post-egret/egret小刚" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-daily/H5sdk接入方式对比" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/egret/egret小刚/" class="article-date">
+    <a href="/2020/01/16/daily/H5sdk接入方式对比/" class="article-date">
   <time datetime="2020-01-16T04:11:46.641Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -133,34 +133,16 @@
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/16/egret/egret小刚/">egret小刚</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>exml<br>RES<br>Event<br>引入第三方库</p>
-<p>ts 将string转成number <a href="http://stackoverflow.com/questions/14667713/typescript-converting-a-string-to-a-number" target="_blank" rel="noopener"></a></p>
-<h2 id="egret-引入字体文件"><a href="#egret-引入字体文件" class="headerlink" title="egret 引入字体文件"></a>egret 引入字体文件</h2><ol>
-<li>声明font-face</li>
-<li>在html页面中使用</li>
-<li>监听字体加载完成事件</li>
-<li>删除页面中使用字体的结点</li>
-<li>进入游戏</li>
-<li>在游戏中设置字体为刚刚声明的字体<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">    font-family:<span class="string">"HANYI"</span>;</span><br><span class="line">    src: url(<span class="string">"./resource/HY.ttf"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;p id=<span class="string">"font_loader"</span> style=<span class="string">"font-family:HANYI"</span>&gt;</span><br><span class="line">    随便什么文字</span><br><span class="line">&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">document.fonts.ready.then(function()&#123;</span></span><br><span class="line"><span class="regexp">    var ele = document.getElementById("font_loader");</span></span><br><span class="line"><span class="regexp">    if(ele)&#123;</span></span><br><span class="line"><span class="regexp">        ele.parentNode.removeChild(ele);</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    enterGame();</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp">function newText()&#123;</span></span><br><span class="line"><span class="regexp">    var text = new egret.TextField();</span></span><br><span class="line"><span class="regexp">    text.fontFamily = "HANYI"</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <p>现在H5 接入SDK 有两种不同的配置方式， 各有优劣， 在这里分析一下：</p>
+<h1 id="全部包含，-按需取"><a href="#全部包含，-按需取" class="headerlink" title="全部包含， 按需取"></a>全部包含， 按需取</h1><p>一种是， 所有的渠道的接入代码都写在一个文件里， 然后通过不同的html文件，配置对应的渠道参数，读取到不同的实现。</p>
+<h1 id="根据不同的平台，打包不同代码"><a href="#根据不同的平台，打包不同代码" class="headerlink" title="根据不同的平台，打包不同代码"></a>根据不同的平台，打包不同代码</h1><p>另一种是，每个渠道有独立的接入文件， 打包的时候， 根据不同的渠道， 将不同的对接文件打入最终包体。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/egret/egret小刚/" data-id="ck5gj2hgv000y5ds6cops9766" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/H5sdk接入方式对比/" data-id="ck5gjo3q7000yces6p0onr41m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/frontend/UserAgent/" data-id="ck5gj2hgw000z5ds6e4cn584q" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/frontend/UserAgent/" data-id="ck5gjo3q7000zces6xq09unfh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-4/" data-id="ck5gj2hgp000p5ds6axf6v2ps" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-4/" data-id="ck5gjo3q1000nces6nis8g4x5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-8/" data-id="ck5gj2hgq000q5ds6tzie0ztx" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-8/" data-id="ck5gjo3q2000oces6lyyhljwu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2018-10/" data-id="ck5gj2hgr000r5ds66g2vjyhl" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2018-10/" data-id="ck5gjo3q3000qces6sbim0ynp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,9 +307,9 @@
 
 
   
-    <article id="post-daily/2018-11" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-daily/2019-11" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/daily/2018-11/" class="article-date">
+    <a href="/2020/01/16/daily/2019-11/" class="article-date">
   <time datetime="2020-01-16T04:11:46.640Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -337,12 +319,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="release-脚本"><a href="#release-脚本" class="headerlink" title="release 脚本"></a>release 脚本</h1><p>根据当前 <code>hotfix</code> 分支名自动生成版本号等参数。 不再需要输入一堆参数,减少错误率。 </p>
+        <p><a href="https://forum.cocos.org/t/cocos-creator-web-mobile-playable-ad-html/84260" target="_blank" rel="noopener">将 creator 打包成单 html 文件，用于广告互动游戏</a><br><a href="https://github.com/behavior3/behavior3editor" target="_blank" rel="noopener">behavior3 行为树编辑器</a></p>
+<p><a href="https://forum.cocos.org/t/topic/62296" target="_blank" rel="noopener">Cocos creator 加载首屏</a></p>
+<p>cocos creator dragonbones绘制流程<br>cocos creator dragonbones 缓存</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2018-11/" data-id="ck5gj2hgr000s5ds6ebwd9egc" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2019-11/" data-id="ck5gjo3q3000rces65dnd2nfo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -377,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2019-10/" data-id="ck5gj2hgs000t5ds6xhv6wk2t" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2019-10/" data-id="ck5gjo3q4000tces69eg57oc9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -387,9 +371,9 @@
 
 
   
-    <article id="post-daily/2019-11" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-daily/2018-11" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/daily/2019-11/" class="article-date">
+    <a href="/2020/01/16/daily/2018-11/" class="article-date">
   <time datetime="2020-01-16T04:11:46.640Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -399,14 +383,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://forum.cocos.org/t/cocos-creator-web-mobile-playable-ad-html/84260" target="_blank" rel="noopener">将 creator 打包成单 html 文件，用于广告互动游戏</a><br><a href="https://github.com/behavior3/behavior3editor" target="_blank" rel="noopener">behavior3 行为树编辑器</a></p>
-<p><a href="https://forum.cocos.org/t/topic/62296" target="_blank" rel="noopener">Cocos creator 加载首屏</a></p>
-<p>cocos creator dragonbones绘制流程<br>cocos creator dragonbones 缓存</p>
+        <h1 id="release-脚本"><a href="#release-脚本" class="headerlink" title="release 脚本"></a>release 脚本</h1><p>根据当前 <code>hotfix</code> 分支名自动生成版本号等参数。 不再需要输入一堆参数,减少错误率。 </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2019-11/" data-id="ck5gj2hgs000u5ds6mjqg9tnf" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2018-11/" data-id="ck5gjo3q5000uces6gcb1thsd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -542,7 +524,7 @@ BattleResult  onEnter =&gt; loadLazyRes
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2019-12/" data-id="ck5gj2hgt000v5ds6dovxyad5" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2019-12/" data-id="ck5gjo3q5000vces6l9vqui3g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -606,11 +588,11 @@ BattleResult  onEnter =&gt; loadLazyRes
           </li>
         
           <li>
-            <a href="/2020/01/16/面试整理/">(no title)</a>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/开源协议/">(no title)</a>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
           </li>
         
           <li>
@@ -636,6 +618,10 @@ BattleResult  onEnter =&gt; loadLazyRes
       &copy; 2020 vollen<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
+  </div>
+  <div class="BbeiAn-info">
+    {{ __('京ICP备') }} -
+   <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
   </div>
 </footer>
     </div>
