@@ -65,9 +65,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-H5/js_libs" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-algorithm/algs4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/H5/js_libs/" class="article-date">
+    <a href="/2020/01/16/algorithm/algs4/" class="article-date">
   <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -77,12 +77,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">md5</a><br>Zepto 针对移动端的精简jQuery<br>[createjs] 轻量级的js渲染框架，总大小只有不到 100 k<br>[threejs] 3d 渲染引擎<br>[pixijs] js 渲染引擎<br><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui</a> 轻量级的js控制库，用于页面中快速调整一些参数<br>[statsjs] 用于显示页面 fps<br>[howlerjs] 网页播放音频库<br>[wavesurfer] 显示音波图<br>[FileSaver] 提供了一个SaveAs 接口， 用于 H5 保存文件到本地<br>[jszip] js的 zip 库</p>
+        <p><a href="https://algs4.cs.princeton.edu/home/" target="_blank" rel="noopener">官网</a></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>排序成本模型：在研究排序算法时， 我们需要计算比较和交换的数量，对于不交换的算法， 我们会计算访问数组的次数。</p>
+<p>N = 问题规模</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>找到数组中最小的元素， 然后将它交换到最前方，然后依次找到第i小的，并交换到i - 1位。<br>选择排序的总消耗次数约为: (N * (N - 1)) / 2 次比较 和 N - 1 次交换.<br>选择排序的消耗 与 输入数据的原始顺序无关。<br>交换次数是最少的， 因为它每次交换都代表着一个数字被正确的排序。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5g7xyai000lwes6z6yo1anb" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/algs4/" data-id="ck5gcbq56000jiys6beu7a04o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,12 +107,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>不多说， 贴代码<br>通过重写系统回调函数， 屏蔽默认行为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span> </span><br><span class="line">	function testKeyDown(event) &#123;</span><br><span class="line"></span><br><span class="line">		if ((event.keyCode == 112)  || </span><br><span class="line">		//屏蔽 F1   </span><br><span class="line">		(event.keyCode == 113)  || //屏蔽 F2  </span><br><span class="line">		(event.keyCode == 114)  || //屏蔽 F3  </span><br><span class="line">		(event.keyCode == 115)  || //屏蔽 F4  </span><br><span class="line">		(event.keyCode == 116)  || //屏蔽 F5   </span><br><span class="line">		(event.keyCode == 117)  || //屏蔽 F6   </span><br><span class="line">		(event.keyCode == 118)  || //屏蔽 F7   </span><br><span class="line">		(event.keyCode == 119)  || //屏蔽 F8   </span><br><span class="line">		(event.keyCode == 120)  || //屏蔽 F9   </span><br><span class="line">		(event.keyCode == 121)  || //屏蔽 F10   </span><br><span class="line">		(event.keyCode == 122)  || //屏蔽 F11   </span><br><span class="line">		(event.keyCode == 123))    //屏蔽 F12  </span><br><span class="line">		&#123;   </span><br><span class="line">			event.keyCode = 0;</span><br><span class="line">			event.returnValue = false;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line"></span><br><span class="line">	function disableMenu()&#123;</span><br><span class="line">		if(Log.ShowDebug) &#123; return;&#125; </span><br><span class="line">		document.onkeydown = function()&#123;testKeyDown(event)&#125; </span><br><span class="line">		window.onhelp = function()&#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		document.oncontextmenu = function () &#123;</span><br><span class="line">			window.event.returnValue = false;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	disableMenu();</span><br><span class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <p>不多说， 贴代码<br>通过重写系统回调函数， 屏蔽默认行为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span> </span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">testKeyDown</span><span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"></span><br><span class="line">		if ((event.keyCode == 112)  || </span><br><span class="line"><span class="actionscript">		<span class="comment">//屏蔽 F1   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">113</span>)  || <span class="comment">//屏蔽 F2  </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">114</span>)  || <span class="comment">//屏蔽 F3  </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">115</span>)  || <span class="comment">//屏蔽 F4  </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">116</span>)  || <span class="comment">//屏蔽 F5   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">117</span>)  || <span class="comment">//屏蔽 F6   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">118</span>)  || <span class="comment">//屏蔽 F7   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">119</span>)  || <span class="comment">//屏蔽 F8   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">120</span>)  || <span class="comment">//屏蔽 F9   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">121</span>)  || <span class="comment">//屏蔽 F10   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">122</span>)  || <span class="comment">//屏蔽 F11   </span></span></span><br><span class="line"><span class="actionscript">		(event.keyCode == <span class="number">123</span>))    <span class="comment">//屏蔽 F12  </span></span></span><br><span class="line">		&#123;   </span><br><span class="line">			event.keyCode = 0;</span><br><span class="line"><span class="actionscript">			event.returnValue = <span class="literal">false</span>;</span></span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line"></span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">disableMenu</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">if</span>(Log.ShowDebug) &#123; <span class="keyword">return</span>;&#125; </span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;testKeyDown(event)&#125; </span></span><br><span class="line"><span class="javascript">		<span class="built_in">window</span>.onhelp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">			<span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>;</span></span><br><span class="line"><span class="actionscript">			<span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	disableMenu();</span><br><span class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/js 禁用右键菜单/" data-id="ck5g7xyad000fwes6jo1tz4jo" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/js 禁用右键菜单/" data-id="ck5gcbq53000eiys62p0trgxb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/05/10/other/install-package-url-2016-05-10/" data-id="ck5g7xybr002uwes6t6cmpcya" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/05/10/other/install-package-url-2016-05-10/" data-id="ck5gcbq6d002riys6t2foncn0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/url/">url</a></li></ul>
@@ -205,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/other/wireshake-2016-04-12/" data-id="ck5g7xycd004cwes6xi6a86ks" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/other/wireshake-2016-04-12/" data-id="ck5gcbq6x004aiys6m24z1n4k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/debug/">debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li></ul>
@@ -248,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/other/vps-性能测试-2016-04-12/" data-id="ck5g7xycc004awes6ay9rmlh2" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/other/vps-性能测试-2016-04-12/" data-id="ck5gcbq6x0049iys6f6r43tp1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能测试/">性能测试</a></li></ul>
@@ -292,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/other/redis-安装与基本操作-2016-04-12/" data-id="ck5g7xyc2003lwes654uxrise" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/other/redis-安装与基本操作-2016-04-12/" data-id="ck5gcbq6o003kiys6ywwz0wmz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -340,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/other/php-环境安装配置与简单使用-2016-04-12/" data-id="ck5g7xyc0003gwes60a41ojj5" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/other/php-环境安装配置与简单使用-2016-04-12/" data-id="ck5gcbq6m003fiys6pq53wwvt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
@@ -388,7 +391,7 @@ print str1.index(srt2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/lang/python/python-入门-2016-04-12/" data-id="ck5g7xyd7007kwes640ui0efa" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/lang/python/python-入门-2016-04-12/" data-id="ck5gcbq7t007hiys6s4okcpx0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -444,7 +447,7 @@ print str1.index(srt2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/other/perl-2016-04-12/" data-id="ck5g7xyc1003iwes6jswkvpr4" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/other/perl-2016-04-12/" data-id="ck5gcbq6n003hiys6ddf4ns18" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perl/">perl</a></li></ul>
@@ -491,7 +494,7 @@ print str1.index(srt2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2016/04/12/other/openresty-2016-04-12/" data-id="ck5g7xybz003fwes6ykyh2o32" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2016/04/12/other/openresty-2016-04-12/" data-id="ck5gcbq6l003diys6hnhtowx9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openresty/">openresty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/service/">service</a></li></ul>
