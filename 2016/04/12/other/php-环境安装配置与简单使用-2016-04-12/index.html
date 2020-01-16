@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>php-环境安装配置与简单使用 | 听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装 从官网下载安装包, 解压,进入解压目录 执行configure1234567./configure --prefix=/usr/local/php --enable-fpm --with-mcrypt \--enable-mbstring --disable-pdo --with-curl \--disable-debug --disable-rpath --enable-inline-op">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-环境安装配置与简单使用">
+<meta property="og:url" content="http://vollen.github.io/2016/04/12/other/php-环境安装配置与简单使用-2016-04-12/index.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="安装 从官网下载安装包, 解压,进入解压目录 执行configure1234567./configure --prefix=/usr/local/php --enable-fpm --with-mcrypt \--enable-mbstring --disable-pdo --with-curl \--disable-debug --disable-rpath --enable-inline-op">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-16T04:11:46.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php-环境安装配置与简单使用">
+<meta name="twitter:description" content="安装 从官网下载安装包, 解压,进入解压目录 执行configure1234567./configure --prefix=/usr/local/php --enable-fpm --with-mcrypt \--enable-mbstring --disable-pdo --with-curl \--disable-debug --disable-rpath --enable-inline-op">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vollen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-other/php-环境安装配置与简单使用-2016-04-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/other/php-环境安装配置与简单使用-2016-04-12/" class="article-date">
+  <time datetime="2016-04-12T07:00:14.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php-环境安装配置与简单使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
+<li>从官网下载安装包,</li>
+<li>解压,进入解压目录</li>
+<li>执行configure<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php --<span class="built_in">enable</span>-fpm --with-mcrypt \</span><br><span class="line">--<span class="built_in">enable</span>-mbstring --<span class="built_in">disable</span>-pdo --with-curl \</span><br><span class="line">--<span class="built_in">disable</span>-debug --<span class="built_in">disable</span>-rpath --<span class="built_in">enable</span>-inline-optimization \</span><br><span class="line">--with-bz2 --with-zlib --<span class="built_in">enable</span>-sockets --<span class="built_in">enable</span>-sysvsem \</span><br><span class="line">--<span class="built_in">enable</span>-sysvshm --<span class="built_in">enable</span>-pcntl --<span class="built_in">enable</span>-mbregex --with-mhash \</span><br><span class="line">--<span class="built_in">enable</span>-zip --with-pcre-regex --with-mysql --with-mysqli \</span><br><span class="line">--with-gd --with-jpeg-dir</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<p>sudo apt-get install libmcrypt-dev \<br>&amp;&amp; sudo apt-get install libmysql++-dev \<br>&amp;&amp; sudo apt-get install libxslt1-dev \</p>
+<ol start="4">
+<li>安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make all insatll</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>Tips</strong>: 中途有缺少的包,一个个的补上</p>
+<h2 id="extension"><a href="#extension" class="headerlink" title="extension"></a>extension</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install php5-curl</span><br></pre></td></tr></table></figure>
+<p># </p>
+<p><a href="http://www.111cn.net/sys/nginx/64044.htm" target="_blank" rel="noopener">nginx中配置php-FPM教程详解</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2016/04/12/other/php-环境安装配置与简单使用-2016-04-12/" data-id="ck5g7xyc0003gwes60a41ojj5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/12/other/redis-安装与基本操作-2016-04-12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          redis-安装与基本操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/12/lang/python/python-入门-2016-04-12/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python_入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-dragger-di/">-- android -- dragger -- di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Aaron-Swartz/">Aaron Swartz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript6/">ECMAScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SE/">SE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2dx/">cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freecodecamp/">freecodecamp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glsl/">glsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kill/">kill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/media/">media</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opengl/">opengl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openresty/">openresty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perl/">perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/power-shell/">power-shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/renderer/">renderer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retransmission/">retransmission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rules/">rules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sdk/">sdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemstap/">systemstap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texture/">texture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tribute/">tribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号/">信号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压缩/">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能测试/">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境搭建/">环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-dragger-di/" style="font-size: 10px;">-- android -- dragger -- di</a> <a href="/tags/Aaron-Swartz/" style="font-size: 10px;">Aaron Swartz</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/ECMAScript6/" style="font-size: 10px;">ECMAScript6</a> <a href="/tags/SE/" style="font-size: 10px;">SE</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/cocos2dx/" style="font-size: 10px;">cocos2dx</a> <a href="/tags/database/" style="font-size: 16.67px;">database</a> <a href="/tags/debug/" style="font-size: 16.67px;">debug</a> <a href="/tags/freecodecamp/" style="font-size: 10px;">freecodecamp</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/glsl/" style="font-size: 10px;">glsl</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kill/" style="font-size: 10px;">kill</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/opengl/" style="font-size: 13.33px;">opengl</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/power-shell/" style="font-size: 10px;">power-shell</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/renderer/" style="font-size: 10px;">renderer</a> <a href="/tags/retransmission/" style="font-size: 10px;">retransmission</a> <a href="/tags/rules/" style="font-size: 10px;">rules</a> <a href="/tags/sdk/" style="font-size: 10px;">sdk</a> <a href="/tags/service/" style="font-size: 13.33px;">service</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/systemstap/" style="font-size: 10px;">systemstap</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/texture/" style="font-size: 10px;">texture</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/tribute/" style="font-size: 10px;">tribute</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vps/" style="font-size: 13.33px;">vps</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/信号/" style="font-size: 10px;">信号</a> <a href="/tags/压缩/" style="font-size: 10px;">压缩</a> <a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/16/typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>linux kill 信号与处理 | 听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于linux命令发送的信号,以及信号监听处理linux kill 信号列表在shell中通过使用 kill -l 来查看kill命令能发送的信号列表">
+<meta name="keywords" content="linux,kill,信号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux kill 信号与处理">
+<meta property="og:url" content="http://vollen.github.io/2015/07/28/linux/linux-kill-信号与处理-2015-07-28/index.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="关于linux命令发送的信号,以及信号监听处理linux kill 信号列表在shell中通过使用 kill -l 来查看kill命令能发送的信号列表">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-16T04:11:46.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux kill 信号与处理">
+<meta name="twitter:description" content="关于linux命令发送的信号,以及信号监听处理linux kill 信号列表在shell中通过使用 kill -l 来查看kill命令能发送的信号列表">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vollen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux/linux-kill-信号与处理-2015-07-28" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/28/linux/linux-kill-信号与处理-2015-07-28/" class="article-date">
+  <time datetime="2015-07-28T07:13:59.000Z" itemprop="datePublished">2015-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux kill 信号与处理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于linux命令发送的信号-以及信号监听处理"><a href="#关于linux命令发送的信号-以及信号监听处理" class="headerlink" title="关于linux命令发送的信号,以及信号监听处理"></a>关于linux命令发送的信号,以及信号监听处理</h1><h2 id="linux-kill-信号列表"><a href="#linux-kill-信号列表" class="headerlink" title="linux kill 信号列表"></a>linux kill 信号列表</h2><p>在shell中通过使用 kill -l 来查看kill命令能发送的信号列表</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">kill</span> -l</span><br><span class="line"> 1) SIGHUP   2) SIGINT   3) SIGQUIT  4) SIGILL   5) SIGTRAP</span><br><span class="line"> 6) SIGABRT  7) SIGBUS   8) SIGFPE   9) SIGKILL 10) SIGUSR1</span><br><span class="line">11) SIGSEGV 12) SIGUSR2 13) SIGPIPE 14) SIGALRM 15) SIGTERM</span><br><span class="line">16) SIGSTKFLT   17) SIGCHLD 18) SIGCONT 19) SIGSTOP 20) SIGTSTP</span><br><span class="line">21) SIGTTIN 22) SIGTTOU 23) SIGURG  24) SIGXCPU 25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM   27) SIGPROF 28) SIGWINCH    29) SIGIO   30) SIGPWR</span><br><span class="line">31) SIGSYS  34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42)SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1  64) SIGRTMAX</span><br></pre></td></tr></table></figure>
+<p><strong>其中1-31 是传统UNIX支持的信号</strong><br>下面对于这些信号进行讨论</p>
+<ul>
+<li><p>1) SIGHUP</p>
+<blockquote>
+<p>在终端连接结束时发出,通常实在终端的控制进程结束时,通知同一session内的其他进程</p>
+</blockquote>
+</li>
+<li><p>2) SIGINT  </p>
+<blockquote>
+<p>程序终止信号,在用户输入INTR字符(Ctrl+C)时发出,用于通知前台进程终止进程</p>
+</blockquote>
+</li>
+<li><p>3) SIGQUIT  </p>
+<blockquote>
+<p>和SIGINT类似,但是由QUIT字符(Ctrl+\)控制,进程在收到SIGQUIT退出时会产生core文件, 因此这类似于一个程序错误信号</p>
+</blockquote>
+</li>
+<li><p>4) SIGILL   </p>
+<blockquote>
+<p>执行了非法指令.通常是因为可执行文件本身出错,内存越界,内存溢出都有可能产生</p>
+</blockquote>
+</li>
+<li><p>5) SIGTRAP</p>
+<blockquote>
+<p>由断点指令或其他trap指令产生, 由debugger使用</p>
+</blockquote>
+</li>
+<li><p>6) SIGABRT</p>
+<blockquote>
+<p>调用abort函数生成的信号</p>
+</blockquote>
+</li>
+<li><p>7) SIGBUS   </p>
+<blockquote>
+<p>非法地址,包括内存地址对齐出错.比如访问一个四字长的整数,但其地址不是4的倍数</p>
+</blockquote>
+</li>
+<li><p>8) SIGFPE   </p>
+<blockquote>
+<p>在发生致命的算术运算错误时发出, 比如 div 0 操作.</p>
+</blockquote>
+</li>
+<li><p>9) SIGKILL </p>
+<blockquote>
+<p>用来立即结束程序的运行, <strong>该信号不能被阻塞//处理和忽略</strong>. 可用于强制终止进程</p>
+</blockquote>
+</li>
+<li><p>10) SIGUSR1</p>
+<blockquote>
+<p>留给用户使用</p>
+</blockquote>
+</li>
+<li><p>11) SIGSEGV </p>
+<blockquote>
+<p>访问未分配给自己的内存,或这试图往没有权限的内存地址写数据</p>
+</blockquote>
+</li>
+<li><p>12) SIGUSR2 </p>
+<blockquote>
+<p>第二个留给用户使用的信号</p>
+</blockquote>
+</li>
+<li><p>13) SIGPIPE </p>
+<blockquote>
+<p>管道破裂. 在进程间通信过程中产生</p>
+</blockquote>
+</li>
+<li><p>14) SIGALRM </p>
+<blockquote>
+<p>时钟信号. 计算的是实际的时间或时钟时间, alarm函数使用该信号</p>
+</blockquote>
+</li>
+<li><p>15) SIGTERM</p>
+<blockquote>
+<p>程序结束信号. <strong>该信号可以被阻塞和处理</strong>, shell 中的kill命令默认产生这个信号. 如果进程终止不了,我们才会去尝试SIGKILL</p>
+</blockquote>
+</li>
+<li><p>16) SIGSTKFLT   </p>
+<blockquote>
+<p>Wait for edit</p>
+</blockquote>
+</li>
+<li><p>17) SIGCHLD </p>
+<blockquote>
+<p>子进程结束时,父进程会收到这个信号</p>
+</blockquote>
+</li>
+<li><p>18) SIGCONT </p>
+<blockquote>
+<p>让一个stopped 的进程继续执行,<strong>该信号不能被阻塞</strong> </p>
+</blockquote>
+</li>
+<li><p>19) SIGSTOP </p>
+<blockquote>
+<p>stopped 进程的执行, <strong>该信号不能被阻塞</strong>, <strong>只是挂起该进程,不会结束</strong></p>
+</blockquote>
+</li>
+<li><p>20) SIGTSTP</p>
+<blockquote>
+<p>停止该进程的运行, 但是可以被处理和忽略. 用户键入SUSP字符时(Ctrl+Z) 时发出这个信号</p>
+</blockquote>
+</li>
+<li><p>21) SIGTTIN </p>
+<blockquote>
+<p>当后台作业要从用户终端读数据时, 该作业的所有进程会收到SIGTTIN信号, 缺省时这些进程会停止执行</p>
+</blockquote>
+</li>
+<li><p>22) SIGTTOU </p>
+<blockquote>
+<p>类似于SIGTOUT, 但是在写终端时收到.</p>
+</blockquote>
+</li>
+<li><p>23) SIGURG  </p>
+<blockquote>
+<p>有”紧急”数据或out-of-band数据到达socket时收到</p>
+</blockquote>
+</li>
+<li><p>24) SIGXCPU </p>
+<blockquote>
+<p>超过CPU时间资源显示,这个限制可以由 getrlimit/setrlimit来读取/改变.</p>
+</blockquote>
+</li>
+<li><p>25) SIGXFSZ</p>
+<blockquote>
+<p>进程试图扩大文件以至于超过文件大小资源限制时发出</p>
+</blockquote>
+</li>
+<li><p>26) SIGVTALRM   </p>
+<blockquote>
+<p>　虚拟时钟信号，类似于　SIGALRM　但是计算的是该进程占用的CPU时间</p>
+</blockquote>
+</li>
+<li><p>27) SIGPROF </p>
+<blockquote>
+<p>类似于　SIGALRM /IGVTALRM, 但宝货该进程用的ＣＰＵ时间以及系统调用时间</p>
+</blockquote>
+</li>
+<li><p>28) SIGWINCH    </p>
+<blockquote>
+<p>串口大小改变时发出</p>
+</blockquote>
+</li>
+<li><p>29) SIGIO   </p>
+<blockquote>
+<p>文件描述符准备就绪，可以开始进行输入输出操作</p>
+</blockquote>
+</li>
+<li><p>30) SIGPWR</p>
+<p>  ＞　power failure</p>
+</li>
+<li><p>31) SIGSYS </p>
+<blockquote>
+<p>非法的系统调用</p>
+</blockquote>
+</li>
+</ul>
+<p>其中 SIGKILL 和 SIGSTOP 是不能被捕获的<br>SIGSTOP 和 SIGCONT 用来暂停和继续目标进程.<br>SIGABRT,SIGALRM,SIGFPE,SIGPIPE,SIGINT,SIGHUP,SIGILL,SIGQUIT,SIGSEGV,SIGTERM,SIGUSR1,SIGUSR2这12种信号，如果在进程中没有对其进行捕获处理的话，进程在收到它们时，会终止，当然还有不可捕获的SIGKILL。</p>
+<h2 id="信号的捕获与处理"><a href="#信号的捕获与处理" class="headerlink" title="信号的捕获与处理"></a>信号的捕获与处理</h2><p>在进程中需要等待某个信号时,可以用pause()函数,在pause调用前,一定要有对目标信号的捕获机制,这样在收到目标信号后,程序会继续运行,捕获信号最简单的是signal函数:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="keyword">sighandler_t</span>)</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="keyword">sighandler_t</span> signal(<span class="keyword">int</span> signum, <span class="keyword">sighandler_t</span> handler);</span><br><span class="line"><span class="comment">//第一个参数为目标信号, 第二个参数是处理函数,可以是自定义的函数,</span></span><br><span class="line"><span class="comment">//也可以是SIG_IGN(忽略)或SIG_DFL(恢复默认)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">handler</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"capture a SIGALRM signal\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    signal(SIGALRM,handler); <span class="comment">//捕获SIGALRM信号</span></span><br><span class="line">    <span class="comment">/*struct sigaction act;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     act.sa_handler = handler;</span></span><br><span class="line"><span class="comment">     sigemptyset(&amp;act.sa_mask);</span></span><br><span class="line"><span class="comment">     act.sa_flags = 0;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     sigaction(SIGALRM, &amp;act, 0);*/</span></span><br><span class="line"></span><br><span class="line">    pause();                <span class="comment">//等待信号</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"end\n"</span>);        <span class="comment">//继续执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序会在pause处阻塞, 在收到SIGALRM信号时,执行处理函数,并继续往下执行.</p>
+<p>signal 是一个比较老的函数了,现在通常用 sigaction</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sigaction</span><span class="params">(<span class="keyword">int</span> signum, <span class="keyword">const</span> struct sigaction *act,struct sigaction *oldact)</span></span>;</span><br><span class="line"><span class="comment">//第一个参数为目标信号，第二个参数为sigaction结构，内有处理机制，信号掩码，和标志。</span></span><br></pre></td></tr></table></figure>
+<p>具体测试代码,见以上被注释部分, 运行效果完全一样.</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="http://www.2cto.com/os/201202/119425.html" target="_blank" rel="noopener">linux kill信号列表</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_72e502400100qlx9.html" target="_blank" rel="noopener">linux 捕获kill命令的信号</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2015/07/28/linux/linux-kill-信号与处理-2015-07-28/" data-id="ck5g7xyau001awes67z80hbua" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kill/">kill</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信号/">信号</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/10/other/hexo-环境部署-2015-10-10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hexo_环境部署
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/22/other/2015-07-22-书单/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[书单]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-dragger-di/">-- android -- dragger -- di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Aaron-Swartz/">Aaron Swartz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript6/">ECMAScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SE/">SE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2dx/">cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freecodecamp/">freecodecamp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glsl/">glsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kill/">kill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/media/">media</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opengl/">opengl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openresty/">openresty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perl/">perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/power-shell/">power-shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/renderer/">renderer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retransmission/">retransmission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rules/">rules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sdk/">sdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemstap/">systemstap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texture/">texture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tribute/">tribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号/">信号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压缩/">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能测试/">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境搭建/">环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-dragger-di/" style="font-size: 10px;">-- android -- dragger -- di</a> <a href="/tags/Aaron-Swartz/" style="font-size: 10px;">Aaron Swartz</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/ECMAScript6/" style="font-size: 10px;">ECMAScript6</a> <a href="/tags/SE/" style="font-size: 10px;">SE</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/cocos2dx/" style="font-size: 10px;">cocos2dx</a> <a href="/tags/database/" style="font-size: 16.67px;">database</a> <a href="/tags/debug/" style="font-size: 16.67px;">debug</a> <a href="/tags/freecodecamp/" style="font-size: 10px;">freecodecamp</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/glsl/" style="font-size: 10px;">glsl</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kill/" style="font-size: 10px;">kill</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/opengl/" style="font-size: 13.33px;">opengl</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/power-shell/" style="font-size: 10px;">power-shell</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/renderer/" style="font-size: 10px;">renderer</a> <a href="/tags/retransmission/" style="font-size: 10px;">retransmission</a> <a href="/tags/rules/" style="font-size: 10px;">rules</a> <a href="/tags/sdk/" style="font-size: 10px;">sdk</a> <a href="/tags/service/" style="font-size: 13.33px;">service</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/systemstap/" style="font-size: 10px;">systemstap</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/texture/" style="font-size: 10px;">texture</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/tribute/" style="font-size: 10px;">tribute</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vps/" style="font-size: 13.33px;">vps</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/信号/" style="font-size: 10px;">信号</a> <a href="/tags/压缩/" style="font-size: 10px;">压缩</a> <a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/16/typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>opengl_interface | 听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="VAO void glGenVertexArrays(GLsizei n, Gluint * arrays) 创建n个VAO对象，并将索引存储在arrays中   void glBindVertexArray(GLuint array​) 绑定VAO   void glEnableVertexAttribArray(GLuint index​)  void glDisableVertexAttri">
+<meta name="keywords" content="opengl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opengl_interface">
+<meta property="og:url" content="http://vollen.github.io/2016/04/12/render/opengl-interface-2016-04-12/index.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="VAO void glGenVertexArrays(GLsizei n, Gluint * arrays) 创建n个VAO对象，并将索引存储在arrays中   void glBindVertexArray(GLuint array​) 绑定VAO   void glEnableVertexAttribArray(GLuint index​)  void glDisableVertexAttri">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-16T04:11:46.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="opengl_interface">
+<meta name="twitter:description" content="VAO void glGenVertexArrays(GLsizei n, Gluint * arrays) 创建n个VAO对象，并将索引存储在arrays中   void glBindVertexArray(GLuint array​) 绑定VAO   void glEnableVertexAttribArray(GLuint index​)  void glDisableVertexAttri">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vollen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-render/opengl-interface-2016-04-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/render/opengl-interface-2016-04-12/" class="article-date">
+  <time datetime="2016-04-12T07:00:11.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      opengl_interface
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VAO"><a href="#VAO" class="headerlink" title="VAO"></a>VAO</h1><ul>
+<li>void glGenVertexArrays(GLsizei n, Gluint * arrays)<ul>
+<li>创建n个VAO对象，并将索引存储在arrays中</li>
+</ul>
+</li>
+<li>void glBindVertexArray(GLuint array​)<ul>
+<li>绑定VAO</li>
+</ul>
+</li>
+<li><p>void glEnableVertexAttribArray(GLuint index​)</p>
+</li>
+<li><p>void glDisableVertexAttribArray(GLuint index​)</p>
+<ul>
+<li>启用或禁用指定VAO</li>
+</ul>
+</li>
+<li>void glDeleteVertexArrays(GLsizei n, const GLuint * arrays)<ul>
+<li>根据 arrays 数组中的索引， 删除n个VAO</li>
+</ul>
+</li>
+<li>void glVertexAttribPointer(GLuint index​, GLint size​, GLenum type​, GLboolean normalized​, GLsizei stride​, const GLvoid * pointer​)<a id="more"></a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h1 id="VBO"><a href="#VBO" class="headerlink" title="VBO"></a>VBO</h1><ul>
+<li><p>void glGenBuffers(GLsizei n, GLuint * buffers)</p>
+<ul>
+<li>创建 n 个VBO, 并将索引存储在buffers 中</li>
+</ul>
+</li>
+<li><p>void glBindBuffer(GLenum target, GLuint buffer)</p>
+<ul>
+<li>绑定buffer到<a href="#ENUM_BUFFER_TARGET">target</a>的缓存， 同一种类型的缓存只能指向一个buffer</li>
+</ul>
+</li>
+<li><p>void glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage)</p>
+<ul>
+<li>为绑定到<a href="#ENUM_BUFFER_TARGET">target</a>的缓存分配size大小的空间， 如果data不为NULL, 则会被拷贝至目标缓存，用法被限定为<a href="#ENUM_BUFFER_USAGE">usage</a></li>
+</ul>
+</li>
+<li><p>void glBufferSubData(GLenum target, GLintptr offset, GLsizeptr size, const GLvoid * data)</p>
+<ul>
+<li>以data为数据源， 缓存对象 + offset 为目标地址， 拷贝size大小的数据 </li>
+</ul>
+</li>
+<li><p>void * glMapBuffer(GLenum target, GLenum access)</p>
+<ul>
+<li>将当前绑定到<a href="#ENUM_BUFFER_TARGET">target</a>的VBO的地址，使用这个地址可以直接操作缓冲区。 <a href="#ENUM_ACCESS">access</a>该指针指向数据的访问策略</li>
+</ul>
+</li>
+<li><p>GLboolean glUnmapBuffer(GLenum target)</p>
+<ul>
+<li>解除<a href="#ENUM_BUFFER_TARGET">target</a></li>
+</ul>
+</li>
+<li><p>void glDeleteBuffers(GLsizei n, const GLuint * buffers)</p>
+<ul>
+<li>根据 buffers数组中的索引，删除n个VBO</li>
+</ul>
+</li>
+<li><p>深度测试<br>  void glDepthFunc(GLenum func)</p>
+<ul>
+<li>指定深度测试时使用的函数类型， func必须是<a href="#ENUM_DEPTH_TEST_FUNC">深度测试函数</a>中的一个。</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://blog.csdn.net/myarrow/article/details/7737313" target="_blank" rel="noopener">Shader and Program编程基本概念</a></p>
+<h1 id="SHADER"><a href="#SHADER" class="headerlink" title="SHADER"></a>SHADER</h1><ul>
+<li><p>GLuint glCreateShader()</p>
+</li>
+<li><p>void glShaderSource(GLuint prog, GLsizei size, const GLchar*<em> source, const Glint </em> length)</p>
+</li>
+<li><p>void glCompileShader(GLuint shader)</p>
+</li>
+<li><p>void glGetShaderiv(GLuint shader, GLenum pname, GLint * params)</p>
+<ul>
+<li>获取指定shader的<a href="ENUM_SHADER_PARAM">pname</a>属性</li>
+</ul>
+</li>
+<li>void glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei<em> length, GLchar</em> source)<ul>
+<li>将shader的源码写入source， bufSize 为缓冲区长度，length为返回的代码长度</li>
+</ul>
+</li>
+</ul>
+<h1 id="PROGRAM"><a href="#PROGRAM" class="headerlink" title="PROGRAM"></a>PROGRAM</h1><ul>
+<li><p>GLuint glCreateProgram()</p>
+</li>
+<li><p>void glAttachShader(GLuint prog, GLuint shader)</p>
+</li>
+<li><p>void glLinkProgram(GLuint prog)</p>
+</li>
+<li><p>void glUseProgran(GLuint prog)</p>
+</li>
+<li><p>void glGetProgramiv(GLuint prog, GLenum panme, GLint* params)</p>
+</li>
+<li><p>void glGetActiveAttrib(GLuint program​, GLuint index​, GLsizei bufSize​, GLsizei <em>length​, GLint </em>size​, GLenum <em>type​, GLchar </em>name​)</p>
+</li>
+<li><p>void glGetActiveUniform(GLuint program​, GLuint index​, GLsizei bufSize​, GLsizei <em>length​, GLint </em>size​, GLenum <em>type​, GLchar </em>name​)</p>
+</li>
+<li><p>void glGetProgramInfoLog(GLuint program​, GLsizei maxLength​, GLsizei <em>length​, GLchar </em>infoLog​)</p>
+</li>
+<li><p>GLuint glGetUniformLocation(GLuint prog, const GLchar* name)</p>
+</li>
+<li><p>void glUniform{1234}{fdi ui}(GLint location, TYPE value)<br>void glUniform{1234}{fdi ui}v(GLint location, GLsizei count, const TYPE<em> values)<br>void glUniformMatrix{234}{fd}v(GLint location, GLsizei count, GLboolean transpose, const GLfloat</em> values)</p>
+<pre><code>--对角矩阵
+</code></pre><p>void glUniformMatrix{2x3,2x4,3x2,3x4,4x2,4x3}{fd}v(GLint location, GLsizei count, GLboolean transpose, const GLfloat* values)</p>
+<pre><code>-- 设置与locate索引位置对应的uniform变量的值,其中向量形式的函数会载入count个数据的集合
+--transpose 为GL_TRUE, 已行主序读入，为GL_FALSE则以列主序读入。
+</code></pre></li>
+</ul>
+<h1 id="变量储存限定符"><a href="#变量储存限定符" class="headerlink" title="变量储存限定符"></a>变量储存限定符</h1><ul>
+<li><p>attribute     –顶点着色器中声明的变量, 可使用函数glAttrib*来操作</p>
+<ul>
+<li>void glBindAttribLocation(GLuint prog, GLuint index, const Glchar* name)<ul>
+<li>将prog程序中的name变量关联到index上</li>
+</ul>
+</li>
+<li>void glGetAttribLocation(GLuint prog, const GLchar* name)</li>
+</ul>
+</li>
+<li><p>uniform       –由应用程序指定，所有着色器共享但无法更改的变量，可使用glUniform*操作</p>
+</li>
+<li><p>varying       –顶点着色器声明赋值，片元着色器使用的变量</p>
+</li>
+</ul>
+<h1 id="TEXTURE"><a href="#TEXTURE" class="headerlink" title="TEXTURE"></a><a href="https://www.opengl.org/wiki/Texture" target="_blank" rel="noopener">TEXTURE</a></h1><p><a href="http://blog.csdn.net/lixiang996/article/details/6859575" target="_blank" rel="noopener">OpenGL学习笔记（一） 纹理基础知识</a></p>
+<ul>
+<li><p>void glActiveTexture(GLenum texture​)</p>
+</li>
+<li><p>void glBindTexture(GLenum target​, GLuint texture​)</p>
+</li>
+<li><p>void glDeleteTextures(GLsizei n​, const GLuint * textures​)</p>
+</li>
+<li><p>void glPixelStore*(GLenum pname, type, param)</p>
+</li>
+<li><p>void glTexParameter*(GLenum target​, GLenum pname​, Type param​)</p>
+</li>
+<li><p>void glCompressedTexImage2D(GLenum target​, GLint level​, GLenum internalformat​, GLsizei width​, GLsizei height​, GLint border​, GLsizei imageSize​, const GLvoid * data​)</p>
+</li>
+<li><p>void glTexSubImage2D(GLenum target​, GLint level​, GLint xoffset​, GLint yoffset​, GLsizei width​, GLsizei height​, GLenum format​, GLenum type​, const GLvoid * data​)</p>
+</li>
+<li><p>void glGenerateMipmap(GLenum target​)</p>
+</li>
+</ul>
+<h1 id="DRAW"><a href="#DRAW" class="headerlink" title="DRAW"></a>DRAW</h1><ul>
+<li>void glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid * indices) <ul>
+<li>使用 GL_ELEMENT_ARRAY_BUFFER中起始偏移为indeices的count个顶点索引来绘制<a href="#ENUM_PRIMITIVE">mode</a>图元</li>
+</ul>
+</li>
+<li>void glDrawArrays(GLenum mode​, GLint first​, GLsizei count​);</li>
+</ul>
+<h1 id="STATE"><a href="#STATE" class="headerlink" title="STATE"></a>STATE</h1><ul>
+<li>void glGetXXX(GLenum pname, type)<ul>
+<li>返回pname属性的当前设置</li>
+</ul>
+</li>
+<li><p>void glEnable(GLenum cap​)</p>
+</li>
+<li><p>void glDisable(GLenum cap​)</p>
+<ul>
+<li>启用/停用 cap指定状态</li>
+</ul>
+</li>
+<li>void glBlendFunc(GLenum sfactor, GLenum dfactor)</li>
+<li>void glBlendFunci(GlUint buf, GLenum sfactor, GLenum dfactor)<ul>
+<li>设置[指定缓存]颜色混合逻辑</li>
+</ul>
+</li>
+<li><p>void glBlendFuncSeparate(GLenum srcRGB​, GLenum dstRGB​, GLenum srcAlpha​, GLenum dstAlpha​)</p>
+</li>
+<li><p>void glBlendFuncSeparatei(GLuint buf​, GLenum srcRGB​, GLenum dstRGB​, GLenum srcAlpha​, GLenum dstAlpha​)</p>
+<ul>
+<li>逐分量设置[指定缓存]颜色混合逻辑</li>
+</ul>
+</li>
+<li>void glBlendEquation(GLenum mode​)      –todo 不甚了解，大概是设置混合方程？</li>
+</ul>
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a><span id="ENUM">枚举</span></h1><ul>
+<li><p><span id="ENUM_DEPTH_TEST_FUNC">深度测试函数</span></p>
+<ul>
+<li>GL_NEVER      <strong>所有</strong>都<strong>不</strong>通过</li>
+<li>GL_LESS       当输入深度<strong>小于</strong>缓冲深度时通过</li>
+<li>GL_EQUAL      当输入深度<strong>等于</strong>缓冲深度时通过</li>
+<li>GL_LEQUAL     <strong>小于等于时*</strong>通过</li>
+<li>GL_GREATER    <strong>大于时</strong> 通过</li>
+<li>GL_NOTEQUAL   <strong>不等于</strong>时通过</li>
+<li>GL_GEQUAL     <strong>大于或等于</strong>时通过    </li>
+<li>GL_ALWAYS     <strong>无条件</strong>通过</li>
+</ul>
+</li>
+<li><p><span id="ENUM_BUFFER_TARGET">缓冲区类型</span></p>
+</li>
+<li><p><span id="ENUM_BUFFER_USAGE">缓冲区使用限定</span></p>
+</li>
+<li><p><span id="ENUM_ACCESS">访问策略</span></p>
+<ul>
+<li>GL_READ_ONLY      只能从该地址读取数据</li>
+<li>GL_WRITE_ONLY     只能向该地址写入数据</li>
+<li>GL_READ_WRITE     既可以从地址读数据，也可以向地址写数据</li>
+</ul>
+</li>
+<li><p><span id="ENUM_PRIMITIVE"><a href="https://www.opengl.org/wiki/Primitive" target="_blank" rel="noopener">图元类型</a></span> </p>
+<ul>
+<li>GL_POINTS                 点(直接使用顶点数据)</li>
+<li>GL_LINES                  线(每两个连续的点绘制成一条线段[01],[23])</li>
+<li>GL_LINE_STRIP             条带线(相邻的两个顶点绘制成一条线段[01],[12])</li>
+<li>GL_LINE_LOOP              循环线(与条带线类似，而且末点与首点相连成线)</li>
+<li>GL_TRIANGLES              三角形(每三个连续顶点组成一个三角形[012],[345])</li>
+<li>GL_TRIANGLE_STRIP         三角形条带(相邻的三个顶点组成一个三角形[012][123])</li>
+<li>GL_TRIANGLE_FAN           扇形带(从第二个点起每两个连续的顶点与第一个顶点组成三角形[012][034][056])</li>
+<li>GL_PATCHES                批量渲染(每一组顶点一起渲染， 可通过 glPatchParameteri​ 来设置)<br><a href="http://blog.csdn.net/pizi0475/article/details/7932900" target="_blank" rel="noopener">邻接图元</a><br>邻接图元与以上基本图元不同的是，这些图元会附带邻接数据，邻接数据只会在几何着色器中被处理，如果没有几何着色器，则邻接数据会被直接抛弃。</li>
+<li>GL_LINES_ADJACENCY        包含4个顶点，第23个顶点构成线段，1,4为邻接信息</li>
+<li>GL_LINE_STRIP_ADJACENCY   相邻的四个顶点([0123][1234]为一个GL_LINES_ADJACENCY</li>
+<li>GL_TRIANGLES_ADJACENCY    包含6个顶点， 第1,3,5个顶点构成三角形，第2,4,6个保存邻接信息</li>
+<li>GL_TRIANGLE_STRIP_ADJACENCY 需要配合图例解释，详见以上链接</li>
+</ul>
+</li>
+<li><p><span id="ENUM_SHADER_PARAM">Shader属性</span></p>
+<ul>
+<li>GL_SHADER_TYPE            shader类型</li>
+<li>GL_DELETE_STATUS          shader是否待删除</li>
+<li>GL_COMPILE_STATUS         shader编译状态，返回GL_TRUE表示编译成功</li>
+<li>GL_INFO_LOG_LENGTH        shader LOG信息长度</li>
+<li>GL_SHADER_SOURCE_LENGTH   shader源码长度</li>
+</ul>
+</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.<a href="www.opengl.org/wiki/GLAPI">官方文档</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2016/04/12/render/opengl-interface-2016-04-12/" data-id="ck5g7xycf004iwes6t640p2uv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opengl/">opengl</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/12/other/openresty-2016-04-12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          openresty
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/12/other/mysql-2016-04-12/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mysql</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-dragger-di/">-- android -- dragger -- di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Aaron-Swartz/">Aaron Swartz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript6/">ECMAScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SE/">SE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2dx/">cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freecodecamp/">freecodecamp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glsl/">glsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kill/">kill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/media/">media</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opengl/">opengl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openresty/">openresty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perl/">perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/power-shell/">power-shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/renderer/">renderer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retransmission/">retransmission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rules/">rules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sdk/">sdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemstap/">systemstap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texture/">texture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tribute/">tribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号/">信号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压缩/">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能测试/">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境搭建/">环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-dragger-di/" style="font-size: 10px;">-- android -- dragger -- di</a> <a href="/tags/Aaron-Swartz/" style="font-size: 10px;">Aaron Swartz</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/ECMAScript6/" style="font-size: 10px;">ECMAScript6</a> <a href="/tags/SE/" style="font-size: 10px;">SE</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/cocos2dx/" style="font-size: 10px;">cocos2dx</a> <a href="/tags/database/" style="font-size: 16.67px;">database</a> <a href="/tags/debug/" style="font-size: 16.67px;">debug</a> <a href="/tags/freecodecamp/" style="font-size: 10px;">freecodecamp</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/glsl/" style="font-size: 10px;">glsl</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kill/" style="font-size: 10px;">kill</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/opengl/" style="font-size: 13.33px;">opengl</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/power-shell/" style="font-size: 10px;">power-shell</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/renderer/" style="font-size: 10px;">renderer</a> <a href="/tags/retransmission/" style="font-size: 10px;">retransmission</a> <a href="/tags/rules/" style="font-size: 10px;">rules</a> <a href="/tags/sdk/" style="font-size: 10px;">sdk</a> <a href="/tags/service/" style="font-size: 13.33px;">service</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/systemstap/" style="font-size: 10px;">systemstap</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/texture/" style="font-size: 10px;">texture</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/tribute/" style="font-size: 10px;">tribute</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vps/" style="font-size: 13.33px;">vps</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/信号/" style="font-size: 10px;">信号</a> <a href="/tags/压缩/" style="font-size: 10px;">压缩</a> <a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/16/typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

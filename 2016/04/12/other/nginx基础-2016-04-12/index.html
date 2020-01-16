@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>nginx基础 | 听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="nginx 是一个应用比较广, 功能比较强大的web服务器.从这里开始, 我们将初步了解一下nginx的安装 和基本的使用.(以下内容基于ubuntu操作系统)官方文档">
+<meta name="keywords" content="nginx,service">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx基础">
+<meta property="og:url" content="http://vollen.github.io/2016/04/12/other/nginx基础-2016-04-12/index.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="nginx 是一个应用比较广, 功能比较强大的web服务器.从这里开始, 我们将初步了解一下nginx的安装 和基本的使用.(以下内容基于ubuntu操作系统)官方文档">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-16T04:11:46.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx基础">
+<meta name="twitter:description" content="nginx 是一个应用比较广, 功能比较强大的web服务器.从这里开始, 我们将初步了解一下nginx的安装 和基本的使用.(以下内容基于ubuntu操作系统)官方文档">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vollen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-other/nginx基础-2016-04-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/other/nginx基础-2016-04-12/" class="article-date">
+  <time datetime="2016-04-12T07:00:10.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nginx 是一个应用比较广, 功能比较强大的web服务器.<br>从这里开始, 我们将初步了解一下nginx的安装 和基本的使用.<br>(以下内容基于ubuntu操作系统)<br><a href="http://nginx.org/en/docs" target="_blank" rel="noopener">官方文档</a><br><a id="more"></a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>安装openssl (nginx依赖)<br>  <code>sudo apt-get install openssl</code></li>
+<li>从<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">官网</a>下载安装包</li>
+<li><code>tar -zvxf nginx_***.tar.gz</code> 解压</li>
+<li>进入解压后的目录, 执行 <code>./configure --prefix=[dest/dir]  --with-http_ssl_module --with-http_stub_status_module</code></li>
+<li><code>make &amp;&amp; sudo make install</code> 执行安装步骤</li>
+</ul>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li><p><a href="http://blog.itpub.net/29773961/viewspace-1377290/" target="_blank" rel="noopener">用非root用户启动Apache|Nginx的方法</a></p>
+<ul>
+<li>进入nginx可执行文件目录(默认是 /usr/local/nginx/sbin/nginx)</li>
+<li><code>sudo chown root:nginx nginx</code></li>
+<li><code>sudo chmod u+s nginx</code>  – 修改文件的SUID位, 使该文件在执行时有root权限</li>
+</ul>
+</li>
+<li><p>启动命令<br><code>nginx -c /usr/local/nginx/conf/nginx.conf</code></p>
+</li>
+<li><p>重启<br>修改了配置文件,需要重启的时候,有以下两种方法</p>
+<ul>
+<li>使用 nginx自带命令(推荐)<br><code>nginx -s reload</code></li>
+<li>找到nginx进程, 使用kill 命令发送信号<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -es | grep nginx</span><br><span class="line">kill -HUP [主进程号]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>测试配置文件语法是否正确<br><code>nginx -s /usr/local/nginx/conf/nginx.conf</code></p>
+</li>
+<li><p>关闭</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查询nginx主进程号</span></span><br><span class="line">ps -ef | grep nginx</span><br><span class="line"><span class="meta">#</span><span class="bash">从容停止</span></span><br><span class="line">kill -QUIT [主进程号]</span><br><span class="line"><span class="meta">#</span><span class="bash">快速停止   </span></span><br><span class="line">kill -TERM [主进程号]</span><br><span class="line"><span class="meta">#</span><span class="bash">强制停止   </span></span><br><span class="line">kill -KILL [主进程号]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>升级</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ #先用新程序替换旧程序文件</span><br><span class="line">+ `kill -USR2 [旧版程序的主进程号]`</span><br><span class="line">    #此时旧的nginx主进程会把自己的进程文件改名为.oldbin，然后执行新版nginx，此时新旧版本同时运行</span><br><span class="line">+ kill -WINCH [旧版本主进程号]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li><p>修改环境变量, 在<code>PATH</code>变量的最后追加nginx的可执行文件目录</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NGINX_HOME=/usr/local/nginx/sbin</span><br><span class="line">export PATH=$NGINX_HOME:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置的修改主要是修改 nginx.conf</p>
+<ol>
+<li>index 配置在 http 段, 这样可以避免 在每个server段写重复的index字段</li>
+<li>root 配置在 server段, 不用在每个 location 段 单独配置</li>
+<li><ul>
+<li>在conf目录下新建 conf.d 文件夹, 每个不同的站点, 配置不同的conf文件.</li>
+<li>在 nginx.conf http段最后添加 <code>require conf.d/*.conf</code>, 这样就可以把所有配置引用到</li>
+</ul>
+</li>
+<li></li>
+</ol>
+</li>
+<li><p>rewrite<br><a href="http://www.94cto.com/index/Article/content/id/196.html" target="_blank" rel="noopener">nginx rewrite 指令</a><br><a href="http://www.nginx.cn/216.html" target="_blank" rel="noopener">nginx rewrite 指令</a><br>//todo 待完善</p>
+</li>
+</ul>
+<h2 id="SSL相关"><a href="#SSL相关" class="headerlink" title="SSL相关"></a>SSL相关</h2><p><a href="http://blog.csdn.net/kunoy/article/details/8239653" target="_blank" rel="noopener">nginx配置SSL实现服务器/客户端双向认证</a></p>
+<ul>
+<li><p>生成密钥, 颁发证书</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">用于生成rsa私钥文件</span></span><br><span class="line">openssl genrsa -des3 -out server.key 1024  </span><br><span class="line"><span class="meta">#</span><span class="bash">用于生成证书请求</span></span><br><span class="line">openssl req -new -key server.key -out server.csr</span><br><span class="line"><span class="meta">#</span><span class="bash">利用openssl进行RSA为公钥加密</span></span><br><span class="line">openssl rsa -in server.key -out server_nopwd.key </span><br><span class="line"><span class="meta">#</span><span class="bash">生成证书 </span></span><br><span class="line">openssl x509 -req -days 365 -in server.csr -signkey server_nopwd.key -out server.crt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加nginx证书 </p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">server </span>&#123;</span><br><span class="line">     listen <span class="number">443</span> ssl; </span><br><span class="line">     <span class="meta">#证书路径</span></span><br><span class="line">     ssl_certificate <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/nginx/</span>ssl/server.crt; </span><br><span class="line">     ssl_certificate_key <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/nginx/</span>ssl/server_nopwd.key; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>nginx 的负载均衡由 HTTP Upstream 实现, 可以使用 upstream 关键字来配置.<br>upstream 一共支持六种负载均衡算法:</p>
+<pre><code>* 轮询 (default)    每个服务器可以配置weight值, 根据weight 的数值,来决定使用该服务器的几率
+* ip_hash           请求按ip地址hash到固定的服务器
+* url_hash          请求按访问的url来hash到固定服务器
+* fair              请求按响应时间分配服务器
+* less_conn         使用当前连接最少的服务器
+* hash              包含  普通hash 和 一致性 hash 两种
+</code></pre><p>upstream 支持的服务器状态参数:</p>
+<pre><code>* down              该服务器不参与负载均衡
+* backup            只有当其他非backup服务器都不可用,才启用该服务器
+* max_fails         允许请求失败次数
+* fail_timeout      到达最大失败次数后,停用时长
+</code></pre><p><strong>TIPS</strong>:当使用ip_hash算法时, 服务器不能是backup的</p>
+<h2 id="同一端口-不同站点"><a href="#同一端口-不同站点" class="headerlink" title="同一端口,不同站点"></a>同一端口,不同站点</h2><ul>
+<li><p>site1.conf:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> site1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>site2.conf:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> site2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/etc/hosts</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0.0.1</span> site1</span><br><span class="line"><span class="number">127.0.0.1</span> site2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当用户访问site1时, 便会匹配到第一个配置, 使用site1.conf</p>
+<h2 id="php-fpm"><a href="#php-fpm" class="headerlink" title="php-fpm"></a>php-fpm</h2><p>配置方式<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ [^/]\.php(/|$)</span> &#123;</span><br><span class="line">    <span class="comment">#fastcgi_pass 127.0.0.1:9000;</span></span><br><span class="line">    <span class="attribute">fastcgi_pass</span> unix:/dev/shm/php-cgi.sock;</span><br><span class="line">    <span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">    <span class="attribute">fastcgi_param</span>  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">    <span class="attribute">include</span> fastcgi.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>nginx 连接fastcgi有两种方式:</p>
+<ul>
+<li><p>tcp/ip<br>  修改<code>/usr/local/php/etc/php-fpm.conf</code>文件.</p>
+<pre><code>`listen=127.0.0.1:9000`
+</code></pre><p>  修改 nginx.conf<br>  <code>fastcgi_pass 127.0.0.1:9000;</code><br>重启php-fpm, nginx</p>
+</li>
+<li><p>unix domain socket<br>unit domain socket 用于同一个操作系统下多个进程间通信用.<br>与internet socket 类似,只是它不是用网络底层协议通信.<br>配置方式:<br>修改<code>/usr/local/php/etc/php-fpm.conf</code>文件.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listen = /tmp/php-cgi.sock</span><br><span class="line">listen.owner = service</span><br><span class="line">listen.group = service</span><br><span class="line">;listen.mode = 0660</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>修改 nginx.conf<br><code>fastcgi_pass unix:/tmp/php-cgi.sock;</code><br>重启php-fpm, nginx</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2016/04/12/other/nginx基础-2016-04-12/" data-id="ck5g7xybz003ewes6oph149fg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/service/">service</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/12/other/mysql-2016-04-12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mysql
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/12/other/mac-小技巧-2016-04-12/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mac-小技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-dragger-di/">-- android -- dragger -- di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Aaron-Swartz/">Aaron Swartz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript6/">ECMAScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SE/">SE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2dx/">cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freecodecamp/">freecodecamp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glsl/">glsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kill/">kill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/media/">media</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opengl/">opengl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openresty/">openresty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perl/">perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/power-shell/">power-shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/renderer/">renderer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retransmission/">retransmission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rules/">rules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sdk/">sdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemstap/">systemstap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texture/">texture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tribute/">tribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号/">信号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压缩/">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能测试/">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境搭建/">环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-dragger-di/" style="font-size: 10px;">-- android -- dragger -- di</a> <a href="/tags/Aaron-Swartz/" style="font-size: 10px;">Aaron Swartz</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/ECMAScript6/" style="font-size: 10px;">ECMAScript6</a> <a href="/tags/SE/" style="font-size: 10px;">SE</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/cocos2dx/" style="font-size: 10px;">cocos2dx</a> <a href="/tags/database/" style="font-size: 16.67px;">database</a> <a href="/tags/debug/" style="font-size: 16.67px;">debug</a> <a href="/tags/freecodecamp/" style="font-size: 10px;">freecodecamp</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/glsl/" style="font-size: 10px;">glsl</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kill/" style="font-size: 10px;">kill</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/opengl/" style="font-size: 13.33px;">opengl</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/power-shell/" style="font-size: 10px;">power-shell</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/renderer/" style="font-size: 10px;">renderer</a> <a href="/tags/retransmission/" style="font-size: 10px;">retransmission</a> <a href="/tags/rules/" style="font-size: 10px;">rules</a> <a href="/tags/sdk/" style="font-size: 10px;">sdk</a> <a href="/tags/service/" style="font-size: 13.33px;">service</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/systemstap/" style="font-size: 10px;">systemstap</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/texture/" style="font-size: 10px;">texture</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/tribute/" style="font-size: 10px;">tribute</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vps/" style="font-size: 13.33px;">vps</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/信号/" style="font-size: 10px;">信号</a> <a href="/tags/压缩/" style="font-size: 10px;">压缩</a> <a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/16/typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

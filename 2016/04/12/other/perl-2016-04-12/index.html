@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>perl | 听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考文档 learning perl intermediate perl数据类型 普通数据类型:  数字 字符串   列表: 普通数据类型的集合 列表不能成为列表里的元素 列表的赋值 左值必须全部是变量, 不能有常量 多余的值会被丢弃 缺少的值, 会被自动赋值为undef">
+<meta name="keywords" content="perl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="perl">
+<meta property="og:url" content="http://vollen.github.io/2016/04/12/other/perl-2016-04-12/index.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="参考文档 learning perl intermediate perl数据类型 普通数据类型:  数字 字符串   列表: 普通数据类型的集合 列表不能成为列表里的元素 列表的赋值 左值必须全部是变量, 不能有常量 多余的值会被丢弃 缺少的值, 会被自动赋值为undef">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-16T04:11:46.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="perl">
+<meta name="twitter:description" content="参考文档 learning perl intermediate perl数据类型 普通数据类型:  数字 字符串   列表: 普通数据类型的集合 列表不能成为列表里的元素 列表的赋值 左值必须全部是变量, 不能有常量 多余的值会被丢弃 缺少的值, 会被自动赋值为undef">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vollen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-other/perl-2016-04-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/other/perl-2016-04-12/" class="article-date">
+  <time datetime="2016-04-12T07:00:13.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      perl
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li>learning perl</li>
+<li>intermediate perl<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3></li>
+<li>普通数据类型: <ul>
+<li>数字</li>
+<li>字符串</li>
+</ul>
+</li>
+<li>列表: 普通数据类型的集合<ul>
+<li>列表不能成为列表里的元素</li>
+<li>列表的赋值<ul>
+<li>左值必须全部是变量, 不能有常量</li>
+<li>多余的值会被丢弃</li>
+<li>缺少的值, 会被自动赋值为undef<a id="more"></a>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>标量: 标量变量以$开头. 指向普通数据类型.</li>
+<li>数组: 数组变量以@开头, 指向一个列表<ul>
+<li>pop(@a)  操作尾部</li>
+<li>push(@a, $v)</li>
+<li>shift(@a) 操作头部</li>
+<li>unshift(@a, $v)</li>
+<li>splice(@a, $start, $end, @replace_a) <ul>
+<li>返回数组a从start到end之间的列表, 并将replace_a列表插入该位置</li>
+<li>后两个参数是可选的.</li>
+<li>也可以不删除, 直接插入, 只要$end传入0 , 就可以了</li>
+</ul>
+</li>
+<li>foreach $v (@a) {}<ul>
+<li>默认变量 <code>$_</code></li>
+</ul>
+</li>
+<li>each(@a) <ul>
+<li>每次调用each, 返回下一租元素的索引和值.</li>
+</ul>
+</li>
+<li>reverse(@a)<ul>
+<li>返回倒序之后的数组, 但是不会改变传进来的参数</li>
+</ul>
+</li>
+<li>sort(@a)<ul>
+<li>同样返回数组, 不改变参数</li>
+</ul>
+</li>
+<li>索引, 正索引从0到尾, 负索引从尾到0</li>
+</ul>
+</li>
+<li>qw(): 生成字符串列表<br>  如 <code>qw(a b c d e f)</code><br>###界定符<br>  perl 允许使用任何标点符号做界定符, 比如 qw[], qw||, 或者任何一种括号.<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3>  .   连接两个字符串<br>  <code></code>  单引号, 用于包裹字符串<br>  “”  双引号, 包裹字符串, 可以使用完整的转义字符, 可以内嵌变量<br>  chr(n) 使用unicode码构造对应的字符变量<br>  “\x{n}” 同上<br>  ord() 将字符转换为对应的unicode码<br>  .. 范围操作符, 如 <code>1 .. 100</code> 表示从1 到100, 只能向上计数<blockquote>
+<p>&lt; ==      比较操作符, 比较数字<br>  gt lt eq    比较操作符, 比较字符串</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="if-while"><a href="#if-while" class="headerlink" title="if / while"></a>if / while</h3><p>对应的逻辑块, 必须使用{}包围, 就算只有一句话.  </p>
+<h3 id="chomp-去掉字符串结尾的换行符"><a href="#chomp-去掉字符串结尾的换行符" class="headerlink" title="chomp() 去掉字符串结尾的换行符"></a>chomp() 去掉字符串结尾的换行符</h3><h3 id="undef-没有被复制的标量变量"><a href="#undef-没有被复制的标量变量" class="headerlink" title="undef 没有被复制的标量变量"></a>undef 没有被复制的标量变量</h3><p>既不是数字, 也不是字符串. 但是在当数字使用时, 会当作0. 当字符串使用时. 会当作空字符串. </p>
+<h3 id="defined-判断一个变量是否是undef-如果是-返回假-不是返回真"><a href="#defined-判断一个变量是否是undef-如果是-返回假-不是返回真" class="headerlink" title="defined() 判断一个变量是否是undef, 如果是,返回假, 不是返回真."></a>defined() 判断一个变量是否是<code>undef</code>, 如果是,返回假, 不是返回真.</h3><h3 id="my-用于定义局部变量"><a href="#my-用于定义局部变量" class="headerlink" title="my 用于定义局部变量"></a>my 用于定义局部变量</h3><h3 id="state-持久性私有变量-多次调用保持它的值-并且作用域为当前代码块"><a href="#state-持久性私有变量-多次调用保持它的值-并且作用域为当前代码块" class="headerlink" title="state 持久性私有变量, 多次调用保持它的值,并且作用域为当前代码块"></a>state 持久性私有变量, 多次调用保持它的值,并且作用域为当前代码块</h3><h3 id="return-从子程序返回"><a href="#return-从子程序返回" class="headerlink" title="return 从子程序返回"></a>return 从子程序返回</h3><h3 id="编译指令"><a href="#编译指令" class="headerlink" title="编译指令"></a>编译指令</h3><p>用于指示编译器如何处理接下来的代码</p>
+<ul>
+<li>use strict  使用更严格的限制, 比如变量必须声明. 详见 perldoc strict</li>
+</ul>
+<h3 id="输入输出-I-O"><a href="#输入输出-I-O" class="headerlink" title="输入输出 I/O"></a>输入输出 I/O</h3><ul>
+<li>&lt;STDIN> 获取用户输入</li>
+<li>print     </li>
+<li><p>printf</p>
+<ul>
+<li>%g 按需输出数字形式</li>
+<li>%d %x %o 分别代表十/十六/八进制</li>
+<li>%f 浮点数</li>
+<li>%s 字符串</li>
+<li>所有以上都可以使用 %[-]m.nf形式, 来控制输出的位数, 以及对齐方式<br>  例: 例子中, <code>_</code> 代表空格<ul>
+<li>printf(“%5d”, 1) 输出  ____1</li>
+<li>printf(“%-5d”, 1) 输出 1____</li>
+<li>printf(“%4.2f”, 1.1) 输出 <em>1.1</em></li>
+</ul>
+</li>
+<li>%% 百分号%</li>
+<li>结合<code>x</code>, 输出数组  <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@array = <span class="string">qw&#123;asd fd rew&#125;</span>;</span><br><span class="line"><span class="keyword">printf</span> <span class="string">"items: "</span>. (<span class="string">"%10s\n"</span> <span class="keyword">x</span> @array), @array;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>文件句柄</p>
+<ul>
+<li>系统保留句柄名<ul>
+<li>STDIN</li>
+<li>STDOUT</li>
+<li>STDERR</li>
+<li>DATA</li>
+<li>ARGV</li>
+<li>ARGVOUT</li>
+</ul>
+</li>
+<li>自定义句柄 <code>open</code><br><code>open CONFIG &quot;config&quot;</code><br>open 使用一系列符号来声明句柄的操作方式与权限<ul>
+<li>&lt; 小于号表示输入</li>
+<li>> 大于号表示输出</li>
+<li>>> 两个大于号表示追加</li>
+</ul>
+</li>
+<li>关闭句柄 <code>close</code></li>
+<li>binmode STDOUT, ‘:encoding(UTF-8)’;<br>  指定使用utf8格式写入到标准输出流.</li>
+<li>die 直接退出程序, 并输出错误信息<br>  <code>die &quot;fatal error~~ ;</code><br>  当系统调用失败时, <code>$!</code>变量存储了错误信息.可以用它来告诉用户. </li>
+<li>warn 发出警告信息, 不会退出</li>
+<li>use autodie; 在一些不受程序控制的部分出错, 直接自动调用die.</li>
+<li>select HANDLE; 改变默认的文件输出句柄 </li>
+<li>$| = 1; 每次输出操作后, 立即刷新缓冲区.<br><strong>吐槽</strong> <strong>好多各种类型的内置默认变量</strong><ul>
+<li>可以通过重新打开 系统预留句柄, 来修改默认输入输出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><ul>
+<li>用 m// 进行匹配</li>
+<li>模式匹配修饰符<ul>
+<li>/a    尽在ascll范围内解释 \w,\d等字符集</li>
+<li>/i    大小写无关</li>
+<li>/s    使<code>.</code> 号能匹配换行符</li>
+<li>/x    忽略模式中的空白符 </li>
+<li>/m    对多行内容进行匹配</li>
+<li>/p    只针对特定的表达式, 开启自动捕获变量 </li>
+</ul>
+</li>
+<li>锚位  <ul>
+<li>\A    字符串开头</li>
+<li>\z    字符串结尾</li>
+<li>\Z    行末</li>
+<li>^ $   有m修饰符时(行首 行末), 没有m修饰时与\A \z相同</li>
+<li>\b    单词首尾</li>
+</ul>
+</li>
+<li>=~  默认模式匹配的匹配对象是 $_, 使用=~表示用右边的模式串去匹配坐标的字符串.</li>
+<li>捕获<ul>
+<li>捕获()/不捕获(?:)? </li>
+<li>命名捕获 <code>(?&lt;name&gt;)</code><ul>
+<li>使用 $+{name}</li>
+<li>反向引用使用 <code>\g{name}</code> 或 <code>\k&lt;name&gt;</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>量词<ul>
+<li>/a{n,m}/  表示匹配字符a出现 n-m次 的所有情况</li>
+<li>a*         /a{0,}  出现0到无穷次</li>
+<li>a+         /a{1,}  出现1到无穷次</li>
+<li>a?         /a{0,1} 出现0或1次</li>
+</ul>
+</li>
+<li>优先级, 从高到底<ul>
+<li>()              圆括号, 用于分组或捕获 </li>
+<li>量词            */+/? 或用于表示量词的花括号</li>
+<li>锚位和序列</li>
+</ul>
+</li>
+<li>|         多选一竖线</li>
+<li>原子       字符,字符集, 反引用</li>
+</ul>
+<h3 id="文本替换"><a href="#文本替换" class="headerlink" title="文本替换"></a>文本替换</h3><p>s/a/b/ 或者 s{a}{b}, 惯例: 这里的界定符都是可以用其他字符替换的.</p>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><ul>
+<li>/g   全局替换, 不加<code>/g</code>则只替换一次</li>
+<li>/i , /x , /s 同上正则表达式部分</li>
+<li>/r  保留原操作字符串不变, 返回替换后的字符<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $copy = $origin =~ <span class="regexp">s/a/b/</span> r;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h4><ul>
+<li>\U  将跟在它后面的字符都转换成大写的</li>
+<li>\L  将跟在它后面的字符都转换成小写的</li>
+<li>\E  结束上面两个转义符的作用范围</li>
+<li>\u  将后面第一个字符大写</li>
+<li>\l  将后面第一个字符小写</li>
+<li>\L\u 后续首字符大写, 其余小写</li>
+</ul>
+<h4 id="split"><a href="#split" class="headerlink" title="split"></a>split</h4><p>my @feild = split /sp/, $str;<br>根据 sp分割符, 将str字符串分割成多段, 并存在数组中返回</p>
+<ul>
+<li>split /\s+/, $str 按空白符分割字符串, 默认行为</li>
+</ul>
+<h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4><p>my $result = join $glue, @pieces;<br>将glue作为胶水, 插入pieces的每个间隙中, 返回结果字符串.</p>
+<h4 id="列表上下文中的m"><a href="#列表上下文中的m" class="headerlink" title="列表上下文中的m//"></a>列表上下文中的m//</h4><p>$_ = “test1 test2”;<br>my ($first, $sec) = m/(\S+) (\S+)/;<br>如果匹配, 则返回捕获变量的列表, 否则返回空列表.</p>
+<h4 id="非贪婪量词"><a href="#非贪婪量词" class="headerlink" title="非贪婪量词"></a>非贪婪量词</h4><p>每个贪婪量词都有它对应的非贪婪量词. </p>
+<ul>
+<li>对应 +?</li>
+</ul>
+<ul>
+<li>对应 *?<br>? 对应 ??<br>{m, n} 对应 {m, n}?</li>
+</ul>
+<h4 id="I"><a href="#I" class="headerlink" title="$^I"></a>$^I</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2016/04/12/other/perl-2016-04-12/" data-id="ck5g7xyc1003iwes6jswkvpr4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perl/">perl</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/12/lang/python/python-入门-2016-04-12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          python_入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/12/other/openresty-2016-04-12/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">openresty</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-dragger-di/">-- android -- dragger -- di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Aaron-Swartz/">Aaron Swartz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript6/">ECMAScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SE/">SE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2dx/">cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freecodecamp/">freecodecamp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glsl/">glsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kill/">kill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/media/">media</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opengl/">opengl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openresty/">openresty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perl/">perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/power-shell/">power-shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/renderer/">renderer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retransmission/">retransmission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rules/">rules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sdk/">sdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemstap/">systemstap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texture/">texture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tribute/">tribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号/">信号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压缩/">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能测试/">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境搭建/">环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-dragger-di/" style="font-size: 10px;">-- android -- dragger -- di</a> <a href="/tags/Aaron-Swartz/" style="font-size: 10px;">Aaron Swartz</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/ECMAScript6/" style="font-size: 10px;">ECMAScript6</a> <a href="/tags/SE/" style="font-size: 10px;">SE</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/cocos2dx/" style="font-size: 10px;">cocos2dx</a> <a href="/tags/database/" style="font-size: 16.67px;">database</a> <a href="/tags/debug/" style="font-size: 16.67px;">debug</a> <a href="/tags/freecodecamp/" style="font-size: 10px;">freecodecamp</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/glsl/" style="font-size: 10px;">glsl</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kill/" style="font-size: 10px;">kill</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/opengl/" style="font-size: 13.33px;">opengl</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/power-shell/" style="font-size: 10px;">power-shell</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/renderer/" style="font-size: 10px;">renderer</a> <a href="/tags/retransmission/" style="font-size: 10px;">retransmission</a> <a href="/tags/rules/" style="font-size: 10px;">rules</a> <a href="/tags/sdk/" style="font-size: 10px;">sdk</a> <a href="/tags/service/" style="font-size: 13.33px;">service</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/systemstap/" style="font-size: 10px;">systemstap</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/texture/" style="font-size: 10px;">texture</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/tribute/" style="font-size: 10px;">tribute</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vps/" style="font-size: 13.33px;">vps</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/信号/" style="font-size: 10px;">信号</a> <a href="/tags/压缩/" style="font-size: 10px;">压缩</a> <a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/16/typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

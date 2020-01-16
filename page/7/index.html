@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>听风楼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="倚楼听风雨，淡看江湖路">
+<meta property="og:type" content="website">
+<meta property="og:title" content="听风楼">
+<meta property="og:url" content="http://vollen.github.io/page/7/index.html">
+<meta property="og:site_name" content="听风楼">
+<meta property="og:description" content="倚楼听风雨，淡看江湖路">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="听风楼">
+<meta name="twitter:description" content="倚楼听风雨，淡看江湖路">
+  
+    <link rel="alternate" href="/atom.xml" title="听风楼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">听风楼</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vollen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-lang/lua" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/lang/lua/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="解释器"><a href="#解释器" class="headerlink" title="解释器"></a>解释器</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#脚本第一行写入执行程序</span></span><br><span class="line"><span class="comment">#!/usr/bin/env lua</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#解释器参数</span></span><br><span class="line">lua [options] [script [params]]</span><br><span class="line">-e : 直接在命令行执行代码</span><br><span class="line">-l : 加载库文件</span><br><span class="line">-i : 执行完之后进入交互模式</span><br><span class="line"></span><br><span class="line">_PROMPT 全局变量，可以修改交互模式的提示符。</span><br><span class="line">LUA_INIT 环境变量，配置初始化的代码或文件。</span><br></pre></td></tr></table></figure>
+<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><p>nil, boolean, number, string, table, userdata, function, thread </p>
+<ul>
+<li>type(value)<br>可返回值的类型</li>
+</ul>
+<p>a, b = b, a, 先计算右边的值， 再进行赋值操作</p>
+<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><p>lua 中， 声明在循环体中的局部变量的作用域包括了条件测试。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> sqr = x/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">repeat</span></span><br><span class="line">    sqr = (sqr + x/sqr) / <span class="number">2</span></span><br><span class="line">    <span class="keyword">local</span> <span class="built_in">error</span> = <span class="built_in">math</span>.<span class="built_in">abs</span>(sqr^<span class="number">2</span> - x)</span><br><span class="line"><span class="keyword">until</span> <span class="built_in">error</span> &lt; x / <span class="number">10000</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><ul>
+<li>控制变量，只在循环体内可用，循环结束后就不存在了。<h3 id="数字for"><a href="#数字for" class="headerlink" title="数字for"></a>数字for</h3></li>
+<li>for 循环的三个表达式是在循环开始前一次性求值。<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = starti, endi, step <span class="keyword">do</span> <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="泛型for"><a href="#泛型for" class="headerlink" title="泛型for"></a>泛型for</h3><ul>
+<li>for 循环通过一个迭代器函数来遍历所有的值。<br>常用迭代器：</li>
+</ul>
+<ul>
+<li>io.lines()</li>
+<li>pairs()</li>
+<li>ipairs()</li>
+<li>string.gmatch()<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(t) <span class="keyword">do</span> <span class="built_in">print</span>(v) <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="break-和-return"><a href="#break-和-return" class="headerlink" title="break 和 return"></a>break 和 return</h2><p>它们只能是一个块内的最后一个语句</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li>函数在lua中是<code>第一类值</code>，可以存储在变量中，可以作为参数传递，可以作为返回值。</li>
+<li>函数可以有多个返回值</li>
+<li>变长参数<br><code>...</code> 表示该函数可以接受不同数量的实参<br>变长参数必须放在固定参数之后<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">value</span><span class="params">(...)</span></span></span><br><span class="line">    <span class="keyword">local</span> a, b, c = ...</span><br><span class="line">    <span class="keyword">local</span> a, b, c = <span class="built_in">unpack</span>(&#123;...&#125;)</span><br><span class="line">    <span class="built_in">select</span>(<span class="string">"#"</span>, ...); <span class="comment">--返回变长参数的总长， 包括nil</span></span><br><span class="line">    <span class="built_in">select</span>(n, ...); <span class="comment">--返回变长参数的第n个值</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span> <span class="keyword">end</span> </span><br><span class="line"><span class="comment">--等价于</span></span><br><span class="line"><span class="keyword">local</span> foo; foo = <span class="function"><span class="keyword">function</span><span class="params">()</span></span><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>以函数作为参数的函数</p>
+<h2 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h2><ul>
+<li>函数A内部的函数B可以访问到A中定义的临时变量，这些变量被称作<code>非局部变量(upvalue)</code>；</li>
+<li>closure 就是一个函数以及它所需要访问的所有<code>upvalue</code>的总和。</li>
+</ul>
+<h2 id="尾调用"><a href="#尾调用" class="headerlink" title="尾调用"></a>尾调用</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">()</span></span> <span class="keyword">return</span> g() <span class="keyword">end</span></span><br><span class="line"><span class="comment">--以下都不是尾调用, 因为 g 返回之后， 还有事要做 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">()</span></span> g() <span class="keyword">end</span> <span class="comment">--还需要释放 g() 返回的临时结果</span></span><br><span class="line"><span class="keyword">return</span> g() + <span class="number">1</span>; <span class="comment">-- 还需要做一次加法</span></span><br><span class="line"><span class="keyword">return</span> x <span class="keyword">or</span> g(); <span class="comment">--还需要调整为一个返回值</span></span><br><span class="line"><span class="keyword">return</span> (g()); <span class="comment">--还需要调整为一个返回值</span></span><br></pre></td></tr></table></figure>
+<p>f 调用完 g 之后, 不需要做别的事情. 这种情况下，程序不需要再返回 f , 所以 g 函数调用之后, 不需要保存 函数f 的函数栈了， g 返回时， 执行控制权直接返回到调用 f 的那个点上。 </p>
+<ul>
+<li>尾调用能防止过多次的递归导致的调用栈溢出</li>
+<li>只有到一个函数调用是另一个函数的最后一个动作时，该调用才算是尾调用</li>
+</ul>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>迭代器是一种可以遍历一种集合中所有元素的机制。 在 lua 中通常表示为函数， 每调用一次，返回集合中的下一个元素。<br>迭代器通常有状态， 可以用闭包来实现。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--迭代器工厂</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">values</span><span class="params">(t)</span></span></span><br><span class="line">    <span class="keyword">local</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">--迭代器</span></span><br><span class="line">    <span class="keyword">local</span> iter = <span class="function"><span class="keyword">function</span><span class="params">()</span></span> i = i + <span class="number">1</span>; <span class="keyword">return</span> t[i]; <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">return</span> iter</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">local</span> iter = values(&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;);</span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> iter <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>迭代器的语义<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> var_1, ..., var_n <span class="keyword">in</span> &lt;explist&gt; <span class="keyword">do</span> &lt;block&gt; <span class="keyword">end</span></span><br><span class="line"><span class="comment">--等价于</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">local</span> _f, _s, _var = &lt;explist&gt;;</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">true</span> <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">local</span> var_1, ..., var_n = _f(_s, _var);</span><br><span class="line">        _var = var_1</span><br><span class="line">        <span class="keyword">if</span>(_var == <span class="literal">nil</span>) <span class="keyword">then</span> <span class="keyword">break</span> <span class="keyword">end</span></span><br><span class="line">        &lt;block&gt;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--改进后的values</span></span><br><span class="line"><span class="keyword">local</span> iter = <span class="function"><span class="keyword">function</span><span class="params">(t, i)</span></span> </span><br><span class="line">    i = i + <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">local</span> val = t[i]; </span><br><span class="line">    <span class="keyword">if</span>(val) <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> i, val</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ipairs</span><span class="params">(t)</span></span></span><br><span class="line">    <span class="keyword">return</span> iter, t, <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">ipairs</span>(&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(i, v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><p>解释性语言的关键点在于编译器是否是运行时库的一部分，即是否有能力执行动态生成的代码。lua 允许在运行源代码之前，先将代码编译成字节码。</p>
+<h2 id="加载-lua-代码"><a href="#加载-lua-代码" class="headerlink" title="加载 lua 代码"></a>加载 lua 代码</h2><ul>
+<li><code>loadfile</code> 和 <code>loadstring</code> 都会调用一个内部函数 <code>load</code>; 只不过输入源不一样</li>
+<li><code>load</code> 总在全局环境中编译它的字符串</li>
+<li>发生错误时 <code>load</code> 函数返回 <code>nil</code> 和一条错误消息</li>
+</ul>
+<h2 id="加载-C-代码"><a href="#加载-C-代码" class="headerlink" title="加载 C 代码"></a>加载 C 代码</h2><p>加载 C 代码需要先链接一个应用程序。通常是用动态链接的方式。动态链接并不是ANSI的一部分，按理说 Lua 不应该包含无法通过ANISI 实现的机制， 但因为动态链接是其他所有各种机制的母机制，通过它可以加载任何不在 Lua 中的机制，所以 Lua 打破了可移植性的准则， 为各个平台实现了一套动态链接机制。</p>
+<ul>
+<li>package.loadlib(path, name), 如果加载库发生错误，将返回 nil 及一个错误消息。</li>
+<li>通常可以用 <code>require</code> 来加载 C 程序库，它在底层调用 <code>loadlib</code>。</li>
+</ul>
+<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><ul>
+<li>error(msg, level)</li>
+<li>assert(expr, msg)</li>
+<li>pcall(func, …)</li>
+<li>xpcall(func, handler)</li>
+<li>debug.traceback(level)</li>
+</ul>
+<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p>协程与线程类似， 都拥有自己独立的调用栈，局部变量和指令指针，同事与其他协程共享全局变量和其他大部分东西。<br>与线程不一样的是， 一个程序的多个线程可以并行执行， 而多个协程同时只能有一个在运行。</p>
+<ul>
+<li>coroutine 库<br>所有的协程相关函数都放在这个 table 中。<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--创建一个协程</span></span><br><span class="line"><span class="keyword">local</span> co = coroutine.<span class="built_in">create</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line"><span class="keyword">end</span>)</span><br><span class="line"><span class="comment">--查看一个协程的状态</span></span><br><span class="line"><span class="built_in">print</span>(coroutine.<span class="built_in">status</span>(co));</span><br><span class="line"><span class="comment">--启动或再次移动一个协程, 知道该协程 yield 或结束，才会最终返回， 并可以获得 yield 传递的参数 </span></span><br><span class="line"><span class="keyword">local</span> result, params = coroutine.<span class="built_in">resume</span>(co, ...)</span><br><span class="line"><span class="comment">--挂起， 直到下一次 resume 调用， yield 函数才最终返回, 并且获得 resume 传递过来的参数</span></span><br><span class="line"><span class="keyword">local</span> params = coroutine.<span class="built_in">yield</span>(...)</span><br><span class="line"><span class="comment">-- 生成迭代器，使用 func 创建一个协程， 每次调用迭代器，都会调用 resume 这个协程.</span></span><br><span class="line"><span class="keyword">local</span> funcIter = coroutine.<span class="built_in">wrap</span>(func)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>协程有四种状态</p>
+<ul>
+<li>suspended</li>
+<li>running</li>
+<li>dead</li>
+<li>normal</li>
+</ul>
+<h2 id="非抢先式多线程"><a href="#非抢先式多线程" class="headerlink" title="非抢先式多线程"></a>非抢先式多线程</h2><p>无法从外部停止一个协程的运行，只有协程自己能显示的要求挂起时，它才会停止。<br>当某一个协程执行了一个阻塞操作， 那么整个程序都会停下来。</p>
+<h1 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h1><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> t = &#123;&#125;;</span><br><span class="line"><span class="keyword">local</span> str= <span class="string">""</span>;</span><br><span class="line"><span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">ipairs</span>(t) <span class="keyword">do</span> str = str .. v <span class="keyword">end</span> </span><br><span class="line"><span class="comment">--当字符串特别多或者占用内存很大时， 上面的做法会消耗大量的内存。 使用下面的做法能提升性能。</span></span><br><span class="line"><span class="keyword">local</span> str = <span class="built_in">table</span>.<span class="built_in">concat</span>(t)</span><br></pre></td></tr></table></figure>
+<h1 id="模块加载"><a href="#模块加载" class="headerlink" title="模块加载"></a>模块加载</h1><ul>
+<li>require</li>
+</ul>
+<ul>
+<li>lua 通过带有 ? 的模式串来定义文件加载路径, 在加载时将模式中的 ? 替换成要加载的模块名，可得到最终的路径名, 并检查是否存在并加载</li>
+<li>模式串存放在 package.path 和 package.cpath 中</li>
+<li>定义环境变量 LUA_PATH 或 LUA_CPATH 可修改 模式串的值, 这两个变量中的 <code>;;</code> 会被替换成默认的加载路径。</li>
+<li>风格良好的 C 程序块应该导出一个名为 <code>luaopen_&lt;模块名&gt;</code> 的函数, require 会在链接完程序库之后尝试条用这个函数，</li>
+<li>使用 . 作为模块分隔符, require 会先用原始模块名查找缓存，查找不到搜索文件时，会将 . 替换成系统对应的目录分隔符去搜索.</li>
+</ul>
+<ul>
+<li>package.loaded</li>
+<li>package.preload</li>
+<li>module 函数<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module(..., option)</span><br><span class="line"><span class="comment">--等价于下面代码</span></span><br><span class="line"><span class="keyword">local</span> modname = ...;</span><br><span class="line"><span class="keyword">local</span> M = <span class="built_in">package</span>.<span class="built_in">loaded</span>[modname] <span class="keyword">or</span> &#123;&#125;;</span><br><span class="line"><span class="built_in">_G</span>[modname] = M;</span><br><span class="line"><span class="built_in">package</span>.<span class="built_in">loaded</span>[modname] = M;</span><br><span class="line"><span class="built_in">setfenv</span>(<span class="number">1</span>, M);</span><br><span class="line">_M = M; _NAME = modname;</span><br><span class="line"><span class="comment">--当 option==package.seeall 时，在 setfenv 之前还有如下语句</span></span><br><span class="line"><span class="built_in">setmetatable</span>(M, &#123;<span class="built_in">__index</span> = <span class="built_in">_G</span>&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><ul>
+<li>使用元表来实现</li>
+<li>内置支持 <code>self</code> 以及 <code>:</code></li>
+</ul>
+<h1 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h1><ul>
+<li>table 的弱引用类型是通过其元表的 __mode 字段来决定的</li>
+<li>如果 __mode 中含有字母 “k”, 那么它的 key 是弱引用的</li>
+<li>如果 __mode 中含有字母 “v”, 那么它的 value 是弱引用的</li>
+</ul>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><ul>
+<li>string.len(str)</li>
+<li>string.rep(str, n)</li>
+<li>string.byte(str, i, j)</li>
+<li>string.char(code1, code2, …)</li>
+<li>string.lower(str)</li>
+<li>string.upper(str)</li>
+<li>string.sub(str, i, j)</li>
+</ul>
+<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><ul>
+<li>string.find(str, pattern, start)</li>
+<li>string.match(str, pattern)</li>
+<li>string.gsub(str, pattern, replace)</li>
+<li>string.gmatch(str, pattern)<br>返回一个迭代器函数</li>
+</ul>
+<h1 id="io"><a href="#io" class="headerlink" title="io"></a>io</h1><h2 id="简单io"><a href="#简单io" class="headerlink" title="简单io"></a>简单io</h2><ul>
+<li>io.read(option)</li>
+</ul>
+<ul>
+<li>*a 读取整个文件</li>
+<li>*line 读取下一行</li>
+<li>*number 读取一个数字</li>
+<li><num> 读取一个不超过<num> 个字符的字符串</num></num></li>
+</ul>
+<ul>
+<li>io.write(content)<br>往当前输出文件写入内容</li>
+<li>io.input(filename)<br>打开filename, 并且之后的输入都从此文件读取</li>
+<li>io.output(filename)<br>修改标准输出文件<h2 id="完整模型"><a href="#完整模型" class="headerlink" title="完整模型"></a>完整模型</h2></li>
+<li>io.open(filename, option)</li>
+</ul>
+<ul>
+<li>r 读</li>
+<li>w 写</li>
+<li>a 追加</li>
+<li>b 二进制文件</li>
+</ul>
+<ul>
+<li>io.flush()</li>
+<li>f:seek(whence, offset) -&gt; curPos<br>whence 指定如何解释 offset</li>
+</ul>
+<ul>
+<li>“set” 相对文件起始的偏移</li>
+<li>“cur” 相对当前位置的偏移, default</li>
+<li>“end” 相对于文件末尾的偏移</li>
+</ul>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><p>操作系统相关的接口都在 os 库</p>
+<ul>
+<li>os.time(t)<br>返回 从某一时间点开始到 t 描述的时间所经过的秒数</li>
+<li>os.date(format, sec)<br>返回指定格式的时间</li>
+</ul>
+<ul>
+<li>“*t” 会返回一个table，存储改时间的各个部分的值</li>
+<li>其他格式 …</li>
+</ul>
+<ul>
+<li>os.exit()<br>中止当前程序的执行</li>
+<li>os.getenv(name)<br>获取一个环境变量的值</li>
+<li>os.execute(cmd)<br>执行一条系统命令， 并返回一个错误码</li>
+<li>os.setlocale<br>设置程序执行的区域</li>
+</ul>
+<h1 id="调试库"><a href="#调试库" class="headerlink" title="调试库"></a>调试库</h1><p>调试库都封装在 debug 表中</p>
+<ul>
+<li>栈层<br>栈层是一个数字， 表示一个活动的函数。调用调试库的函数是层1，它的调用者是2， 类推。<h2 id="自省函数"><a href="#自省函数" class="headerlink" title="自省函数"></a>自省函数</h2><h3 id="debug-getInfo"><a href="#debug-getInfo" class="headerlink" title="debug.getInfo"></a>debug.getInfo</h3></li>
+<li>当该函数的参数为函数时， 返回改函数相关信息组成的表</li>
+</ul>
+<ul>
+<li>source 函数定义的位置</li>
+<li>short_src</li>
+<li>linedefined 行号</li>
+<li>lastlinedefined 最后一行行号</li>
+<li>what 函数的类型，有三种： <code>&quot;Lua&quot;</code>, <code>C</code>, <code>main</code></li>
+<li>name 函数的名称</li>
+<li>namewhat name的含义</li>
+<li>nups upvalue 的数量</li>
+<li>activelines 函数中所有有代码行的集合</li>
+<li>func 函数本身<h3 id="debug-get"><a href="#debug-get" class="headerlink" title="debug.get"></a>debug.get</h3></li>
+</ul>
+<h2 id="钩子"><a href="#钩子" class="headerlink" title="钩子"></a>钩子</h2><p>可以注册钩子函数，这个函数在特定事件发生时调用。</p>
+<h3 id="钩子事件"><a href="#钩子事件" class="headerlink" title="钩子事件"></a>钩子事件</h3><ul>
+<li>call</li>
+<li>return </li>
+<li>line</li>
+<li>count<h3 id="开启钩子"><a href="#开启钩子" class="headerlink" title="开启钩子"></a>开启钩子</h3></li>
+<li>debug.sethook(func, option, countN)</li>
+<li>要监听 <code>call</code>, <code>return</code>, <code>line</code> 事件， 只需要将它们的首字母放到 option 中</li>
+<li>要监听 <code>count</code> 事件，只需要在第三个参数传入数量<h3 id="取消钩子"><a href="#取消钩子" class="headerlink" title="取消钩子"></a>取消钩子</h3>debug.sethook()</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/lang/lua/" data-id="ck5g7xyat0017wes66wdkolq0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git work flow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/git work flow/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集中式工作流"><a href="#集中式工作流" class="headerlink" title="集中式工作流"></a>集中式工作流</h1><p>类似svn, 所有人都工作在同一个仓库的master 分支上.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#常用命令：</span></span><br><span class="line">git add </span><br><span class="line">git commit </span><br><span class="line">git pull </span><br><span class="line">git push</span><br></pre></td></tr></table></figure></p>
+<h1 id="功能分支工作流"><a href="#功能分支工作流" class="headerlink" title="功能分支工作流"></a>功能分支工作流</h1><p>对于每一个功能， 新建一个分支， 然后功能开发完毕， 提交到master分支上。<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="gitflow工作流"><a href="#gitflow工作流" class="headerlink" title="gitflow工作流"></a>gitflow工作流</h1><p>明确定义了各种不同类型的分支。<br>master 分支: 主分支，保持随时可发布打包的状态<br>develop分支：开发分支， 新特性的开发， 需要基于develop分支创建新的分支， 开发完成后合并回develop分支<br>release分支：发布分支，当下一版本的所有功能都开发完毕之后， 从develop分支新建release分支, 然后develop分支就可以接受下一版本的内容了。<br>    release 分支添加版本信息， 更详细的发布测试等。发布之后，所有内容合并回develop分支和master分支。<br>hotfix 分支：当线上代码出现问题时， 直接从master上新建分支， 用于修改bug。问题解决之后， 代码同步到master分支和develop分支。<br>feature 分支： 特性分支， 每开发一个新的特性时， 从develop分支创建分支， 开发完成之后合并回develop分支。<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">merge</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="forking-工作流"><a href="#forking-工作流" class="headerlink" title="forking 工作流"></a>forking 工作流</h1><p>每个开发人员从中心仓库fork一份代码到自己的仓库。开发的时候提交到自己的仓库， 开发完成之后， 通过pullrequest 通知主仓库维护人员审核合并。<br>当主仓库有变动时， 需要fetch 更新到自己的仓库。<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> upstream git@xxx/xxx.git</span></span><br><span class="line">git fetch upstream</span><br></pre></td></tr></table></figure></p>
+<h1 id="pullrequest"><a href="#pullrequest" class="headerlink" title="pullrequest"></a>pullrequest</h1><p>开发人员提交功能时， 发起pullrequest， 审核者审核并讨论代码， 如果有需要， 可以将开发者的代码checkout下来， 在本地修改并评论， 当开发者根据建议将代码修改完成， 通过审核时， 将代码合并会主仓库。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/git work flow/" data-id="ck5g7xy9i0003wes62dqhr0hu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/hello-world/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/16/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/hello-world/" data-id="ck5g7xy9j0004wes607emcv0l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-game_dev/lua 游戏开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/game_dev/lua 游戏开发/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><p>防止忘写<code>local</code>前缀，错误的声明全局变量</p>
+<ol>
+<li>通过设置_G 元表， 来防止错误的全局变量声明.</li>
+<li>新增声明全局变量的方法， 全局变量统一声明</li>
+</ol>
+<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><h2 id="reload"><a href="#reload" class="headerlink" title="reload"></a>reload</h2><p>Tango 库，基于Socket,在这里可用于实现进程间的跨lua虚拟机访问。<br>可参考开源lua服务器框架， 看看对应的重新加载逻辑怎么做的？<br>需要处理问题在于， 如何将所有的函数引用都替换成新的。 包括通过临时变量引用的。</p>
+<h2 id="内存实时查看"><a href="#内存实时查看" class="headerlink" title="内存实时查看"></a>内存实时查看</h2><p><a href="https://assetstore.unity.com/packages/tools/utilities/hdg-remote-debug-live-update-tool-61863" target="_blank" rel="noopener">Hdg Remote Debug</a><br>基于Tango跨Lua进程的特性，配合一个基于pyQT的gui界面<br>Python的rpyc</p>
+<h2 id="hotfix"><a href="#hotfix" class="headerlink" title="hotfix"></a>hotfix</h2><ol>
+<li>程序发现要修复的bug，编写特殊的Hotfix代码进行修复，测试通过后上传到svn服务器；</li>
+<li>通过发布指令，将svn上更新后的Hotfix代码同步到服务器上；</li>
+<li>服务器发现Hotfix代码有更新，则将其压缩序列化后通过socket发送给所有在线的客户端，同时带上字符串的MD5值供客户端验证；</li>
+<li>客户端收到Hofix消息之后，首先反序列化数据得到代码内容，校验MD5值之后，如果和本地已经执行过的Hotfix的MD5值不同，则执行替换逻辑，并记录当前已经执行过Hotfix的MD5值，如果相同则不再执行；</li>
+<li>客户端连接服务器的时候会主动请求一次Hofix。</li>
+</ol>
+<h2 id="skynet-开源服务器框架"><a href="#skynet-开源服务器框架" class="headerlink" title="skynet 开源服务器框架"></a>skynet 开源服务器框架</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/game_dev/lua 游戏开发/" data-id="ck5g7xyaq0011wes6m0xrcocl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-game_dev/游戏开发随笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/game_dev/游戏开发随笔记/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ET"><a href="#ET" class="headerlink" title="ET"></a>ET</h1><p><a href="https://github.com/egametang/ET" target="_blank" rel="noopener">ET</a><br>c# 客户端 服务器端框架 </p>
+<h1 id="网络库"><a href="#网络库" class="headerlink" title="网络库"></a>网络库</h1><h2 id="英雄联盟用的可靠UDP库"><a href="#英雄联盟用的可靠UDP库" class="headerlink" title="英雄联盟用的可靠UDP库"></a>英雄联盟用的可靠UDP库</h2><p><a href="http://enet.bespin.org/" target="_blank" rel="noopener">eNet</a></p>
+<h2 id="KCP"><a href="#KCP" class="headerlink" title="KCP"></a>KCP</h2><h1 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h1><ul>
+<li><a href="http://link.zhihu.com/?target=https%3A//github.com/patriciogonzalezvivo/glslViewer" target="_blank" rel="noopener">glslViewer</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/game_dev/游戏开发随笔记/" data-id="ck5g7xyaq0012wes607wke4zz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hack/如何获取一个-app-的资源" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/hack/如何获取一个-app-的资源/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h1><h2 id="获取-ios-ipa-包"><a href="#获取-ios-ipa-包" class="headerlink" title="获取 ios ipa 包"></a>获取 ios ipa 包</h2><p><a href="https://blog.csdn.net/chengqiang0414/article/details/82143930" target="_blank" rel="noopener">如何获取ipa安装包</a></p>
+<ol>
+<li>首先 去Mac上的App Store下载Apple Configurator 2。然后把iphone连接上Mac，点击Apple Configurator </li>
+<li>菜单中-&gt;账户-&gt;登陆（用连接设备的Apple ID）[如果担心设备数据会丢失，就备份下数据]</li>
+<li>所有设备-&gt;1 选中当前iPhone-&gt;2 添加-&gt; 3 应用，找到您想要ipa的那个应用-&gt;添加</li>
+<li><p>添加后会显示如下图片表示正在下载App Store上的应用<br>当你的设备上存在这个应用的时候会有如下提示：<br>这个时候切记，不要点击任何按钮！不要点击任何按钮！不要点击任何按钮！（重要的事情说三遍）直接进入第四步！</p>
+</li>
+<li><p>打开Finder前往文件夹，或者直接快捷键command+shift+G并输入下面路径<br>~/Library/Group Containers/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/<br>可以看到我们需要的包，这个时候拷贝出来（一定要拷贝出来），然后回到第三步点击【停止】会发现刚才目录下的文件也消失了！</p>
+</li>
+<li><p>拿到包后，就随便你怎么操作了</p>
+</li>
+</ol>
+<h2 id="获取-ios-ipa-方法2"><a href="#获取-ios-ipa-方法2" class="headerlink" title="获取 ios ipa 方法2"></a>获取 ios ipa 方法2</h2><p>用手机连上电脑代理， 然后下载游戏安装包， 使用 <code>charles</code> 拿到下载地址.<br>下载地址格式形如: <code>http://iosapps.itunes.apple.com/itunes-assets/.*.thinned.signed.dpkg.ipa?accessKey=</code><br>使用下载地址可以下载到一个  <code>pre-thinnedxxxxxxx.thinned.signed.dpkg.ipa</code> 形式的包.<br>这个包,直接使用常用的解压工具是解不开的，需要用到下面这个库.<br><a href="https://sskaje.me/2017/08/unzip-with-lzfse-support/" target="_blank" rel="noopener">解压算法</a><br><a href="https://github.com/lzfse/lzfse" target="_blank" rel="noopener">算法相关库</a><br>解压之后可以看到包里面的所有东西<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/sskaje/unzip-lzfse</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout lzfse</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> unzip-lzfse</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> LZFSE_PATH=/usr/<span class="built_in">local</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make -f unix/Makefile all</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./unzip -d <span class="built_in">test</span> ../pre-thinned12345678.thinned.signed.dpkg.ipa</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="plist-文件乱码"><a href="#plist-文件乱码" class="headerlink" title="plist 文件乱码"></a>plist 文件乱码</h2><p>游戏的很多配置文件都是使用的 <code>plist</code> 格式，但是我们刚刚解压的包里，<code>plist</code> 文件打开是乱码， 这该怎么办呢？<br><code>plist</code> 文件有两种格式, 一种是编码后的二进制格式, 另一种是大家平时所见的 <code>XML</code> 格式.<br>使用如下命令可以将二进制格式的文件转换成<code>XML</code>格式的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plutil -convert xml1 xxx.plist</span><br></pre></td></tr></table></figure></p>
+<h2 id="解压ipa"><a href="#解压ipa" class="headerlink" title="解压ipa"></a>解压ipa</h2><p>将文件名后缀修改成 zip, 直接解压即可</p>
+<h2 id="提取资源包"><a href="#提取资源包" class="headerlink" title="提取资源包"></a>提取资源包</h2><p>在 windows 下使用 AssetStudio 可以提取。<br>mac 下暂时没找到办法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/hack/如何获取一个-app-的资源/" data-id="ck5g7xyas0015wes67ojelxmb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-game_dev/cocos/cocos-creator-使用笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/game_dev/cocos/cocos-creator-使用笔记/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>图片资源类型为 Raw, 不会被打包到图集中</p>
+<h1 id="插件开发"><a href="#插件开发" class="headerlink" title="插件开发"></a>插件开发</h1><h2 id="IPC-基础"><a href="#IPC-基础" class="headerlink" title="IPC 基础"></a>IPC 基础</h2><p><a href="http://docs.cocos.com/creator/manual/zh/extension/ipc-workflow.html" target="_blank" rel="noopener">ipc工作流程</a></p>
+<h2 id="常用-IPC"><a href="#常用-IPC" class="headerlink" title="常用 IPC"></a>常用 IPC</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个空节点：</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:create-node-by-classid'</span>, <span class="string">'New Node'</span>, <span class="string">''</span>, <span class="string">'parentUuid'</span>);</span><br><span class="line"><span class="comment">//添加一个组件：</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:add-component'</span>, nodeID, <span class="string">'cc.Animation'</span>);</span><br><span class="line"><span class="comment">//删除一个组件：</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:remove-component'</span>, nodeID, compID);</span><br><span class="line"><span class="comment">//复制节点</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:copy-nodes'</span>, uuids);</span><br><span class="line"><span class="comment">//粘贴节点:</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:paste-nodes'</span>, parentID);</span><br><span class="line"><span class="comment">//生成prefab</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:create-prefab'</span>, node.uuid, <span class="string">'db://assets/xxx/xxx.prefab'</span>);</span><br><span class="line"><span class="comment">//设置结点属性</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:set-property'</span>, &#123;</span><br><span class="line">    id: <span class="keyword">this</span>.node.id,</span><br><span class="line">    path: <span class="string">'name'</span>,</span><br><span class="line">    type: <span class="string">'String'</span>,</span><br><span class="line">    value: event.target.value,</span><br><span class="line">    isSubProp: <span class="literal">false</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//保存</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:undo-commit'</span>);</span><br><span class="line"><span class="comment">//保存当前场景</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:stash-and-save'</span>);</span><br><span class="line"><span class="comment">//查询场景中的某个结点</span></span><br><span class="line">Editor.Ipc.sendToPanel(<span class="string">'scene'</span>, <span class="string">'scene:query-node'</span>, uuid, (error, dump) =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">//保存prefab</span></span><br><span class="line">Editor.Ipc.sendToPanel( <span class="string">'scene'</span>, <span class="string">'scene:apply-prefab'</span>, node.uuid);</span><br></pre></td></tr></table></figure>
+<h2 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h2><p>type 可选类型包括: <code>node</code>, <code>asset</code>,<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Editor.Selection.curSelection(type);<span class="comment">// 获取的是多选的节点</span></span><br><span class="line">Editor.Selection.curActivate(type);<span class="comment">// 获取的是当前激活的节点</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="可监听的-IPC-消息"><a href="#可监听的-IPC-消息" class="headerlink" title="可监听的 IPC 消息"></a>可监听的 IPC 消息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">selection:activated(event, type, id); <span class="comment">//选中</span></span><br><span class="line">selection:deactivated <span class="comment">//取消选中</span></span><br></pre></td></tr></table></figure>
+<p>Editor.remote.currentSceneUuid</p>
+<h2 id="Scene-控制场景编辑器里加载的场景实例"><a href="#Scene-控制场景编辑器里加载的场景实例" class="headerlink" title="_Scene 控制场景编辑器里加载的场景实例"></a>_Scene 控制场景编辑器里加载的场景实例</h2><p>_Scene.loadSceneByUuid()</p>
+<h2 id="场景脚本"><a href="#场景脚本" class="headerlink" title="场景脚本"></a>场景脚本</h2><p><a href="https://docs.cocos.com/creator/manual/zh/extension/scene-script.html" target="_blank" rel="noopener">调用引擎 API 和项目脚本</a><br>可以调用引擎和自定义组件的方法，通过 <code>ipc 消息</code>发起调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从扩展包中向场景脚本发送消息</span></span><br><span class="line">Editor.Scene.callSceneScript(<span class="string">'comp'</span>, <span class="string">'msg'</span>, callback);</span><br></pre></td></tr></table></figure></p>
+<h1 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h1><h2 id="动态合图"><a href="#动态合图" class="headerlink" title="动态合图"></a>动态合图</h2><p>在引擎初始化前，使用下面语句可关闭动态合图<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cc.macro.CLEANUP_IMAGE_CACHE = true;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/game_dev/cocos/cocos-creator-使用笔记/" data-id="ck5g7xyd5007gwes65xz82qyx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-game_dev/unity/Unity" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/game_dev/unity/Unity/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.642Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="资源商店"><a href="#资源商店" class="headerlink" title="资源商店"></a>资源商店</h1><p><a href="https://www.assetstore.unity3d.com/" target="_blank" rel="noopener">unity asset store</a></p>
+<h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="变换工具"><a href="#变换工具" class="headerlink" title="变换工具"></a>变换工具</h2><ul>
+<li>手型工具(Q 或按住鼠标中键), 可拖动场景</li>
+<li>Alt + 鼠标左键， 可旋转场景</li>
+<li>Alt + 鼠标右键， 可缩放场景</li>
+<li>移动工具(W)， 可移动对象，点击坐标轴可沿坐标轴移动</li>
+<li>旋转工具(E)， 可旋转对象</li>
+<li>缩放工具(R)， 可拉伸对应的轴缩放，中心灰色方块统一缩放</li>
+<li>矩形工具， 显示对象在当前截面的矩形，可拉伸，按住 shift 等比拉伸</li>
+<li>F 键 可以将当前选中的对象，显示在舞台中间</li>
+<li>鼠标右键 + W/A/S/D 可以以第一人视角在场景中移动</li>
+<li>右上角的坐标轴可以切换到不同的视角</li>
+<li>坐标轴中间的方块可以让场景在<code>透视模式</code>和<code>等角投影模式</code>之间切换<h2 id="变换辅助工具"><a href="#变换辅助工具" class="headerlink" title="变换辅助工具"></a>变换辅助工具</h2><h3 id="轴心选项"><a href="#轴心选项" class="headerlink" title="轴心选项"></a>轴心选项</h3></li>
+<li>center 选中的多个对象的中心点显示为轴心</li>
+<li>pivot 以最后选中的对象中心为轴心<h3 id="坐标轴选项"><a href="#坐标轴选项" class="headerlink" title="坐标轴选项"></a>坐标轴选项</h3></li>
+<li>global 显示世界坐标轴</li>
+<li>local 显示物体坐标轴<h2 id="layers-分层工具"><a href="#layers-分层工具" class="headerlink" title="layers 分层工具"></a>layers 分层工具</h2>可以选择显示不显示某一分层<h2 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h2>切换工具视图布局，可以保存自定义布局</li>
+</ul>
+<h1 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h1><ul>
+<li>直接拖动到 assets 文件夹下</li>
+<li>搜索栏可以搜索资源</li>
+</ul>
+<ul>
+<li>name 名称搜索</li>
+<li>t:type 使用类型过滤</li>
+<li>l:tag 标签过滤</li>
+</ul>
+<ul>
+<li>移动或重命名资源，最好在 unity 编辑器中进行，否则可能会失去资源之间的关联。</li>
+<li>资源分类，方便查找搜索 </li>
+</ul>
+<h1 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h1><ul>
+<li>unity 中的 c# 环境是经过修改的， 与原生的 c# 不一样。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/game_dev/unity/Unity/" data-id="ck5g7xyd6007iwes65kry7ffm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/docker/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.641Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>docker.md</p>
+<p><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">mac下载地址</a><br><a href="https://docs.docker.com/docker-for-mac/" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h2><p>鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址: <a href="http://hub-mirror.c.163.com。" target="_blank" rel="noopener">http://hub-mirror.c.163.com。</a></p>
+<p>在任务栏点击 Docker for mac 应用图标 -&gt; Perferences… -&gt; Daemon -&gt; Registry mirrors。在列表中填写加速器地址即可。修改完成之后，点击 Apply &amp; Restart 按钮，Docker 就会重启并应用配置的镜像地址了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/docker/" data-id="ck5g7xy9g0002wes6mnks855c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-daily/H5sdk接入方式对比" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/daily/H5sdk接入方式对比/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.641Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在H5 接入SDK 有两种不同的配置方式， 各有优劣， 在这里分析一下：</p>
+<h1 id="全部包含，-按需取"><a href="#全部包含，-按需取" class="headerlink" title="全部包含， 按需取"></a>全部包含， 按需取</h1><p>一种是， 所有的渠道的接入代码都写在一个文件里， 然后通过不同的html文件，配置对应的渠道参数，读取到不同的实现。</p>
+<h1 id="根据不同的平台，打包不同代码"><a href="#根据不同的平台，打包不同代码" class="headerlink" title="根据不同的平台，打包不同代码"></a>根据不同的平台，打包不同代码</h1><p>另一种是，每个渠道有独立的接入文件， 打包的时候， 根据不同的渠道， 将不同的对接文件打入最终包体。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/daily/H5sdk接入方式对比/" data-id="ck5g7xyan000xwes60z0en9y7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-dragger-di/">-- android -- dragger -- di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Aaron-Swartz/">Aaron Swartz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript6/">ECMAScript6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SE/">SE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/audio/">audio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/">book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2dx/">cocos2dx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freecodecamp/">freecodecamp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glsl/">glsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kill/">kill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/media/">media</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opengl/">opengl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openresty/">openresty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/perl/">perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/power-shell/">power-shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/renderer/">renderer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/retransmission/">retransmission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rules/">rules</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sdk/">sdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/systemstap/">systemstap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texture/">texture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/">todo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tribute/">tribute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信号/">信号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压缩/">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能测试/">性能测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境搭建/">环境搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-dragger-di/" style="font-size: 10px;">-- android -- dragger -- di</a> <a href="/tags/Aaron-Swartz/" style="font-size: 10px;">Aaron Swartz</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/ECMAScript6/" style="font-size: 10px;">ECMAScript6</a> <a href="/tags/SE/" style="font-size: 10px;">SE</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/blog/" style="font-size: 13.33px;">blog</a> <a href="/tags/book/" style="font-size: 10px;">book</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/cocos2dx/" style="font-size: 10px;">cocos2dx</a> <a href="/tags/database/" style="font-size: 16.67px;">database</a> <a href="/tags/debug/" style="font-size: 16.67px;">debug</a> <a href="/tags/freecodecamp/" style="font-size: 10px;">freecodecamp</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/glsl/" style="font-size: 10px;">glsl</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kill/" style="font-size: 10px;">kill</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/opengl/" style="font-size: 13.33px;">opengl</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/perl/" style="font-size: 10px;">perl</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/power-shell/" style="font-size: 10px;">power-shell</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/renderer/" style="font-size: 10px;">renderer</a> <a href="/tags/retransmission/" style="font-size: 10px;">retransmission</a> <a href="/tags/rules/" style="font-size: 10px;">rules</a> <a href="/tags/sdk/" style="font-size: 10px;">sdk</a> <a href="/tags/service/" style="font-size: 13.33px;">service</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/systemstap/" style="font-size: 10px;">systemstap</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/texture/" style="font-size: 10px;">texture</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/tribute/" style="font-size: 10px;">tribute</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vps/" style="font-size: 13.33px;">vps</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/信号/" style="font-size: 10px;">信号</a> <a href="/tags/压缩/" style="font-size: 10px;">压缩</a> <a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/16/typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/开源协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/面试整理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 vollen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
