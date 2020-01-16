@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/typescript/" data-id="ck5gjqsob0009hms654dh5bv5" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/typescript/" data-id="ck5gjsc00000akps6wsq1ae67" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/开源协议/" data-id="ck5gjqsoc000ahms6dh255fvb" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/开源协议/" data-id="ck5gjsc01000bkps620vii6qb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/面试整理/" data-id="ck5gjqsod000bhms6gldnr8fu" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/面试整理/" data-id="ck5gjsc02000ckps6l4zu4qc0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -415,7 +415,44 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/tools/开发环境使用工具/" data-id="ck5gjqsr9004xhms6ci6kbouc" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/tools/开发环境使用工具/" data-id="ck5gjsc33004xkps6ts9i2jop" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webserver/cross-origin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/webserver/cross-origin/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.655Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="浏览器跨域问题"><a href="#浏览器跨域问题" class="headerlink" title="浏览器跨域问题"></a>浏览器跨域问题</h1><p>除了需要设置 <code>Access-Control-Allow-Origin</code>外, 还需要设置<br><code>Access-Control-Allow-Headers</code> 添加上可允许的<code>header</code>字段。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Headers" target="_blank" rel="noopener">Access-Control-Allow-Headers</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,access-control-allow-origin,X-Requested-With"</span>);</span><br><span class="line">res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><blockquote>
+<blockquote>
+<p>Response to preflight request doesn’t pass access control check: No ‘Access-Control-Allow-Origin’ header is present on the requested resource<br>没有 <code>Access-Control-Allow-Origin</code> 头，需要在返回头中添加上<code>Access-Control-Allow-Origin</code>字段，包含对应的域名</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Request header field access-control-allow-origin is not allowed by Access-Control-Allow-Headers in preflight response.<br><code>access-control-allow-origin</code> 请求头不被允许, 需要添加 <code>Access-Control-Allow-Headers</code> 头, 声明需要的<code>header</code> 字段。</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/webserver/cross-origin/" data-id="ck5gjsc33004ykps6gxi14bxn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,44 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/wxgame/download-source-code/" data-id="ck5gjqsra004zhms6hi8sryvx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webserver/cross-origin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/webserver/cross-origin/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.655Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="浏览器跨域问题"><a href="#浏览器跨域问题" class="headerlink" title="浏览器跨域问题"></a>浏览器跨域问题</h1><p>除了需要设置 <code>Access-Control-Allow-Origin</code>外, 还需要设置<br><code>Access-Control-Allow-Headers</code> 添加上可允许的<code>header</code>字段。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Headers" target="_blank" rel="noopener">Access-Control-Allow-Headers</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,access-control-allow-origin,X-Requested-With"</span>);</span><br><span class="line">res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br></pre></td></tr></table></figure></p>
-<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><blockquote>
-<blockquote>
-<p>Response to preflight request doesn’t pass access control check: No ‘Access-Control-Allow-Origin’ header is present on the requested resource<br>没有 <code>Access-Control-Allow-Origin</code> 头，需要在返回头中添加上<code>Access-Control-Allow-Origin</code>字段，包含对应的域名</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>Request header field access-control-allow-origin is not allowed by Access-Control-Allow-Headers in preflight response.<br><code>access-control-allow-origin</code> 请求头不被允许, 需要添加 <code>Access-Control-Allow-Headers</code> 头, 声明需要的<code>header</code> 字段。</p>
-</blockquote>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/webserver/cross-origin/" data-id="ck5gjqsrb0051hms6zy0vsi1z" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/wxgame/download-source-code/" data-id="ck5gjsc340050kps6evygrvf9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -529,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/summary/" data-id="ck5gjqsoa0007hms6f1k9v5d3" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/summary/" data-id="ck5gjsbzw0007kps61xe8wi3w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -577,7 +577,7 @@ click
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/tmp/" data-id="ck5gjqsob0008hms63imwyoxu" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/tmp/" data-id="ck5gjsbzx0008kps65lfb62jw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -606,7 +606,7 @@ click
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/tools/chrome 插件/" data-id="ck5gjqsr6004qhms658gr5gpj" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/tools/chrome 插件/" data-id="ck5gjsc30004pkps647f2zym3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -634,7 +634,7 @@ click
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/tools/tiled/" data-id="ck5gjqsr8004uhms6xeq28wg5" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/tools/tiled/" data-id="ck5gjsc31004ukps6esp00s30" class="article-share-link">Share</a>
       
       
     </footer>
@@ -710,7 +710,7 @@ click
           </li>
         
           <li>
-            <a href="/2020/01/16/wxgame/download-source-code/">(no title)</a>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
           </li>
         
       </ul>
@@ -730,7 +730,7 @@ click
     </div>
   </div>
   <div class="BbeiAn-info">
-    {{ __('京ICP备') }} -
+    '京ICP备'
    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
   </div>
 </footer>
