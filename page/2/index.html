@@ -86,7 +86,51 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/tools/vscode插件/" data-id="ck5gcbq75004uiys66wvj96f5" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/tools/vscode插件/" data-id="ck5gcd36w004xsls6nbopoyk3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-project/九宫图页面制作笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/project/九宫图页面制作笔记/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.653Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>抽空做了个H5页面<br>需求是这样的：<br>    点击按钮， 从文件系统选择文件， 并上传至服务器，生成二维码， 显示切割预览效果。<br>    然后在手机上扫描二维码，打开另一页面， 在该页面上显示切割好的九张图片，并可长按下载图片。<br>应用场景：在电脑上打开并上传图片， 然后在手机上保存，发朋友圈的时候， 依次添加这九张图片， 可有九张图构成一个大图的逼格感。</p>
+<p>需求分析：</p>
+<pre><code>1. 从文件系统选择图片，加载到页面
+2. 切割图片
+3. 服务器保存图片。
+4. 唯一id标识当前用户.
+5. 生成二维码
+6. 下载页面。
+</code></pre><p>理想实现方案：</p>
+<pre><code>1. 使用H5元素&lt;input type=&apos;file&apos;&gt; 
+2. 使用canvas 切分图片, 并调整大小
+3. 使用canvas.toDataUrl()导出图像数据，并上传
+4. 上传图片时， 使用随机串标识同一组图片. 服务器端为每组图片生成唯一id， 并将该id对应的文件列表记录到数据库。
+5. 使用第三方库生成二维码，生成二维码时，将服务器返回的唯一id作为参数传过去
+6. 下载页面根据参数中的唯一id， 向服务器端请求图片组信息， 并一一加载进页面。
+</code></pre><p>制约:</p>
+<p>实际实现方案：</p>
+<p>学习方向：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/project/九宫图页面制作笔记/" data-id="ck5gcd36p004dsls6dwcgekbk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/politic/beijing_gov/" data-id="ck5gcbq5z001qiys6iu9bd46d" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/politic/beijing_gov/" data-id="ck5gcd36p004gsls6wmolwhjp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/render/opengl-资源站/" data-id="ck5gcbq70004hiys6irn5b6y7" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/render/opengl-资源站/" data-id="ck5gcd36r004jsls6xvvdga7g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/render/opengl_super_bible/" data-id="ck5gcbq70004jiys6u17ak4sm" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/render/opengl_super_bible/" data-id="ck5gcd36s004msls6w3hy8yoy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/render/shaders/" data-id="ck5gcbq71004kiys6bs0evp7l" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/render/shaders/" data-id="ck5gcd36s004nsls6vk4ryp2b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,51 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/render/webgl学习/" data-id="ck5gcbq72004miys6dfzppqf9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-project/九宫图页面制作笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/project/九宫图页面制作笔记/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.653Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>抽空做了个H5页面<br>需求是这样的：<br>    点击按钮， 从文件系统选择文件， 并上传至服务器，生成二维码， 显示切割预览效果。<br>    然后在手机上扫描二维码，打开另一页面， 在该页面上显示切割好的九张图片，并可长按下载图片。<br>应用场景：在电脑上打开并上传图片， 然后在手机上保存，发朋友圈的时候， 依次添加这九张图片， 可有九张图构成一个大图的逼格感。</p>
-<p>需求分析：</p>
-<pre><code>1. 从文件系统选择图片，加载到页面
-2. 切割图片
-3. 服务器保存图片。
-4. 唯一id标识当前用户.
-5. 生成二维码
-6. 下载页面。
-</code></pre><p>理想实现方案：</p>
-<pre><code>1. 使用H5元素&lt;input type=&apos;file&apos;&gt; 
-2. 使用canvas 切分图片, 并调整大小
-3. 使用canvas.toDataUrl()导出图像数据，并上传
-4. 上传图片时， 使用随机串标识同一组图片. 服务器端为每组图片生成唯一id， 并将该id对应的文件列表记录到数据库。
-5. 使用第三方库生成二维码，生成二维码时，将服务器返回的唯一id作为参数传过去
-6. 下载页面根据参数中的唯一id， 向服务器端请求图片组信息， 并一一加载进页面。
-</code></pre><p>制约:</p>
-<p>实际实现方案：</p>
-<p>学习方向：</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/project/九宫图页面制作笔记/" data-id="ck5gcbq72004niys60677o15y" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/render/webgl学习/" data-id="ck5gcd36t004psls6tw8wgn3a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/other/useful-artical/" data-id="ck5gcbq6u0042iys6znetvxhw" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/other/useful-artical/" data-id="ck5gcd36k0040sls6v5cx7a0l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -455,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/other/usefull-website/" data-id="ck5gcbq6w0046iys6gvb2vub7" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/other/usefull-website/" data-id="ck5gcd36m0045sls61muncoyw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -514,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/other/plat阶段总结/" data-id="ck5gcbq6n003jiys6299y1zq6" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/other/plat阶段总结/" data-id="ck5gcd36c003jsls6g5gteuqf" class="article-share-link">Share</a>
       
       
     </footer>

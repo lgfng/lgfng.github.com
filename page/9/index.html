@@ -81,7 +81,68 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gcbq4k000diys65ynk5qp5" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gcd34l000dsls6c98kpk07" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cocos/console" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/cocos/console/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在程序中添加监听<br>Director::getInstance()-&gt;getConsole-&gt;listenOnTCP(5678)</p>
+<p>使用nc 命令发起连接<br>nc localhost 5678</p>
+<p>通过管道发送内容至nc<br>echo content | nc </p>
+<p>在console 环境下, 输入help 查看帮助 </p>
+<p>touch 的坐标是相对于glView的， 坐标原点在左上角，所以使用的时候， 要做处理</p>
+<p>socat 一个端口转发工具， 或许可以用来模拟发送协议</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gcd34p000jsls6u71x8658" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-algorithm/learn_algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/algorithm/learn_algorithm/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习小象学院算法课程笔记</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>将一个字符串循环左移, 要求时间复杂度为O(N), 空间复杂度为O(1).<br>理论： (A’B’)’ = (BA)’<br>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (from &lt; to)&#123;</span><br><span class="line">        <span class="keyword">char</span> t = str[from];</span><br><span class="line">        str[from ++] = str[to];</span><br><span class="line">        str[to --] = t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    reverse(str, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    reverse(str, k, n - <span class="number">1</span>);</span><br><span class="line">    reverse(str, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><p>最长公共子序列</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gcd34r000lsls60mlq24ep" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,36 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gcbq57000kiys6sp9hn117" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-algorithm/learn_algorithm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/algorithm/learn_algorithm/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习小象学院算法课程笔记</p>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>将一个字符串循环左移, 要求时间复杂度为O(N), 空间复杂度为O(1).<br>理论： (A’B’)’ = (BA)’<br>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (from &lt; to)&#123;</span><br><span class="line">        <span class="keyword">char</span> t = str[from];</span><br><span class="line">        str[from ++] = str[to];</span><br><span class="line">        str[to --] = t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    reverse(str, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    reverse(str, k, n - <span class="number">1</span>);</span><br><span class="line">    reverse(str, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><p>最长公共子序列</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gcbq57000liys6szan6fek" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gcd34s000msls6r2cwa9gn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,39 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gcbq58000miys6uzpmkvby" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cocos/console" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/cocos/console/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在程序中添加监听<br>Director::getInstance()-&gt;getConsole-&gt;listenOnTCP(5678)</p>
-<p>使用nc 命令发起连接<br>nc localhost 5678</p>
-<p>通过管道发送内容至nc<br>echo content | nc </p>
-<p>在console 环境下, 输入help 查看帮助 </p>
-<p>touch 的坐标是相对于glView的， 坐标原点在左上角，所以使用的时候， 要做处理</p>
-<p>socat 一个端口转发工具， 或许可以用来模拟发送协议</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gcbq58000niys6b99a4u48" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gcd34s000nsls678k7pqew" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gcbq59000oiys6udorit3o" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gcd34t000osls61jqtwteg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,9 +273,9 @@
 
 
   
-    <article id="post-H5/pixi.js" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-H5/js_libs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/H5/pixi.js/" class="article-date">
+    <a href="/2020/01/16/H5/js_libs/" class="article-date">
   <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -285,11 +285,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1>
+        <p><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">md5</a><br>Zepto 针对移动端的精简jQuery<br>[createjs] 轻量级的js渲染框架，总大小只有不到 100 k<br>[threejs] 3d 渲染引擎<br>[pixijs] js 渲染引擎<br><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui</a> 轻量级的js控制库，用于页面中快速调整一些参数<br>[statsjs] 用于显示页面 fps<br>[howlerjs] 网页播放音频库<br>[wavesurfer] 显示音波图<br>[FileSaver] 提供了一个SaveAs 接口， 用于 H5 保存文件到本地<br>[jszip] js的 zip 库</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gcbq54000fiys6dldb3ox4" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gcd34n000fsls6dkcoirnt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gcbq55000giys63vo09708" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gcd34n000gsls6m55l6qqe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,9 +332,9 @@
 
 
   
-    <article id="post-H5/js_libs" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-H5/pixi.js" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/H5/js_libs/" class="article-date">
+    <a href="/2020/01/16/H5/pixi.js/" class="article-date">
   <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -343,12 +344,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">md5</a><br>Zepto 针对移动端的精简jQuery<br>[createjs] 轻量级的js渲染框架，总大小只有不到 100 k<br>[threejs] 3d 渲染引擎<br>[pixijs] js 渲染引擎<br><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui</a> 轻量级的js控制库，用于页面中快速调整一些参数<br>[statsjs] 用于显示页面 fps<br>[howlerjs] 网页播放音频库<br>[wavesurfer] 显示音波图<br>[FileSaver] 提供了一个SaveAs 接口， 用于 H5 保存文件到本地<br>[jszip] js的 zip 库</p>
-
+        <h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gcbq55000hiys6f9p50lwq" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gcd34o000hsls61q2l9ivt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -452,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gcbq56000iiys6tg7wzrvi" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gcd34p000isls6phc48mhf" class="article-share-link">Share</a>
       
       
     </footer>

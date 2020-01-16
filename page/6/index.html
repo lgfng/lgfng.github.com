@@ -123,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/lua/ltable/" data-id="ck5gcbq5t001giys62159aaav" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/lua/ltable/" data-id="ck5gcd35h001isls6wc06gfns" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +197,37 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/lua/lua正则/" data-id="ck5gcbq5u001hiys63k9zm289" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/lua/lua正则/" data-id="ck5gcd35h001ksls6v0pr2f4d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux/linux 挂载分区" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/linux/linux 挂载分区/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.644Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>闲来没事鼓捣系统， 准备从unbuntu14.04 升级到16.04，结果中途升级程序被中断， GG。<br>从子翔处借U盘来重装系统（linux mint）， 系统全部安装在固态硬盘中， 起始并没有将原来的/home分区挂载到新系统上。<br>所以需要手动将原来的home分区挂到系统的home 分区</p>
+<p>[参考资料]<a href="http://www.mintos.org/skill/home-partition.html" target="_blank" rel="noopener">http://www.mintos.org/skill/home-partition.html</a></p>
+<p>那原来的系统上的home哪去了呢？<br>其实它还在原来的硬盘， 原来的位置上， 我们可以通过挂载它之前所在的分区，来找到它。<br>比如原来home 在 / 下， 硬盘分区为 /dev/sda2<br>则可以通过以下命令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/mnt/</span>root</span><br><span class="line">mount <span class="regexp">/dev/</span>sda2 <span class="regexp">/mnt/</span>root</span><br></pre></td></tr></table></figure></p>
+<p>这时候进入 /mnt/root/home， 就能发现挂载之前的文件了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/linux/linux 挂载分区/" data-id="ck5gcd3520013sls6qve0wm4z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,37 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/linux/linux 私房菜/" data-id="ck5gcbq5i0017iys6x20m5iwb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux/linux 挂载分区" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/linux/linux 挂载分区/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.644Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>闲来没事鼓捣系统， 准备从unbuntu14.04 升级到16.04，结果中途升级程序被中断， GG。<br>从子翔处借U盘来重装系统（linux mint）， 系统全部安装在固态硬盘中， 起始并没有将原来的/home分区挂载到新系统上。<br>所以需要手动将原来的home分区挂到系统的home 分区</p>
-<p>[参考资料]<a href="http://www.mintos.org/skill/home-partition.html" target="_blank" rel="noopener">http://www.mintos.org/skill/home-partition.html</a></p>
-<p>那原来的系统上的home哪去了呢？<br>其实它还在原来的硬盘， 原来的位置上， 我们可以通过挂载它之前所在的分区，来找到它。<br>比如原来home 在 / 下， 硬盘分区为 /dev/sda2<br>则可以通过以下命令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="regexp">/mnt/</span>root</span><br><span class="line">mount <span class="regexp">/dev/</span>sda2 <span class="regexp">/mnt/</span>root</span><br></pre></td></tr></table></figure></p>
-<p>这时候进入 /mnt/root/home， 就能发现挂载之前的文件了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/linux/linux 挂载分区/" data-id="ck5gcbq5j0018iys6yfartgxb" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/linux/linux 私房菜/" data-id="ck5gcd3520014sls6n7fd534h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +459,51 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/lang/oc/oc/" data-id="ck5gcbq7s007giys6lud93f2v" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/lang/oc/oc/" data-id="ck5gcd37k007gsls6qwscn2yp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jenkins" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/jenkins/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://blog.csdn.net/zzusimon/article/details/57080337" target="_blank" rel="noopener">取不到环境变量，[非]登录[非]交互式shll</a><br><a href="https://jenkins.io/zh/doc/pipeline/tour/hello-world/" target="_blank" rel="noopener">中文教程</a><br><a href="https://blog.csdn.net/qq_15807167/article/details/79896131" target="_blank" rel="noopener">设置中文</a></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
+<li><a href="https://wiki.jenkins.io/display/JENKINS/Description+Setter+Plugin" target="_blank" rel="noopener">description setter 设置最后输出描述格式</a></li>
+<li><a href>Multiple SCMs 多仓库管理</a></li>
+</ul>
+<h2 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h2><p>在官网下载dmg安装包，安装完毕即可在本机搭建jenkins的工作。但是jenkins不会用本地的用户去构建，任何创建的文件都是“jenkins”用户所有，这会造成很多权限问题，无法调用自己写的脚本，执行shell会出现没有权限的错误。</p>
+<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><p>查看自己的用户群组和用户名<br>系统偏好设置 -&gt; 用户与群组 -&gt; 点按🔒锁按钮进行更改 -&gt; 输入密码确认 -&gt; 右键高级选项… -&gt; 查看群组和用户名</p>
+<h3 id="停止Jenkins"><a href="#停止Jenkins" class="headerlink" title="停止Jenkins"></a>停止Jenkins</h3><p><code>sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
+<h3 id="修改-org-jenkins-ci-plist-配置"><a href="#修改-org-jenkins-ci-plist-配置" class="headerlink" title="修改 org.jenkins-ci.plist 配置"></a>修改 org.jenkins-ci.plist 配置</h3><p><code>sudo vi /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
+<ol>
+<li>JENKINS_HOME 为 JENKINS 的根目录地址，默认 /Users/Shared/Jenkins/Home/ 需要改到当前用户下 /Users/userName/.jenkins 解决权限问题和工作路径找不到问题；</li>
+<li>GroupName 群组名，改为当前用户的群组；</li>
+<li>UserName 用户名，改为当前用户的用户名；</li>
+</ol>
+<h3 id="重启-Jenkins"><a href="#重启-Jenkins" class="headerlink" title="重启 Jenkins"></a>重启 Jenkins</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果 Jenkins 本地服务启动失败需要停止当前Jenkins 执行以下操作再重启Jenkins</span></span><br><span class="line">$ sudo chown -R userName /Users/Shared/Jenkins</span><br><span class="line">$ sudo chown -R userName /var/<span class="built_in">log</span>/jenkins</span><br><span class="line"><span class="comment"># 重启Jenkins</span></span><br><span class="line">$ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动启动脚本</span></span><br><span class="line">sh /Library/Application Support/Jenkins/jenkins-runner.sh</span><br></pre></td></tr></table></figure>
+<h2 id="安装-plugins"><a href="#安装-plugins" class="headerlink" title="安装 plugins"></a>安装 plugins</h2><ul>
+<li>由于更改了 Jenkins 的根目录所以要重新安装一遍<code>plugins</code></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/jenkins/" data-id="ck5gcd33k0004sls6hpoagrp0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -530,51 +574,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/json-schema/" data-id="ck5gcbq430003iys652f8niqq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jenkins" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/jenkins/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://blog.csdn.net/zzusimon/article/details/57080337" target="_blank" rel="noopener">取不到环境变量，[非]登录[非]交互式shll</a><br><a href="https://jenkins.io/zh/doc/pipeline/tour/hello-world/" target="_blank" rel="noopener">中文教程</a><br><a href="https://blog.csdn.net/qq_15807167/article/details/79896131" target="_blank" rel="noopener">设置中文</a></p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
-<li><a href="https://wiki.jenkins.io/display/JENKINS/Description+Setter+Plugin" target="_blank" rel="noopener">description setter 设置最后输出描述格式</a></li>
-<li><a href>Multiple SCMs 多仓库管理</a></li>
-</ul>
-<h2 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h2><p>在官网下载dmg安装包，安装完毕即可在本机搭建jenkins的工作。但是jenkins不会用本地的用户去构建，任何创建的文件都是“jenkins”用户所有，这会造成很多权限问题，无法调用自己写的脚本，执行shell会出现没有权限的错误。</p>
-<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><p>查看自己的用户群组和用户名<br>系统偏好设置 -&gt; 用户与群组 -&gt; 点按🔒锁按钮进行更改 -&gt; 输入密码确认 -&gt; 右键高级选项… -&gt; 查看群组和用户名</p>
-<h3 id="停止Jenkins"><a href="#停止Jenkins" class="headerlink" title="停止Jenkins"></a>停止Jenkins</h3><p><code>sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
-<h3 id="修改-org-jenkins-ci-plist-配置"><a href="#修改-org-jenkins-ci-plist-配置" class="headerlink" title="修改 org.jenkins-ci.plist 配置"></a>修改 org.jenkins-ci.plist 配置</h3><p><code>sudo vi /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
-<ol>
-<li>JENKINS_HOME 为 JENKINS 的根目录地址，默认 /Users/Shared/Jenkins/Home/ 需要改到当前用户下 /Users/userName/.jenkins 解决权限问题和工作路径找不到问题；</li>
-<li>GroupName 群组名，改为当前用户的群组；</li>
-<li>UserName 用户名，改为当前用户的用户名；</li>
-</ol>
-<h3 id="重启-Jenkins"><a href="#重启-Jenkins" class="headerlink" title="重启 Jenkins"></a>重启 Jenkins</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果 Jenkins 本地服务启动失败需要停止当前Jenkins 执行以下操作再重启Jenkins</span></span><br><span class="line">$ sudo chown -R userName /Users/Shared/Jenkins</span><br><span class="line">$ sudo chown -R userName /var/<span class="built_in">log</span>/jenkins</span><br><span class="line"><span class="comment"># 重启Jenkins</span></span><br><span class="line">$ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动启动脚本</span></span><br><span class="line">sh /Library/Application Support/Jenkins/jenkins-runner.sh</span><br></pre></td></tr></table></figure>
-<h2 id="安装-plugins"><a href="#安装-plugins" class="headerlink" title="安装 plugins"></a>安装 plugins</h2><ul>
-<li>由于更改了 Jenkins 的根目录所以要重新安装一遍<code>plugins</code></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/jenkins/" data-id="ck5gcbq450005iys6xu1jkx0m" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/json-schema/" data-id="ck5gcd33l0005sls6t3c1qcrv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -834,7 +834,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/lang/c#/" data-id="ck5gcbq5g0013iys69vmck7ui" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/lang/c#/" data-id="ck5gcd35d001csls66lqw1d22" class="article-share-link">Share</a>
       
       
     </footer>
@@ -893,7 +893,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/lang/c++/" data-id="ck5gcbq5h0014iys6f335qnt8" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/lang/c++/" data-id="ck5gcd35e001dsls67gs9x1jf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -925,7 +925,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/lang/go/" data-id="ck5gcbq5h0015iys6vd2iqsqr" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/lang/go/" data-id="ck5gcd35e001fsls6m4p93dj8" class="article-share-link">Share</a>
       
       
     </footer>
