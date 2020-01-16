@@ -65,74 +65,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-lua/ltable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/lua/ltable/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.645Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Table</span> &#123;</span></span><br><span class="line">  CommonHeader;</span><br><span class="line">  lu_byte flags;  <span class="comment">/* 1&lt;&lt;p means tagmethod(p) is not present */</span> </span><br><span class="line">  lu_byte lsizenode;  <span class="comment">/* log2 of size of `node' array */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Table</span> *<span class="title">metatable</span>;</span></span><br><span class="line">  TValue *<span class="built_in">array</span>;  <span class="comment">/* array part */</span></span><br><span class="line">  Node *node;</span><br><span class="line">  Node *lastfree;  <span class="comment">/* any free position is before this position */</span></span><br><span class="line">  GCObject *gclist;</span><br><span class="line">  <span class="keyword">int</span> sizearray;  <span class="comment">/* size of `array' array */</span></span><br><span class="line">&#125; Table;</span><br></pre></td></tr></table></figure>
-<p>Table 的数据结构定义在<code>lobject.h</code>中,</p>
-<ul>
-<li>flags 标识位, 标识是否设置了对应的metamethod </li>
-<li>lsizenode 存储node部分的长度的 log2对数, 使用的时候需要还原回来</li>
-<li>metatable 元方法， 定义了一些方法</li>
-<li>array 数组部分， 直接存储TValue</li>
-<li>node  hash部分</li>
-<li>lastfree 永远指向最后一个可用的结点， 当找不到的时候， 需要重新rehash</li>
-<li>sizearray 数组部分长度</li>
-</ul>
-<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
-<li>luaH_getn<br>  判断</li>
-<li>luaH_set<br>  <code>lua_Hset</code>并不真正设置值， 而是返回该key的结点。<br>  先尝试调用<code>luaH_get</code>, 如果返回nil,则使用<code>newkey</code>得到一个新的结点并返回 。</li>
-<li>luaH_get</li>
-<li>luaH_next</li>
-<li>newkey<br>  首先根据key的hash值找到对应位置。然后判断该位置是否被占用<pre><code>如果没有，则直接赋值。 
-否则， 判断当前结点的`hash位置`是不是这里
-    如果不是，则把它放到合适的位置，放到它自己的主位置， 或者找其他空节点，并调整对应key的结点链表。
-    如果是，根据`lastfree`找可用结点。
-        如果没有可用结点， 则`rehash`。
-        有则插入结点， 并将该结点链接到该key对应的链表末尾。
-</code></pre></li>
-<li>rehash<br>  统计当前<code>table</code>中key为数字(且在最大数组下标范围内)的结点， 和总的结点数。<br>  然后重新计算需要的数组大小<code>computesizes</code>，并分配内存<code>resize</code>。</li>
-</ul>
-<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>看到一段神奇的代码，用于将<code>lua_number(double)</code> 快速转换成<code>int</code>.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> luai_Cast &#123; <span class="keyword">double</span> l_d; <span class="keyword">long</span> l_l; &#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lua_number2int(i,d) \</span></span><br><span class="line">  &#123; <span class="keyword">volatile</span> <span class="keyword">union</span> luai_Cast u; u.l_d = (d) + <span class="number">6755399441055744.0</span>; (i) = u.l_l; &#125;</span><br></pre></td></tr></table></figure></p>
-<p>这块代码能生效的原理是利用了<code>IEEE754</code>标准中对浮点数的存数规则。<br>double在内存中， 占用64个比特位， 使用符号数值表示法。其中:</p>
-<ul>
-<li>0-51位为尾数部分</li>
-<li>52-63位为指数部分<ul>
-<li>第63位为指数符号位。</li>
-</ul>
-</li>
-<li>64位为符号位</li>
-</ul>
-<p>浮点数运算规则: 先对齐指数部分， 然后尾数部分相加，最后规范化。<br>6755399441055744.0 = 00000011 <em> 2^52.<br>所以当一个数与它相加的时候， 指数部分强行对齐到52， 尾数部分右移， 正好将所有的小数点之后的部分移调。<br>例： 8.75 = 1000.11 = 1.00011 </em> 2^3 次方， 对齐到52位后，右移49位，原有尾数保留3位,算上会跟着移下来的那个1， 最后得到<br>0000…1000。小数部分全部被移掉。<br>至于最后达成4舍5入效果， 则是由于CPU的舍入机制决定。</p>
-<p>将得到的尾数部分直接强制转换为整型(只会取后32个比特位)，即可得到取整的效果。</p>
-<ul>
-<li><p>为什么用1.5<em>2^52, 而不是1</em>2^52次方呢？<br>因为当操作的数为负数的时候，使用1*2^52，会出现向最高位借位的情况， 导致最高位不为1，在最后规范化处理的时候， 无法保持指数部分为52. 结果异常。<br>为了使能操作负数，所以需要除了省略的最高位外， 还需要有一个比特位为1. </p>
-<p>因为整型只取低32位, 所以尾数部分的高20位都是随意的，只要不全为0就行，<br>所以理论上， 一共有2^20-1 个这样的神奇的数字。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lua/ltable/" data-id="ck5gjsc1o001gkps6mf0rrarz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-lua/lua正则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/16/lua/lua正则/" class="article-date">
@@ -197,7 +129,75 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lua/lua正则/" data-id="ck5gjsc1o001hkps609im7pbz" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lua/lua正则/" data-id="ck5gjvzj1001hp0s66kxiqwag" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-lua/ltable" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/lua/ltable/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.645Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Table</span> &#123;</span></span><br><span class="line">  CommonHeader;</span><br><span class="line">  lu_byte flags;  <span class="comment">/* 1&lt;&lt;p means tagmethod(p) is not present */</span> </span><br><span class="line">  lu_byte lsizenode;  <span class="comment">/* log2 of size of `node' array */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Table</span> *<span class="title">metatable</span>;</span></span><br><span class="line">  TValue *<span class="built_in">array</span>;  <span class="comment">/* array part */</span></span><br><span class="line">  Node *node;</span><br><span class="line">  Node *lastfree;  <span class="comment">/* any free position is before this position */</span></span><br><span class="line">  GCObject *gclist;</span><br><span class="line">  <span class="keyword">int</span> sizearray;  <span class="comment">/* size of `array' array */</span></span><br><span class="line">&#125; Table;</span><br></pre></td></tr></table></figure>
+<p>Table 的数据结构定义在<code>lobject.h</code>中,</p>
+<ul>
+<li>flags 标识位, 标识是否设置了对应的metamethod </li>
+<li>lsizenode 存储node部分的长度的 log2对数, 使用的时候需要还原回来</li>
+<li>metatable 元方法， 定义了一些方法</li>
+<li>array 数组部分， 直接存储TValue</li>
+<li>node  hash部分</li>
+<li>lastfree 永远指向最后一个可用的结点， 当找不到的时候， 需要重新rehash</li>
+<li>sizearray 数组部分长度</li>
+</ul>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
+<li>luaH_getn<br>  判断</li>
+<li>luaH_set<br>  <code>lua_Hset</code>并不真正设置值， 而是返回该key的结点。<br>  先尝试调用<code>luaH_get</code>, 如果返回nil,则使用<code>newkey</code>得到一个新的结点并返回 。</li>
+<li>luaH_get</li>
+<li>luaH_next</li>
+<li>newkey<br>  首先根据key的hash值找到对应位置。然后判断该位置是否被占用<pre><code>如果没有，则直接赋值。 
+否则， 判断当前结点的`hash位置`是不是这里
+    如果不是，则把它放到合适的位置，放到它自己的主位置， 或者找其他空节点，并调整对应key的结点链表。
+    如果是，根据`lastfree`找可用结点。
+        如果没有可用结点， 则`rehash`。
+        有则插入结点， 并将该结点链接到该key对应的链表末尾。
+</code></pre></li>
+<li>rehash<br>  统计当前<code>table</code>中key为数字(且在最大数组下标范围内)的结点， 和总的结点数。<br>  然后重新计算需要的数组大小<code>computesizes</code>，并分配内存<code>resize</code>。</li>
+</ul>
+<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>看到一段神奇的代码，用于将<code>lua_number(double)</code> 快速转换成<code>int</code>.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> luai_Cast &#123; <span class="keyword">double</span> l_d; <span class="keyword">long</span> l_l; &#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lua_number2int(i,d) \</span></span><br><span class="line">  &#123; <span class="keyword">volatile</span> <span class="keyword">union</span> luai_Cast u; u.l_d = (d) + <span class="number">6755399441055744.0</span>; (i) = u.l_l; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这块代码能生效的原理是利用了<code>IEEE754</code>标准中对浮点数的存数规则。<br>double在内存中， 占用64个比特位， 使用符号数值表示法。其中:</p>
+<ul>
+<li>0-51位为尾数部分</li>
+<li>52-63位为指数部分<ul>
+<li>第63位为指数符号位。</li>
+</ul>
+</li>
+<li>64位为符号位</li>
+</ul>
+<p>浮点数运算规则: 先对齐指数部分， 然后尾数部分相加，最后规范化。<br>6755399441055744.0 = 00000011 <em> 2^52.<br>所以当一个数与它相加的时候， 指数部分强行对齐到52， 尾数部分右移， 正好将所有的小数点之后的部分移调。<br>例： 8.75 = 1000.11 = 1.00011 </em> 2^3 次方， 对齐到52位后，右移49位，原有尾数保留3位,算上会跟着移下来的那个1， 最后得到<br>0000…1000。小数部分全部被移掉。<br>至于最后达成4舍5入效果， 则是由于CPU的舍入机制决定。</p>
+<p>将得到的尾数部分直接强制转换为整型(只会取后32个比特位)，即可得到取整的效果。</p>
+<ul>
+<li><p>为什么用1.5<em>2^52, 而不是1</em>2^52次方呢？<br>因为当操作的数为负数的时候，使用1*2^52，会出现向最高位借位的情况， 导致最高位不为1，在最后规范化处理的时候， 无法保持指数部分为52. 结果异常。<br>为了使能操作负数，所以需要除了省略的最高位外， 还需要有一个比特位为1. </p>
+<p>因为整型只取低32位, 所以尾数部分的高20位都是随意的，只要不全为0就行，<br>所以理论上， 一共有2^20-1 个这样的神奇的数字。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/lua/ltable/" data-id="ck5gjvzj2001jp0s6ny15ipaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 挂载分区/" data-id="ck5gjsc1c0017kps62s7hgyau" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 挂载分区/" data-id="ck5gjvziq0017p0s6l8l7c5do" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 私房菜/" data-id="ck5gjsc1c0018kps6hivp27n0" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 私房菜/" data-id="ck5gjvzj0001gp0s62shnzxcd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/oc/oc/" data-id="ck5gjsc3r007ikps6gd8p26ep" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lang/oc/oc/" data-id="ck5gjvzlb007jp0s6x76eq8es" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/jenkins/" data-id="ck5gjsbzs0004kps66lr480hg" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/jenkins/" data-id="ck5gjvzhb0004p0s62oa92kg7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,7 +574,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/json-schema/" data-id="ck5gjsbzt0005kps6n3fejlt2" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/json-schema/" data-id="ck5gjvzhc0005p0s621aef0o1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -834,7 +834,39 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/c#/" data-id="ck5gjsc1a0013kps673vqfxsn" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lang/c#/" data-id="ck5gjvzin0013p0s668map8s5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-lang/go" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/lang/go/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="env"><a href="#env" class="headerlink" title="env"></a>env</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/go</span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$HOME</span>/env/go/libs;<span class="variable">$HOME</span>/go</span><br></pre></td></tr></table></figure>
+<h1 id="go-包获取"><a href="#go-包获取" class="headerlink" title="go 包获取"></a>go 包获取</h1><h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>go 的很多依赖包都是在 golang.org 上, 这个地址因为众所周知的原因, 无法直接访问。</p>
+<p>首先我们需要准备一个能爬墙的梯子, 这里使用 shadowsocks。<br>点击小图标 -&gt; Http 代理设置 -&gt; http 代理开启, 记录下这里的监听地址和监听端口. 我这里是 (127.0.0.1: 1087)<br>在需要更新依赖的控制台执行以下命令, 即可设置代理. 运行 <code>go get</code> 即可安装依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HTTP_PROXY=http://127.0.0.1:1087</span><br><span class="line"><span class="built_in">export</span> HTTPS_PROXY=http://127.0.0.1:1087</span><br></pre></td></tr></table></figure></p>
+<h3 id="vs-code-代理设置"><a href="#vs-code-代理设置" class="headerlink" title="vs code 代理设置"></a>vs code 代理设置</h3><p>Code -&gt; 首选项 -&gt; 设置 -&gt; 应用程序 -&gt; 代理服务器 中配置<br>也可以 Cmd+Shift+P 输入 setting, 打开用户设置, 输入 <code>proxy</code> 搜索对应配置<br></p>
+<h2 id="git-地址配置"><a href="#git-地址配置" class="headerlink" title="git 地址配置"></a>git 地址配置</h2><p>对于公司自己部署的<code>git</code>服务器, go 依赖模块无法解析到实际的域名. 依赖会安装失败。<br>这时候需要在 <code>~/.gitconfig</code> 配置对应的域名, 如下.<br><figure class="highlight plain"><figcaption><span>config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[url &quot;git@git.hortorgames.com:&quot;]</span><br><span class="line">insteadOf = https://git.hortorgames.com/</span><br><span class="line">[url &quot;git@git.hortorgames.com:&quot;]</span><br><span class="line">insteadOf = http://git.hortorgames.com/</span><br></pre></td></tr></table></figure></p>
+<h2 id="goland"><a href="#goland" class="headerlink" title="goland"></a>goland</h2><p>有钱了还是付费的好呀。<br><a href="http://idea.lanyus.com/" target="_blank" rel="noopener">注册码获取地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/lang/go/" data-id="ck5gjvzio0014p0s60vd5wgbr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -893,39 +925,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/c++/" data-id="ck5gjsc1b0014kps60ov73vo2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-lang/go" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/lang/go/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="env"><a href="#env" class="headerlink" title="env"></a>env</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/go</span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$HOME</span>/env/go/libs;<span class="variable">$HOME</span>/go</span><br></pre></td></tr></table></figure>
-<h1 id="go-包获取"><a href="#go-包获取" class="headerlink" title="go 包获取"></a>go 包获取</h1><h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>go 的很多依赖包都是在 golang.org 上, 这个地址因为众所周知的原因, 无法直接访问。</p>
-<p>首先我们需要准备一个能爬墙的梯子, 这里使用 shadowsocks。<br>点击小图标 -&gt; Http 代理设置 -&gt; http 代理开启, 记录下这里的监听地址和监听端口. 我这里是 (127.0.0.1: 1087)<br>在需要更新依赖的控制台执行以下命令, 即可设置代理. 运行 <code>go get</code> 即可安装依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HTTP_PROXY=http://127.0.0.1:1087</span><br><span class="line"><span class="built_in">export</span> HTTPS_PROXY=http://127.0.0.1:1087</span><br></pre></td></tr></table></figure></p>
-<h3 id="vs-code-代理设置"><a href="#vs-code-代理设置" class="headerlink" title="vs code 代理设置"></a>vs code 代理设置</h3><p>Code -&gt; 首选项 -&gt; 设置 -&gt; 应用程序 -&gt; 代理服务器 中配置<br>也可以 Cmd+Shift+P 输入 setting, 打开用户设置, 输入 <code>proxy</code> 搜索对应配置<br></p>
-<h2 id="git-地址配置"><a href="#git-地址配置" class="headerlink" title="git 地址配置"></a>git 地址配置</h2><p>对于公司自己部署的<code>git</code>服务器, go 依赖模块无法解析到实际的域名. 依赖会安装失败。<br>这时候需要在 <code>~/.gitconfig</code> 配置对应的域名, 如下.<br><figure class="highlight plain"><figcaption><span>config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[url &quot;git@git.hortorgames.com:&quot;]</span><br><span class="line">insteadOf = https://git.hortorgames.com/</span><br><span class="line">[url &quot;git@git.hortorgames.com:&quot;]</span><br><span class="line">insteadOf = http://git.hortorgames.com/</span><br></pre></td></tr></table></figure></p>
-<h2 id="goland"><a href="#goland" class="headerlink" title="goland"></a>goland</h2><p>有钱了还是付费的好呀。<br><a href="http://idea.lanyus.com/" target="_blank" rel="noopener">注册码获取地址</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/go/" data-id="ck5gjsc1b0015kps65i8crpdd" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lang/c++/" data-id="ck5gjvzio0015p0s6k67koh2g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -997,11 +997,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+            <a href="/2020/01/16/wxgame/download-source-code/">(no title)</a>
           </li>
         
       </ul>
@@ -1018,11 +1018,11 @@
     <div id="footer-info" class="inner">
       &copy; 2020 vollen<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
     </div>
   </div>
   <div class="BbeiAn-info">
-    '京ICP备'
-   <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+
   </div>
 </footer>
     </div>
