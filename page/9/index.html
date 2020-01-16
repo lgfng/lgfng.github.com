@@ -81,7 +81,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gjvzht000dp0s6w997cwh4" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gjwbjs000dr3s6k11obqmw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -110,7 +110,40 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gjvzid000kp0s6wrzymg0n" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gjwbjv000kr3s6saigkqmg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-algorithm/字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/algorithm/字符串/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字符串循环左移"><a href="#字符串循环左移" class="headerlink" title="字符串循环左移:"></a>字符串循环左移:</h2><p>(X’Y’)’ = YX<br>X = ab, Y = cde<br>cdeab = YX = (X’Y’)’ = (baedc)’ = cdeab<br>将前后两段分别翻转， 然后连接起来， 最后翻转.</p>
+<h2 id="LCS-最长公共子序列"><a href="#LCS-最长公共子序列" class="headerlink" title="LCS 最长公共子序列"></a>LCS 最长公共子序列</h2><p>对于 X,Y　两个字符串，　会有<br>LCS(Xm, Yn) = |  LCS(X(m-1), Y(n - 1)) if (Xm == Yn)<br>             |  max(LCS(X(m-1), Yn), LCS(Xm, Y(n - 1)))  if (Xm ~= Yn)</p>
+<p>使用循环数组求两个字符串的最大LCS长度。<br>当计算 chess[i][j] 的时候， 只可能需要 chess[i-1][j-1], chess[i-1][j], chess[i][j-1]三个值，<br>所以不需要维护一个m*n的数组， 只需要一个长度为n 的数组循环覆盖即可， 另外, chess[i-1][j-1]会被覆盖， 所以需要另外存起来。 </p>
+<h3 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h3><p>LIS(X)<br>X’ = sort(X);<br>LIS(X) = LCS(X, X’);</p>
+<p>动态规划解法：<br>Li = L(i-1) + 1, 当 X[i] &gt; X[i + 1]<br>Li = L(i - 1)</p>
+<h2 id="字符串全排列"><a href="#字符串全排列" class="headerlink" title="字符串全排列"></a>字符串全排列</h2><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>text 为目标串<br>pattern 为模式串<br>i 为当前目标串索引， j 为当前模式串索引<br>模式串的最大相等前缀<br>if(text[i + j] == pattern[j]){<br>    j++;<br>} else{</p>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gjwbjw000lr3s6o6h82h5k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,72 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gjvzie000lp0s69uag1e2c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-algorithm/字符串" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/algorithm/字符串/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="字符串循环左移"><a href="#字符串循环左移" class="headerlink" title="字符串循环左移:"></a>字符串循环左移:</h2><p>(X’Y’)’ = YX<br>X = ab, Y = cde<br>cdeab = YX = (X’Y’)’ = (baedc)’ = cdeab<br>将前后两段分别翻转， 然后连接起来， 最后翻转.</p>
-<h2 id="LCS-最长公共子序列"><a href="#LCS-最长公共子序列" class="headerlink" title="LCS 最长公共子序列"></a>LCS 最长公共子序列</h2><p>对于 X,Y　两个字符串，　会有<br>LCS(Xm, Yn) = |  LCS(X(m-1), Y(n - 1)) if (Xm == Yn)<br>             |  max(LCS(X(m-1), Yn), LCS(Xm, Y(n - 1)))  if (Xm ~= Yn)</p>
-<p>使用循环数组求两个字符串的最大LCS长度。<br>当计算 chess[i][j] 的时候， 只可能需要 chess[i-1][j-1], chess[i-1][j], chess[i][j-1]三个值，<br>所以不需要维护一个m*n的数组， 只需要一个长度为n 的数组循环覆盖即可， 另外, chess[i-1][j-1]会被覆盖， 所以需要另外存起来。 </p>
-<h3 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h3><p>LIS(X)<br>X’ = sort(X);<br>LIS(X) = LCS(X, X’);</p>
-<p>动态规划解法：<br>Li = L(i-1) + 1, 当 X[i] &gt; X[i + 1]<br>Li = L(i - 1)</p>
-<h2 id="字符串全排列"><a href="#字符串全排列" class="headerlink" title="字符串全排列"></a>字符串全排列</h2><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>text 为目标串<br>pattern 为模式串<br>i 为当前目标串索引， j 为当前模式串索引<br>模式串的最大相等前缀<br>if(text[i + j] == pattern[j]){<br>    j++;<br>} else{</p>
-<p>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gjvzie000mp0s65s7kz4l8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cocos/console" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/cocos/console/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在程序中添加监听<br>Director::getInstance()-&gt;getConsole-&gt;listenOnTCP(5678)</p>
-<p>使用nc 命令发起连接<br>nc localhost 5678</p>
-<p>通过管道发送内容至nc<br>echo content | nc </p>
-<p>在console 环境下, 输入help 查看帮助 </p>
-<p>touch 的坐标是相对于glView的， 坐标原点在左上角，所以使用的时候， 要做处理</p>
-<p>socat 一个端口转发工具， 或许可以用来模拟发送协议</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gjvzie000np0s6pxqvwsfy" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gjwbjw000mr3s6fvzekl4k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +231,39 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gjvzif000op0s6nfjj0jad" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gjwbjx000nr3s64a7utzl1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cocos/console" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/cocos/console/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在程序中添加监听<br>Director::getInstance()-&gt;getConsole-&gt;listenOnTCP(5678)</p>
+<p>使用nc 命令发起连接<br>nc localhost 5678</p>
+<p>通过管道发送内容至nc<br>echo content | nc </p>
+<p>在console 环境下, 输入help 查看帮助 </p>
+<p>touch 的坐标是相对于glView的， 坐标原点在左上角，所以使用的时候， 要做处理</p>
+<p>socat 一个端口转发工具， 或许可以用来模拟发送协议</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gjwbjx000or3s67823d7c9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +290,65 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gjvzib000fp0s64saxh4ld" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gjwbjt000fr3s6n5svl6gl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-H5/js_skills" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/H5/js_skills/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="isArray"><a href="#isArray" class="headerlink" title="isArray"></a>isArray</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">obj: any</span>): <span class="title">obj</span> <span class="title">is</span> <span class="title">Array</span>&lt;<span class="title">any</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="V8-tips"><a href="#V8-tips" class="headerlink" title="V8 tips"></a>V8 tips</h2><p>因为JS 没有类型的概念， 但是在V8中， 为了让代码执行的更快， 都会尝试给对象一个类型， 当对象的类型不断发生变化时， 就会导致额外的消耗。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line">  <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">11</span>, <span class="number">22</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Point(<span class="number">33</span>, <span class="number">44</span>);</span><br><span class="line"><span class="comment">// At this point, p1 and p2 have a shared hidden class</span></span><br><span class="line">p2.z = <span class="number">55</span>;</span><br><span class="line"><span class="comment">//better</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line">  <span class="keyword">this</span>.y = y;</span><br><span class="line">  <span class="keyword">this</span>.z = z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************/</span></span><br><span class="line"><span class="comment">//bad</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">77</span>;   <span class="comment">// Allocates</span></span><br><span class="line">a[<span class="number">1</span>] = <span class="number">88</span>;</span><br><span class="line">a[<span class="number">2</span>] = <span class="number">0.5</span>;   <span class="comment">// Allocates, converts</span></span><br><span class="line">a[<span class="number">3</span>] = <span class="literal">true</span>; <span class="comment">// Allocates, converts</span></span><br><span class="line"><span class="comment">//better</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">77</span>, <span class="number">88</span>, <span class="number">0.5</span>, <span class="literal">true</span>];</span><br></pre></td></tr></table></figure></p>
+<h2 id="会导致V8优化失败的代码"><a href="#会导致V8优化失败的代码" class="headerlink" title="会导致V8优化失败的代码"></a><a href="https://github.com/vhf/v8-bailout-reasons" target="_blank" rel="noopener">会导致V8优化失败的代码</a></h2><h3 id="对已经被arguments引用的参数重新赋值"><a href="#对已经被arguments引用的参数重新赋值" class="headerlink" title="对已经被arguments引用的参数重新赋值"></a>对已经被arguments引用的参数重新赋值</h3><p>###<br>允许使用原生函数<br>node –allow-natives-syntax</p>
+<p>Built in functions<br>这些內建函数能在src/runtime/runtime.h; CodeStubAssembler; src/builtins/builtins.h;里找到<br>%HaveSameMap(a, b) 两个对象是否有相同的存储结构</p>
+<p>hidden class, 每个对象都会有个hiddenClass,当给一个对象添加新的属性的时候， V8会构造一个新的基于老的class构造一个新的HiddenClass.<br>这种结构被称作 “transition tree” 转换树;<br>当函数调用的参数的hiddenClass 与上次的不一致的时候， 便会导致函数的deopt.</p>
+<p>–trace-ic 可以调试对象的V8 的IC记录</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gjwbjt000gr3s67pr4kahx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-H5/pixi.js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/H5/pixi.js/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gjwbju000hr3s6ol2hrwpp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,65 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gjvzib000gp0s63afx7gab" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-H5/pixi.js" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/H5/pixi.js/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gjvzic000hp0s620immv86" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-H5/js_skills" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/H5/js_skills/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="isArray"><a href="#isArray" class="headerlink" title="isArray"></a>isArray</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">obj: any</span>): <span class="title">obj</span> <span class="title">is</span> <span class="title">Array</span>&lt;<span class="title">any</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="V8-tips"><a href="#V8-tips" class="headerlink" title="V8 tips"></a>V8 tips</h2><p>因为JS 没有类型的概念， 但是在V8中， 为了让代码执行的更快， 都会尝试给对象一个类型， 当对象的类型不断发生变化时， 就会导致额外的消耗。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line">  <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">11</span>, <span class="number">22</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Point(<span class="number">33</span>, <span class="number">44</span>);</span><br><span class="line"><span class="comment">// At this point, p1 and p2 have a shared hidden class</span></span><br><span class="line">p2.z = <span class="number">55</span>;</span><br><span class="line"><span class="comment">//better</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line">  <span class="keyword">this</span>.y = y;</span><br><span class="line">  <span class="keyword">this</span>.z = z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************/</span></span><br><span class="line"><span class="comment">//bad</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">77</span>;   <span class="comment">// Allocates</span></span><br><span class="line">a[<span class="number">1</span>] = <span class="number">88</span>;</span><br><span class="line">a[<span class="number">2</span>] = <span class="number">0.5</span>;   <span class="comment">// Allocates, converts</span></span><br><span class="line">a[<span class="number">3</span>] = <span class="literal">true</span>; <span class="comment">// Allocates, converts</span></span><br><span class="line"><span class="comment">//better</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">77</span>, <span class="number">88</span>, <span class="number">0.5</span>, <span class="literal">true</span>];</span><br></pre></td></tr></table></figure></p>
-<h2 id="会导致V8优化失败的代码"><a href="#会导致V8优化失败的代码" class="headerlink" title="会导致V8优化失败的代码"></a><a href="https://github.com/vhf/v8-bailout-reasons" target="_blank" rel="noopener">会导致V8优化失败的代码</a></h2><h3 id="对已经被arguments引用的参数重新赋值"><a href="#对已经被arguments引用的参数重新赋值" class="headerlink" title="对已经被arguments引用的参数重新赋值"></a>对已经被arguments引用的参数重新赋值</h3><p>###<br>允许使用原生函数<br>node –allow-natives-syntax</p>
-<p>Built in functions<br>这些內建函数能在src/runtime/runtime.h; CodeStubAssembler; src/builtins/builtins.h;里找到<br>%HaveSameMap(a, b) 两个对象是否有相同的存储结构</p>
-<p>hidden class, 每个对象都会有个hiddenClass,当给一个对象添加新的属性的时候， V8会构造一个新的基于老的class构造一个新的HiddenClass.<br>这种结构被称作 “transition tree” 转换树;<br>当函数调用的参数的hiddenClass 与上次的不一致的时候， 便会导致函数的deopt.</p>
-<p>–trace-ic 可以调试对象的V8 的IC记录</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gjvzic000ip0s6i5qels0o" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gjwbju000ir3s6xx44mrdn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -524,11 +524,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/wxgame/download-source-code/">(no title)</a>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
           </li>
         
       </ul>
@@ -547,9 +547,6 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
     </div>
-  </div>
-  <div class="BbeiAn-info">
-
   </div>
 </footer>
     </div>

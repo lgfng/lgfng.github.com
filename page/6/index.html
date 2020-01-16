@@ -65,6 +65,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux/shell" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/linux/shell/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.645Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>shell.md</p>
+<h1 id="查看当前使用的shell"><a href="#查看当前使用的shell" class="headerlink" title="查看当前使用的shell"></a>查看当前使用的shell</h1><ul>
+<li>echo $SHELL</li>
+<li>echo $0<br><a href="http://rickie622.blog.163.com/blog/static/212388112011213407503/" target="_blank" rel="noopener">more</a></li>
+</ul>
+<h1 id="切换-shell"><a href="#切换-shell" class="headerlink" title="切换 shell"></a>切换 shell</h1><p><code>chsh -s {shell path} {username}</code></p>
+<h1 id="if"><a href="#if" class="headerlink" title="if"></a>if</h1><p><a href="http://www.cnblogs.com/276815076/archive/2011/10/30/2229286.html" target="_blank" rel="noopener">shell if</a></p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p><a href="https://www.cnblogs.com/gaochsh/p/6901809.html" target="_blank" rel="noopener">linux shell 字符串操作详解 （长度，读取，替换，截取，连接，对比，删除，位置 ）</a></p>
+<h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h1><p><a href="http://www.cnblogs.com/dong008259/archive/2011/12/09/2282679.html" target="_blank" rel="noopener">linux之cut用法</a><br>cut 用于将一个文件或输入按指定规则切分成多个部分，并按需输出</p>
+<ol>
+<li>其语法格式为：<br><code>cut  [-bn] [file]</code> 或 <code>cut [-c] [file]</code>  或  <code>cut [-df] [file]</code></li>
+</ol>
+<ul>
+<li>使用说明<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。<br>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。</li>
+<li>主要参数<br>-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。<br>-c ：以字符为单位进行分割。<br>-d ：自定义分隔符，默认为制表符。<br>-f ：与-d一起使用，指定显示哪个区域。<br>-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的<br>范围之内，该字符将被写出；否则，该字符将被排除。</li>
+</ul>
+<ol start="2">
+<li>cut一般以什么为依据呢? 也就是说，我怎么告诉cut我想定位到的剪切内容呢?<br>cut命令主要是接受三个定位方法：</li>
+</ol>
+<ul>
+<li>字节（bytes），用选项-b</li>
+<li>字符（characters），用选项-c</li>
+<li>域（fields），用选项-f</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/linux/shell/" data-id="ck5gjwbkj001hr3s6fjk9asf3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-lua/lua正则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/16/lua/lua正则/" class="article-date">
@@ -129,75 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lua/lua正则/" data-id="ck5gjvzj1001hp0s66kxiqwag" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-lua/ltable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/lua/ltable/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.645Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Table</span> &#123;</span></span><br><span class="line">  CommonHeader;</span><br><span class="line">  lu_byte flags;  <span class="comment">/* 1&lt;&lt;p means tagmethod(p) is not present */</span> </span><br><span class="line">  lu_byte lsizenode;  <span class="comment">/* log2 of size of `node' array */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Table</span> *<span class="title">metatable</span>;</span></span><br><span class="line">  TValue *<span class="built_in">array</span>;  <span class="comment">/* array part */</span></span><br><span class="line">  Node *node;</span><br><span class="line">  Node *lastfree;  <span class="comment">/* any free position is before this position */</span></span><br><span class="line">  GCObject *gclist;</span><br><span class="line">  <span class="keyword">int</span> sizearray;  <span class="comment">/* size of `array' array */</span></span><br><span class="line">&#125; Table;</span><br></pre></td></tr></table></figure>
-<p>Table 的数据结构定义在<code>lobject.h</code>中,</p>
-<ul>
-<li>flags 标识位, 标识是否设置了对应的metamethod </li>
-<li>lsizenode 存储node部分的长度的 log2对数, 使用的时候需要还原回来</li>
-<li>metatable 元方法， 定义了一些方法</li>
-<li>array 数组部分， 直接存储TValue</li>
-<li>node  hash部分</li>
-<li>lastfree 永远指向最后一个可用的结点， 当找不到的时候， 需要重新rehash</li>
-<li>sizearray 数组部分长度</li>
-</ul>
-<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
-<li>luaH_getn<br>  判断</li>
-<li>luaH_set<br>  <code>lua_Hset</code>并不真正设置值， 而是返回该key的结点。<br>  先尝试调用<code>luaH_get</code>, 如果返回nil,则使用<code>newkey</code>得到一个新的结点并返回 。</li>
-<li>luaH_get</li>
-<li>luaH_next</li>
-<li>newkey<br>  首先根据key的hash值找到对应位置。然后判断该位置是否被占用<pre><code>如果没有，则直接赋值。 
-否则， 判断当前结点的`hash位置`是不是这里
-    如果不是，则把它放到合适的位置，放到它自己的主位置， 或者找其他空节点，并调整对应key的结点链表。
-    如果是，根据`lastfree`找可用结点。
-        如果没有可用结点， 则`rehash`。
-        有则插入结点， 并将该结点链接到该key对应的链表末尾。
-</code></pre></li>
-<li>rehash<br>  统计当前<code>table</code>中key为数字(且在最大数组下标范围内)的结点， 和总的结点数。<br>  然后重新计算需要的数组大小<code>computesizes</code>，并分配内存<code>resize</code>。</li>
-</ul>
-<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>看到一段神奇的代码，用于将<code>lua_number(double)</code> 快速转换成<code>int</code>.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> luai_Cast &#123; <span class="keyword">double</span> l_d; <span class="keyword">long</span> l_l; &#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lua_number2int(i,d) \</span></span><br><span class="line">  &#123; <span class="keyword">volatile</span> <span class="keyword">union</span> luai_Cast u; u.l_d = (d) + <span class="number">6755399441055744.0</span>; (i) = u.l_l; &#125;</span><br></pre></td></tr></table></figure></p>
-<p>这块代码能生效的原理是利用了<code>IEEE754</code>标准中对浮点数的存数规则。<br>double在内存中， 占用64个比特位， 使用符号数值表示法。其中:</p>
-<ul>
-<li>0-51位为尾数部分</li>
-<li>52-63位为指数部分<ul>
-<li>第63位为指数符号位。</li>
-</ul>
-</li>
-<li>64位为符号位</li>
-</ul>
-<p>浮点数运算规则: 先对齐指数部分， 然后尾数部分相加，最后规范化。<br>6755399441055744.0 = 00000011 <em> 2^52.<br>所以当一个数与它相加的时候， 指数部分强行对齐到52， 尾数部分右移， 正好将所有的小数点之后的部分移调。<br>例： 8.75 = 1000.11 = 1.00011 </em> 2^3 次方， 对齐到52位后，右移49位，原有尾数保留3位,算上会跟着移下来的那个1， 最后得到<br>0000…1000。小数部分全部被移掉。<br>至于最后达成4舍5入效果， 则是由于CPU的舍入机制决定。</p>
-<p>将得到的尾数部分直接强制转换为整型(只会取后32个比特位)，即可得到取整的效果。</p>
-<ul>
-<li><p>为什么用1.5<em>2^52, 而不是1</em>2^52次方呢？<br>因为当操作的数为负数的时候，使用1*2^52，会出现向最高位借位的情况， 导致最高位不为1，在最后规范化处理的时候， 无法保持指数部分为52. 结果异常。<br>为了使能操作负数，所以需要除了省略的最高位外， 还需要有一个比特位为1. </p>
-<p>因为整型只取低32位, 所以尾数部分的高20位都是随意的，只要不全为0就行，<br>所以理论上， 一共有2^20-1 个这样的神奇的数字。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lua/ltable/" data-id="ck5gjvzj2001jp0s6ny15ipaz" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lua/lua正则/" data-id="ck5gjwbkk001ir3s6tn2x0s7u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 挂载分区/" data-id="ck5gjvziq0017p0s6l8l7c5do" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 挂载分区/" data-id="ck5gjwbk70017r3s6ionju9cp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 私房菜/" data-id="ck5gjvzj0001gp0s62shnzxcd" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/linux/linux 私房菜/" data-id="ck5gjwbk80018r3s65l6yhv52" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/oc/oc/" data-id="ck5gjvzlb007jp0s6x76eq8es" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lang/oc/oc/" data-id="ck5gjwbmf007gr3s6mncy373n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/jenkins/" data-id="ck5gjvzhb0004p0s62oa92kg7" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/jenkins/" data-id="ck5gjwbiu0004r3s6jfah7s9f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,7 +556,66 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/json-schema/" data-id="ck5gjvzhc0005p0s621aef0o1" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/json-schema/" data-id="ck5gjwbiv0005r3s6v2lwe1is" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-lang/c++" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/lang/c++/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="缩窄错误"><a href="#缩窄错误" class="headerlink" title="缩窄错误"></a>缩窄错误</h1><p>当将一个范围更大的变量赋值给范围较小的变量时，如<code>int</code>到<code>short</code>, 就会出现缩窄错误。<br>但是正常赋值的话，编译不会有问题，部分编译器会有个警告，运行时可能会出现错误。</p>
+<ul>
+<li>使用列表初始化可以避免这种错误，它会直接在编译阶段抛出错误。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> large = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">float</span> small&#123;large&#125;; <span class="comment">//compile error</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="auto-类型推断"><a href="#auto-类型推断" class="headerlink" title="auto 类型推断"></a>auto 类型推断</h1><p>可以根据赋给变量的初值，自动推断出其类型。<br>也可用于函数返回类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> intNum = <span class="number">1</span>; <span class="comment">//int</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="constexpr-定义常量表达式"><a href="#constexpr-定义常量表达式" class="headerlink" title="constexpr 定义常量表达式"></a>constexpr 定义常量表达式</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">double</span> <span class="title">GetPi</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">22.0</span> / <span class="number">7</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">double</span> <span class="title">TwicePi</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * GetPi();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//常量表达式会在编译期间被替换为计算好的常量值。</span></span><br></pre></td></tr></table></figure>
+<h1 id="lambda-函数"><a href="#lambda-函数" class="headerlink" title="lambda 函数"></a>lambda 函数</h1><p><a href="parameter list">optional parameters</a>{ statements; }</p>
+<h1 id="new-和-delete"><a href="#new-和-delete" class="headerlink" title="new 和 delete"></a>new 和 delete</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用try_catch 处理分配异常。</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> * huge = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0x7fffffff</span>];</span><br><span class="line">&#125;<span class="keyword">catch</span>(bad_alloc)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用判断结果指针</span></span><br><span class="line"><span class="keyword">int</span> * huge2 = <span class="keyword">new</span>(nothrow) <span class="keyword">int</span>[<span class="number">0x7fffffff</span>];</span><br><span class="line"><span class="keyword">if</span>(huge2)&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"alloced successed"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"alloced failed"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><ol>
+<li>务必初始化指针变量，否则它将包含垃圾值。</li>
+<li>务必仅在指针有效时才使用它，否则程序可能崩溃。</li>
+<li>对于使用 new 分配的内存，一定要记得使用 delete 进行释放，否则应用程序将泄露内存.</li>
+<li>指针被delete之后不应该再访问它.</li>
+<li>不要对一个指针多次delete</li>
+</ol>
+<h2 id="指针与const"><a href="#指针与const" class="headerlink" title="指针与const"></a>指针与const</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据const 离谁更近， 则修饰谁。</span></span><br><span class="line"><span class="keyword">int</span>* <span class="keyword">const</span> ptr; <span class="comment">//常指针，指针指向的地址不能被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * ptr; <span class="comment">//指针指向的地址可以修改， 但是地址内部的内容可以修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> <span class="comment">//都不能修改</span></span><br></pre></td></tr></table></figure>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>为避免类的隐式转换，可以在构造函数前加<code>explicit</code>。</p>
+<h2 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h2><ol>
+<li>当函数参数使用值传递时， 对象会被复制一份， 然后在函数内使用。</li>
+<li>如果类没有复制构造函数， 那么会默认才用二进制复制的方式，指针是浅复制，可能会出问题。</li>
+<li>如果有复制构造函数， 则会通过复制构造函数实现复制。</li>
+<li>复制构造函数的参数必须按引用传递， 否则会不断调用自己。</li>
+<li>复制构造函数的参数最好使用<code>const</code></li>
+<li>除非万不得已， 不要将类成员声明为原始指针。</li>
+<li>使用原始指针的情况下， 必须要写复制构造函数和复制赋值运算符。</li>
+</ol>
+<h2 id="移动构造函数"><a href="#移动构造函数" class="headerlink" title="移动构造函数"></a>移动构造函数</h2><h2 id="特殊的类"><a href="#特殊的类" class="headerlink" title="特殊的类"></a>特殊的类</h2><h3 id="禁止复制"><a href="#禁止复制" class="headerlink" title="禁止复制"></a>禁止复制</h3><p>私有的复制构造函数，私有的赋值运算符重载</p>
+<h3 id="单例类"><a href="#单例类" class="headerlink" title="单例类"></a>单例类</h3><p>禁止复制的类， 并且私有的构造函数， 提供静态实例</p>
+<h3 id="禁止在栈中实例化的类"><a href="#禁止在栈中实例化的类" class="headerlink" title="禁止在栈中实例化的类"></a>禁止在栈中实例化的类</h3><p>私有的析构函数, 并提供静态函数，在类内部delete<br>在栈中实例化的对象，出栈时自动析构， 私有的析构函数会导致析构失败。</p>
+<h2 id="使用子类调用父类方法"><a href="#使用子类调用父类方法" class="headerlink" title="使用子类调用父类方法"></a>使用子类调用父类方法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当子类中只重载了父类部分函数时，未重载的同名函数会被隐藏。</span></span><br><span class="line">sub.Base::func();</span><br><span class="line"><span class="comment">//使用using关键字</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span>:</span> <span class="keyword">public</span> Base</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="keyword">using</span> Base::func;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//重载所有版本</span></span><br></pre></td></tr></table></figure>
+<h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>禁止继承</p>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>std::thread<br>std::mutex<br>std::lock_guard<br>std::unique_lock<br>std::future<br>std::packaged_task<br>std::condition_variable</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/lang/c++/" data-id="ck5gjwbk50013r3s6j8grdxan" class="article-share-link">Share</a>
       
       
     </footer>
@@ -834,7 +875,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/c#/" data-id="ck5gjvzin0013p0s668map8s5" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lang/c#/" data-id="ck5gjwbk60014r3s6hzpl2ys6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -866,66 +907,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/go/" data-id="ck5gjvzio0014p0s60vd5wgbr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-lang/c++" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/lang/c++/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.643Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="缩窄错误"><a href="#缩窄错误" class="headerlink" title="缩窄错误"></a>缩窄错误</h1><p>当将一个范围更大的变量赋值给范围较小的变量时，如<code>int</code>到<code>short</code>, 就会出现缩窄错误。<br>但是正常赋值的话，编译不会有问题，部分编译器会有个警告，运行时可能会出现错误。</p>
-<ul>
-<li>使用列表初始化可以避免这种错误，它会直接在编译阶段抛出错误。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> large = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">float</span> small&#123;large&#125;; <span class="comment">//compile error</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="auto-类型推断"><a href="#auto-类型推断" class="headerlink" title="auto 类型推断"></a>auto 类型推断</h1><p>可以根据赋给变量的初值，自动推断出其类型。<br>也可用于函数返回类型<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> intNum = <span class="number">1</span>; <span class="comment">//int</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="constexpr-定义常量表达式"><a href="#constexpr-定义常量表达式" class="headerlink" title="constexpr 定义常量表达式"></a>constexpr 定义常量表达式</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">double</span> <span class="title">GetPi</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">22.0</span> / <span class="number">7</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">double</span> <span class="title">TwicePi</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * GetPi();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//常量表达式会在编译期间被替换为计算好的常量值。</span></span><br></pre></td></tr></table></figure>
-<h1 id="lambda-函数"><a href="#lambda-函数" class="headerlink" title="lambda 函数"></a>lambda 函数</h1><p><a href="parameter list">optional parameters</a>{ statements; }</p>
-<h1 id="new-和-delete"><a href="#new-和-delete" class="headerlink" title="new 和 delete"></a>new 和 delete</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用try_catch 处理分配异常。</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> * huge = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0x7fffffff</span>];</span><br><span class="line">&#125;<span class="keyword">catch</span>(bad_alloc)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用判断结果指针</span></span><br><span class="line"><span class="keyword">int</span> * huge2 = <span class="keyword">new</span>(nothrow) <span class="keyword">int</span>[<span class="number">0x7fffffff</span>];</span><br><span class="line"><span class="keyword">if</span>(huge2)&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"alloced successed"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"alloced failed"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><ol>
-<li>务必初始化指针变量，否则它将包含垃圾值。</li>
-<li>务必仅在指针有效时才使用它，否则程序可能崩溃。</li>
-<li>对于使用 new 分配的内存，一定要记得使用 delete 进行释放，否则应用程序将泄露内存.</li>
-<li>指针被delete之后不应该再访问它.</li>
-<li>不要对一个指针多次delete</li>
-</ol>
-<h2 id="指针与const"><a href="#指针与const" class="headerlink" title="指针与const"></a>指针与const</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据const 离谁更近， 则修饰谁。</span></span><br><span class="line"><span class="keyword">int</span>* <span class="keyword">const</span> ptr; <span class="comment">//常指针，指针指向的地址不能被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * ptr; <span class="comment">//指针指向的地址可以修改， 但是地址内部的内容可以修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> <span class="comment">//都不能修改</span></span><br></pre></td></tr></table></figure>
-<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>为避免类的隐式转换，可以在构造函数前加<code>explicit</code>。</p>
-<h2 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h2><ol>
-<li>当函数参数使用值传递时， 对象会被复制一份， 然后在函数内使用。</li>
-<li>如果类没有复制构造函数， 那么会默认才用二进制复制的方式，指针是浅复制，可能会出问题。</li>
-<li>如果有复制构造函数， 则会通过复制构造函数实现复制。</li>
-<li>复制构造函数的参数必须按引用传递， 否则会不断调用自己。</li>
-<li>复制构造函数的参数最好使用<code>const</code></li>
-<li>除非万不得已， 不要将类成员声明为原始指针。</li>
-<li>使用原始指针的情况下， 必须要写复制构造函数和复制赋值运算符。</li>
-</ol>
-<h2 id="移动构造函数"><a href="#移动构造函数" class="headerlink" title="移动构造函数"></a>移动构造函数</h2><h2 id="特殊的类"><a href="#特殊的类" class="headerlink" title="特殊的类"></a>特殊的类</h2><h3 id="禁止复制"><a href="#禁止复制" class="headerlink" title="禁止复制"></a>禁止复制</h3><p>私有的复制构造函数，私有的赋值运算符重载</p>
-<h3 id="单例类"><a href="#单例类" class="headerlink" title="单例类"></a>单例类</h3><p>禁止复制的类， 并且私有的构造函数， 提供静态实例</p>
-<h3 id="禁止在栈中实例化的类"><a href="#禁止在栈中实例化的类" class="headerlink" title="禁止在栈中实例化的类"></a>禁止在栈中实例化的类</h3><p>私有的析构函数, 并提供静态函数，在类内部delete<br>在栈中实例化的对象，出栈时自动析构， 私有的析构函数会导致析构失败。</p>
-<h2 id="使用子类调用父类方法"><a href="#使用子类调用父类方法" class="headerlink" title="使用子类调用父类方法"></a>使用子类调用父类方法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当子类中只重载了父类部分函数时，未重载的同名函数会被隐藏。</span></span><br><span class="line">sub.Base::func();</span><br><span class="line"><span class="comment">//使用using关键字</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span>:</span> <span class="keyword">public</span> Base</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="keyword">using</span> Base::func;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//重载所有版本</span></span><br></pre></td></tr></table></figure>
-<h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>禁止继承</p>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>std::thread<br>std::mutex<br>std::lock_guard<br>std::unique_lock<br>std::future<br>std::packaged_task<br>std::condition_variable</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/lang/c++/" data-id="ck5gjvzio0015p0s6k67koh2g" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/lang/go/" data-id="ck5gjwbk60015r3s62rxa9s32" class="article-share-link">Share</a>
       
       
     </footer>
@@ -997,11 +979,11 @@
           </li>
         
           <li>
-            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+            <a href="/2020/01/16/tools/开发环境使用工具/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/01/16/wxgame/download-source-code/">(no title)</a>
+            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
           </li>
         
       </ul>
@@ -1020,9 +1002,6 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
     </div>
-  </div>
-  <div class="BbeiAn-info">
-
   </div>
 </footer>
     </div>
