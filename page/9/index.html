@@ -81,68 +81,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gcd34l000dsls6c98kpk07" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cocos/console" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/cocos/console/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在程序中添加监听<br>Director::getInstance()-&gt;getConsole-&gt;listenOnTCP(5678)</p>
-<p>使用nc 命令发起连接<br>nc localhost 5678</p>
-<p>通过管道发送内容至nc<br>echo content | nc </p>
-<p>在console 环境下, 输入help 查看帮助 </p>
-<p>touch 的坐标是相对于glView的， 坐标原点在左上角，所以使用的时候， 要做处理</p>
-<p>socat 一个端口转发工具， 或许可以用来模拟发送协议</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gcd34p000jsls6u71x8658" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-algorithm/learn_algorithm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/algorithm/learn_algorithm/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习小象学院算法课程笔记</p>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>将一个字符串循环左移, 要求时间复杂度为O(N), 空间复杂度为O(1).<br>理论： (A’B’)’ = (BA)’<br>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (from &lt; to)&#123;</span><br><span class="line">        <span class="keyword">char</span> t = str[from];</span><br><span class="line">        str[from ++] = str[to];</span><br><span class="line">        str[to --] = t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    reverse(str, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    reverse(str, k, n - <span class="number">1</span>);</span><br><span class="line">    reverse(str, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><p>最长公共子序列</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gcd34r000lsls60mlq24ep" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gcdibk000dvbs6sc17j1fy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -185,7 +124,36 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gcd34s000msls6r2cwa9gn" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gcdic7000kvbs6twqcmkvb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-algorithm/learn_algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/algorithm/learn_algorithm/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习小象学院算法课程笔记</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>将一个字符串循环左移, 要求时间复杂度为O(N), 空间复杂度为O(1).<br>理论： (A’B’)’ = (BA)’<br>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (from &lt; to)&#123;</span><br><span class="line">        <span class="keyword">char</span> t = str[from];</span><br><span class="line">        str[from ++] = str[to];</span><br><span class="line">        str[to --] = t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    reverse(str, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    reverse(str, k, n - <span class="number">1</span>);</span><br><span class="line">    reverse(str, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><p>最长公共子序列</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gcdic8000lvbs6vxa3ifpl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,7 +186,39 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gcd34s000nsls678k7pqew" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gcdic8000mvbs66lqwnqyh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cocos/console" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/cocos/console/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在程序中添加监听<br>Director::getInstance()-&gt;getConsole-&gt;listenOnTCP(5678)</p>
+<p>使用nc 命令发起连接<br>nc localhost 5678</p>
+<p>通过管道发送内容至nc<br>echo content | nc </p>
+<p>在console 环境下, 输入help 查看帮助 </p>
+<p>touch 的坐标是相对于glView的， 坐标原点在左上角，所以使用的时候， 要做处理</p>
+<p>socat 一个端口转发工具， 或许可以用来模拟发送协议</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gcdic9000nvbs6jpwshg0b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gcd34t000osls61jqtwteg" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gcdica000pvbs6gmb3ud5t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gcd34n000fsls6dkcoirnt" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gcdic5000fvbs6qb4wsjvo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +322,37 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gcd34n000gsls6m55l6qqe" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gcdic5000gvbs6uaciw6y7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-algorithm/algs4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/algorithm/algs4/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://algs4.cs.princeton.edu/home/" target="_blank" rel="noopener">官网</a></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>排序成本模型：在研究排序算法时， 我们需要计算比较和交换的数量，对于不交换的算法， 我们会计算访问数组的次数。</p>
+<p>N = 问题规模</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>找到数组中最小的元素， 然后将它交换到最前方，然后依次找到第i小的，并交换到i - 1位。<br>选择排序的总消耗次数约为: (N * (N - 1)) / 2 次比较 和 N - 1 次交换.<br>选择排序的消耗 与 输入数据的原始顺序无关。<br>交换次数是最少的， 因为它每次交换都代表着一个数字被正确的排序。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/algorithm/algs4/" data-id="ck5gcdic6000hvbs6e96arxyt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,111 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gcd34o000hsls61q2l9ivt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-H5/vue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/H5/vue/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><ul>
-<li>el<br>绑定到的结点</li>
-<li>methods<br>成员函数</li>
-<li>data<br>成员属性</li>
-<li><p>computed<br>计算属性<br>基于他们的依赖进行，只有当依赖属性发生变化时，计算属性才会重新求值。<br>当不需要缓存时，可以使用 <code>method</code> 组合 <code>双大括号法</code> 来替代。<br>直接给计算属性一个方法时，它默认是该属性的 <code>getter</code> 方法。<br>也可以给计算属性设置 <code>setter</code> 方法，</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">    attr:&#123;</span><br><span class="line">        <span class="keyword">get</span> : function()&#123; <span class="keyword">return</span> val;&#125;,</span><br><span class="line">        <span class="keyword">set</span> : function(val)&#123;&#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>watch<br>侦听属性，watch 的属性为 data 中声明的属性， 当属性值变化的时候，会调用 watch 的方法。</p>
-</li>
-<li>components</li>
-</ul>
-<h2 id="内置属性方法"><a href="#内置属性方法" class="headerlink" title="内置属性方法"></a>内置属性方法</h2><p>$data<br>$el<br>$watch</p>
-<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><a href="https://cn.vuejs.org/images/lifecycle.png" target="_blank" rel="noopener">生命周期图</a><br>beforeCreate<br>created<br>beforeMount<br>mounted<br>beforeUpdate<br>updated<br>beforeDestory<br>destoryed</p>
-<h2 id="Vue-component"><a href="#Vue-component" class="headerlink" title="Vue.component"></a>Vue.component</h2><p>声明自定义组件<br>props<br>template</p>
-<h1 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h1><h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><ul>
-<li>“Mustache”语法(双大括号)
-不能作用在 HTML特性中， 这时应该使用 v-bind 指令。</li>
-<li>v-html<br>将属性输出为真正的html<br>只应该对信任内容使用该指令，绝不要对用户提供的内容使用插值，否则可能会导致xss 攻击。</li>
-<li>数据绑定支持完全的 JavaScript 表达式。<br>会在所属 Vue 实例的数据作用于下被解析<br>只能支持表达式，语句或流控制都不会生效<br>除了 Math 和 Date， 不能访问任何别的全局变量。<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3>部分指令能接收一个“参数”，在指令后以冒号(:)表示。<br>例如： <code>v-on:click=&quot;funcName&quot;</code><h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3>修饰回复是以半角句号<code>.</code> 知名的特殊后缀， 用于指出一个指令应该以特殊方式绑定。</li>
-<li><code>.prevent</code> 告诉 <code>v-on</code> 指令对于触发的事件调用 <code>event.preventDefault()</code><h3 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h3></li>
-<li>v-bind 使用 :<br><code>&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</code><br>等价于<br><code>&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</code></li>
-<li>v-on 使用 @<br><code>&lt;a v-on:click=&quot;doSome&quot;&gt;&lt;/a&gt;</code><br>等价于<br><code>&lt;a @click=&quot;doSom&quot;&gt;&lt;/a&gt;</code><h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3>v-for=”todo in todos”<br>v-bind<br>v-on<br>v-model<br>v-once<br>v-html</li>
-</ul>
-<h1 id="绑定Class"><a href="#绑定Class" class="headerlink" title="绑定Class"></a>绑定Class</h1><h2 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"active"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="comment">//active class 是否存在取决于 isActive 属性</span></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"&#123;active: isActive&#125;"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObj"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">data：&#123;</span><br><span class="line">    classObj:&#123;</span><br><span class="line">        active : <span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;<span class="attr">activeClass</span>:<span class="string">'active'</span>&#125;</span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"[activeClass]"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"[&#123;active: isActive&#125;]"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"[isActive ? activeClass : '']"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="用在组件上"><a href="#用在组件上" class="headerlink" title="用在组件上"></a>用在组件上</h2><p>在一个自定义组件上使用 class 时，它们会被添加到该组件的根元素上面，已经存在的类不会被覆盖。</p>
-<h1 id="绑定-Style"><a href="#绑定-Style" class="headerlink" title="绑定 Style"></a>绑定 Style</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    styleObject:&#123;</span><br><span class="line">        color: <span class="string">'red'</span>,</span><br><span class="line">        fontSize: <span class="string">'13px'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div v-bind:style=<span class="string">"styleObject"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="comment">//也可以直接将对象写在模板中</span></span><br></pre></td></tr></table></figure>
-<h2 id="也可以使用数组语法，-将多个样式对象应用到同一元素上"><a href="#也可以使用数组语法，-将多个样式对象应用到同一元素上" class="headerlink" title="也可以使用数组语法， 将多个样式对象应用到同一元素上"></a>也可以使用数组语法， 将多个样式对象应用到同一元素上</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>当使用需要添加浏览器引擎前缀的 CSS 属性是， Vue 会自动检测并添加。</p>
-<h1 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h1><p>v-if<br>v-else<br>v-else-if</p>
-<h2 id="使用-template-控制多个元素"><a href="#使用-template-控制多个元素" class="headerlink" title="使用 template 控制多个元素"></a>使用 template 控制多个元素</h2><p>template 并不会出现在最终的渲染结果中。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="元素复用"><a href="#元素复用" class="headerlink" title="元素复用"></a>元素复用</h2><p>当你在 if else 之间来回切换的时候，如果有相同的元素， Vue 会复用它们.<br>如果你不想它们被复用，可以使用 key 属性来标识它们。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span> <span class="attr">key</span>=<span class="string">"username-input"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your email address"</span> <span class="attr">key</span>=<span class="string">"email-input"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>上例中 <code>&lt;label&gt;</code> 元素会被复用， 但是 <code>&lt;input&gt;</code> 不会， 因为它们有各自不同的key.</p>
-<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h2><p>v-show 也可以根据条件来控制元素的展示。 不同的是 v-show 会始终存在于 DOM 中， 只不过切换了 <code>display</code> 属性。</p>
-<h1 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h1><p>v-for</p>
-<ul>
-<li>v-for 有对父作用域的完全访问。</li>
-<li>可以遍历数组或对象<h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2></li>
-<li>可以有第二个可选的参数为当前项的索引<h2 id="遍历对象"><a href="#遍历对象" class="headerlink" title="遍历对象"></a>遍历对象</h2></li>
-<li>可以有第二个可选的参数为当前项的键</li>
-<li>可以有第三个可选的参数为当前项的索引</li>
-<li>按 Object.keys() 的结果遍历， 不保证在不同的 JS 引擎中有相同的便利顺序<h2 id="key-属性"><a href="#key-属性" class="headerlink" title="key 属性"></a>key 属性</h2></li>
-<li>更新时， 默认使用 “就地复用” 策略，即按索引复用</li>
-<li>可以给子节点绑定一个 key 属性， 以便 vue 能根据 key 快速的复用之前的子节点。<h2 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h2>vue 能检测到大部分对数组的方法操作。但是有两种情况检测不到。</li>
-</ul>
-<ol>
-<li>当你直接利用索引设置新项时<br>vm.items[index] = newValue<br>可以使用下面几种方式来触发状态更新。</li>
-</ol>
-<ul>
-<li>Vue.set(vm.items, index, newValue)</li>
-<li>vm.items.splice(index, 1, newValue)</li>
-<li>vm.$set(vm.items, index, newValue)</li>
-</ul>
-<ol start="2">
-<li>当你直接修改数组长度时<br>vm.length = newLength<br>使用下面方法触发更新。</li>
-</ol>
-<ul>
-<li>vm.items.splice(newLength)<h2 id="对象操作"><a href="#对象操作" class="headerlink" title="对象操作"></a>对象操作</h2>vue 不能检测到对象属性的添加或删除。<br>可以使用 <code>Vue.set</code> 来触发属性更新<h2 id="可以与-计算属性或-method-结合使用"><a href="#可以与-计算属性或-method-结合使用" class="headerlink" title="可以与 计算属性或 method 结合使用"></a>可以与 计算属性或 method 结合使用</h2><h2 id="范围取值"><a href="#范围取值" class="headerlink" title="范围取值"></a>范围取值</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-for</span>=<span class="string">"n in 10"</span>&gt;</span>&#123;&#123;n&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="与-v-if"><a href="#与-v-if" class="headerlink" title="与 v-if"></a>与 v-if</h2><p>v-for 优先级更高， 会遍历 v-for 的所有属性， 然后对每个属性执行 v-if</p>
-<h1 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h1><p>v-on</p>
-<ul>
-<li>直接在事件监听中触发 js 代码</li>
-<li>指向一个方法名称</li>
-<li>监听中调用方法</li>
-<li>监听中使用特殊变量 $event 将事件传入处理方法<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2>事件修饰符可以串联使用， 串联顺序很重要</li>
-<li>.stop</li>
-<li>.prevent</li>
-<li>.capture</li>
-<li>.self</li>
-<li>.once</li>
-<li>.passive<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2><code>v.on:keyup.enter=&quot;submit&quot;</code> 监听了 enter 键被按下释放<br><code>v.on:keyup.ctrl.enter=&quot;submit&quot;</code> 监听了 ctrl + enter 键被按下释放<h3 id="exact"><a href="#exact" class="headerlink" title=".exact"></a>.exact</h3>有且只有定义的按键被按下时才会触发.<h3 id="自定义按键修饰符别名"><a href="#自定义按键修饰符别名" class="headerlink" title="自定义按键修饰符别名"></a>自定义按键修饰符别名</h3>Vue.config.keyCodes.f1 = 112</li>
-</ul>
-<h1 id="表单输入绑定"><a href="#表单输入绑定" class="headerlink" title="表单输入绑定"></a>表单输入绑定</h1><p>v-model 可以在表单元素上创建双向数据绑定</p>
-<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><ul>
-<li>组件没有 el 选项</li>
-<li>组件的 data 必须是一个函数，这样每个实例都会有独立的数据域<h2 id="属性-props"><a href="#属性-props" class="headerlink" title="属性 props"></a>属性 props</h2><h2 id="向父级组件发送消息"><a href="#向父级组件发送消息" class="headerlink" title="向父级组件发送消息"></a>向父级组件发送消息</h2><code>$emit(eventName, data)</code> 可以向父组件发送消息<br>父组件可以使用 <code>v-on:eventName=func</code> 处理消息</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gcd34p000isls6phc48mhf" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gcdic6000ivbs6q6wek502" class="article-share-link">Share</a>
       
       
     </footer>

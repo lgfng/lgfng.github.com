@@ -65,9 +65,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-db/mongo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-daily/H5sdk接入方式对比" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/db/mongo/" class="article-date">
+    <a href="/2020/01/16/daily/H5sdk接入方式对比/" class="article-date">
   <time datetime="2020-01-16T04:11:46.641Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -77,43 +77,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="mac-os"><a href="#mac-os" class="headerlink" title="mac os"></a>mac os</h2><p>brew install mongodb</p>
-<h2 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h2><p><a href="https://www.cnblogs.com/kimkat/p/9192785.html" target="_blank" rel="noopener">设置远程连接访问mongodb数据库</a></p>
-<p>##</p>
-<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p><code>db.foo.insert({&quot;bar&quot;:&quot;baz&quot;})</code></p>
-<ul>
-<li>导入原始数据<br>mongoimport<h3 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h3>传递一个由文档组成的数组给数据库,能实现批量插入, 加快运行速度.<br>批量插入有最大长度限制，<h3 id="插入原理"><a href="#插入原理" class="headerlink" title="插入原理"></a>插入原理</h3>驱动程序将数据转换成 <code>BSON</code> 数据格式传入数据库，数据库解析 <code>BSON</code> 并检查大小和是否包含<code>_id</code>键。<br>然后直接存入数据库中。<br>–objcheck选项,启动插入之前检查文档结构<br><code>Object.bsonsize(doc)</code> 计算文档的转换为bson的大小 </li>
-</ul>
-<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
-<li><code>db.users.remove()</code><br>删除所有文档,但不删除集合本身</li>
-<li><code>db.users.remove($matcher)</code><br>删除匹配 <code>matcher</code> 的文档<br>数据删除是永久性的，不能撤销，也不能恢复.</li>
-<li>如果要清除整个集合，那么直接删除集合会更快.<br><code>db.drop_collection(&#39;bar&#39;)</code><h2 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h2><code>db.users.update($matcher, $modifier)</code></li>
-<li>更新是原子的,先到达</li>
-<li><code>modifier</code> 会替换整个文档内容.</li>
-<li>当<code>matcher</code>匹配到多个文档的时候，更新会失败。在<code>shell</code>中会报错，在其他程序中使用<code>getLastError</code>可以获取错误信息。 <h3 id="更新修改器"><a href="#更新修改器" class="headerlink" title="更新修改器"></a>更新修改器</h3>当文档只有一部分要更新时，可以更高效的更新。</li>
-<li>使用修改器时，”_id”不能修改.</li>
-<li>更新修改器是原子的<h4 id="修改键值对"><a href="#修改键值对" class="headerlink" title="修改键值对"></a>修改键值对</h4>$set 用来指定一个键的值，如果这个键不存在，则创建它.<br>$set 可以修改除<code>_id</code>之外的一切, 包括数据类型。<br>$unset 用于将键完全删除。<h4 id="增加和减少"><a href="#增加和减少" class="headerlink" title="增加和减少"></a>增加和减少</h4></li>
-<li>$inc 用于使指定键的值增加, 如果键不存在，则直接将键值设为增加量;<br>只能用于整数、长整数和双精度浮点数<br><code>db.users.update({name:&#39;vollen&#39;}, {&quot;$inc&quot;:{&quot;age&quot;, 1}})</code><h4 id="数组修改器"><a href="#数组修改器" class="headerlink" title="数组修改器"></a>数组修改器</h4>只能用在值为数组的键上</li>
-<li>$push<br>如果指定键存在，则向已有数组末尾加入元素，否则会创建一个新数组。</li>
-<li>$ne<br>查找到不含值得数组</li>
-<li>$addToSet<br>将值添加到数组，如果已经存在，则不处理</li>
-<li><p>$each</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.users.update(&#123;<span class="attr">_id</span>:ObjectId(<span class="string">"xxxxx"</span>)&#125;,</span><br><span class="line">    &#123;<span class="string">"$addToSet"</span>:</span><br><span class="line">        &#123;<span class="string">"emails"</span>:</span><br><span class="line">            &#123;<span class="string">"$each"</span>:</span><br><span class="line">                [<span class="string">'vollen@a.com'</span>, <span class="string">'vollen@b.com'</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>$pop<br>将值当做队列来使用。<br>从数组末尾删除<br><code>{$pop:{key: 1}}</code><br>从数组开头删除<br><code>{$pop:{key: -1}}</code></p>
-</li>
-<li>$pull<br>使用特定条件将所有匹配项从数组中删除元素<br><code>{$pill:$matcher}</code></li>
-<li>定位器<br><code>db.user.update({&quot;friends.name&quot;:&quot;vollen&quot;}, {&quot;$set&quot;:{&quot;friends.$.name&quot;:&quot;vollen2&quot;}})</code>;<br>找到好友数组中，”name” 为 “vollen” 的数据, 并将这一条数据的 “name” 改为 “vollen2”;<br><code>$</code>用于定位数组中匹配的那一项，每次只能更新第一个匹配的元素.<h3 id="修改器速度"><a href="#修改器速度" class="headerlink" title="修改器速度"></a>修改器速度</h3></li>
-<li>$inc 原地就能修改，所以非常快</li>
-<li>$set 如果不修改文档大小，就会非常快。否则性能会下降。</li>
-<li><code>数组修改器</code>可能更改文档大小，会慢一些<h3 id="upsert"><a href="#upsert" class="headerlink" title="upsert"></a>upsert</h3><code>update</code> 第三个函数传入<code>true</code>,当更新的文档不存在时，会执行插入操作</li>
-</ul>
-<h2 id="游标-cursor"><a href="#游标-cursor" class="headerlink" title="游标 cursor"></a>游标 cursor</h2><h2 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h2><p>$maxscan 指定查询最多扫描的文档数量<br>$min 查询的开始条件<br>$max 查询的结束条件</p>
+        <p>现在H5 接入SDK 有两种不同的配置方式， 各有优劣， 在这里分析一下：</p>
+<h1 id="全部包含，-按需取"><a href="#全部包含，-按需取" class="headerlink" title="全部包含， 按需取"></a>全部包含， 按需取</h1><p>一种是， 所有的渠道的接入代码都写在一个文件里， 然后通过不同的html文件，配置对应的渠道参数，读取到不同的实现。</p>
+<h1 id="根据不同的平台，打包不同代码"><a href="#根据不同的平台，打包不同代码" class="headerlink" title="根据不同的平台，打包不同代码"></a>根据不同的平台，打包不同代码</h1><p>另一种是，每个渠道有独立的接入文件， 打包的时候， 根据不同的渠道， 将不同的对接文件打入最终包体。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/db/mongo/" data-id="ck5gcd34y000xsls6ey308uyl" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/H5sdk接入方式对比/" data-id="ck5gcdice000xvbs60xwsikpu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/egret/egret小刚/" data-id="ck5gcd34z000ysls6imsdhaio" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/egret/egret小刚/" data-id="ck5gcdicf000yvbs6mgkkmi93" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/frontend/UserAgent/" data-id="ck5gcd350000zsls6s0a1ehf6" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/frontend/UserAgent/" data-id="ck5gcdicg000zvbs6rva0lhd9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-4/" data-id="ck5gcd34t000psls69mgxiwmm" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-4/" data-id="ck5gcdic9000ovbs61bqp2jm6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-8/" data-id="ck5gcd34u000qsls69pa2ry0l" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2017-8/" data-id="ck5gcdicb000qvbs6p5bj17vn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +286,34 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2018-10/" data-id="ck5gcd34v000rsls6gow6lbuf" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2018-10/" data-id="ck5gcdicb000rvbs64a32za7i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-daily/2018-11" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/daily/2018-11/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.640Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="release-脚本"><a href="#release-脚本" class="headerlink" title="release 脚本"></a>release 脚本</h1><p>根据当前 <code>hotfix</code> 分支名自动生成版本号等参数。 不再需要输入一堆参数,减少错误率。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2018-11/" data-id="ck5gcdicc000svbs61ntx1taf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2019-10/" data-id="ck5gcd34w000ssls602t0rklp" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2019-10/" data-id="ck5gcdicc000tvbs6daujppr1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -360,9 +358,9 @@
 
 
   
-    <article id="post-daily/2018-11" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-daily/2019-11" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/daily/2018-11/" class="article-date">
+    <a href="/2020/01/16/daily/2019-11/" class="article-date">
   <time datetime="2020-01-16T04:11:46.640Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -372,12 +370,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="release-脚本"><a href="#release-脚本" class="headerlink" title="release 脚本"></a>release 脚本</h1><p>根据当前 <code>hotfix</code> 分支名自动生成版本号等参数。 不再需要输入一堆参数,减少错误率。 </p>
+        <p><a href="https://forum.cocos.org/t/cocos-creator-web-mobile-playable-ad-html/84260" target="_blank" rel="noopener">将 creator 打包成单 html 文件，用于广告互动游戏</a><br><a href="https://github.com/behavior3/behavior3editor" target="_blank" rel="noopener">behavior3 行为树编辑器</a></p>
+<p><a href="https://forum.cocos.org/t/topic/62296" target="_blank" rel="noopener">Cocos creator 加载首屏</a></p>
+<p>cocos creator dragonbones绘制流程<br>cocos creator dragonbones 缓存</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2018-11/" data-id="ck5gcd34w000tsls61te3vvtn" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2019-11/" data-id="ck5gcdicd000uvbs6m87fzwbr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -513,36 +513,7 @@ BattleResult  onEnter =&gt; loadLazyRes
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2019-12/" data-id="ck5gcd34x000usls6k04u1ozi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-daily/2019-11" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/daily/2019-11/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.640Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://forum.cocos.org/t/cocos-creator-web-mobile-playable-ad-html/84260" target="_blank" rel="noopener">将 creator 打包成单 html 文件，用于广告互动游戏</a><br><a href="https://github.com/behavior3/behavior3editor" target="_blank" rel="noopener">behavior3 行为树编辑器</a></p>
-<p><a href="https://forum.cocos.org/t/topic/62296" target="_blank" rel="noopener">Cocos creator 加载首屏</a></p>
-<p>cocos creator dragonbones绘制流程<br>cocos creator dragonbones 缓存</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://vollen.github.io/2020/01/16/daily/2019-11/" data-id="ck5gcd34y000wsls6xa13fat8" class="article-share-link">Share</a>
+      <a data-url="http://vollen.github.io/2020/01/16/daily/2019-12/" data-id="ck5gcdicd000vvbs6ufmxkmuf" class="article-share-link">Share</a>
       
       
     </footer>
