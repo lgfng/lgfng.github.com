@@ -81,7 +81,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gjo3pd000dces6mufutt7m" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/排序/" data-id="ck5gjqsol000dhms6bt351rv0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -91,9 +91,9 @@
 
 
   
-    <article id="post-algorithm/字符串" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-algorithm/learn_algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/algorithm/字符串/" class="article-date">
+    <a href="/2020/01/16/algorithm/learn_algorithm/" class="article-date">
   <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
@@ -103,18 +103,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="字符串循环左移"><a href="#字符串循环左移" class="headerlink" title="字符串循环左移:"></a>字符串循环左移:</h2><p>(X’Y’)’ = YX<br>X = ab, Y = cde<br>cdeab = YX = (X’Y’)’ = (baedc)’ = cdeab<br>将前后两段分别翻转， 然后连接起来， 最后翻转.</p>
-<h2 id="LCS-最长公共子序列"><a href="#LCS-最长公共子序列" class="headerlink" title="LCS 最长公共子序列"></a>LCS 最长公共子序列</h2><p>对于 X,Y　两个字符串，　会有<br>LCS(Xm, Yn) = |  LCS(X(m-1), Y(n - 1)) if (Xm == Yn)<br>             |  max(LCS(X(m-1), Yn), LCS(Xm, Y(n - 1)))  if (Xm ~= Yn)</p>
-<p>使用循环数组求两个字符串的最大LCS长度。<br>当计算 chess[i][j] 的时候， 只可能需要 chess[i-1][j-1], chess[i-1][j], chess[i][j-1]三个值，<br>所以不需要维护一个m*n的数组， 只需要一个长度为n 的数组循环覆盖即可， 另外, chess[i-1][j-1]会被覆盖， 所以需要另外存起来。 </p>
-<h3 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h3><p>LIS(X)<br>X’ = sort(X);<br>LIS(X) = LCS(X, X’);</p>
-<p>动态规划解法：<br>Li = L(i-1) + 1, 当 X[i] &gt; X[i + 1]<br>Li = L(i - 1)</p>
-<h2 id="字符串全排列"><a href="#字符串全排列" class="headerlink" title="字符串全排列"></a>字符串全排列</h2><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>text 为目标串<br>pattern 为模式串<br>i 为当前目标串索引， j 为当前模式串索引<br>模式串的最大相等前缀<br>if(text[i + j] == pattern[j]){<br>    j++;<br>} else{</p>
-<p>}</p>
+        <p>学习小象学院算法课程笔记</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>将一个字符串循环左移, 要求时间复杂度为O(N), 空间复杂度为O(1).<br>理论： (A’B’)’ = (BA)’<br>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (from &lt; to)&#123;</span><br><span class="line">        <span class="keyword">char</span> t = str[from];</span><br><span class="line">        str[from ++] = str[to];</span><br><span class="line">        str[to --] = t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    reverse(str, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    reverse(str, k, n - <span class="number">1</span>);</span><br><span class="line">    reverse(str, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><p>最长公共子序列</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gjo3q0000kces69ym2hvrs" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gjqsp7000khms6ku1kappf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +153,40 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gjo3q0000lces6vpf5cl6v" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/二叉堆/" data-id="ck5gjqsp8000lhms6ol6lhe4w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-algorithm/字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/algorithm/字符串/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字符串循环左移"><a href="#字符串循环左移" class="headerlink" title="字符串循环左移:"></a>字符串循环左移:</h2><p>(X’Y’)’ = YX<br>X = ab, Y = cde<br>cdeab = YX = (X’Y’)’ = (baedc)’ = cdeab<br>将前后两段分别翻转， 然后连接起来， 最后翻转.</p>
+<h2 id="LCS-最长公共子序列"><a href="#LCS-最长公共子序列" class="headerlink" title="LCS 最长公共子序列"></a>LCS 最长公共子序列</h2><p>对于 X,Y　两个字符串，　会有<br>LCS(Xm, Yn) = |  LCS(X(m-1), Y(n - 1)) if (Xm == Yn)<br>             |  max(LCS(X(m-1), Yn), LCS(Xm, Y(n - 1)))  if (Xm ~= Yn)</p>
+<p>使用循环数组求两个字符串的最大LCS长度。<br>当计算 chess[i][j] 的时候， 只可能需要 chess[i-1][j-1], chess[i-1][j], chess[i][j-1]三个值，<br>所以不需要维护一个m*n的数组， 只需要一个长度为n 的数组循环覆盖即可， 另外, chess[i-1][j-1]会被覆盖， 所以需要另外存起来。 </p>
+<h3 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h3><p>LIS(X)<br>X’ = sort(X);<br>LIS(X) = LCS(X, X’);</p>
+<p>动态规划解法：<br>Li = L(i-1) + 1, 当 X[i] &gt; X[i + 1]<br>Li = L(i - 1)</p>
+<h2 id="字符串全排列"><a href="#字符串全排列" class="headerlink" title="字符串全排列"></a>字符串全排列</h2><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>text 为目标串<br>pattern 为模式串<br>i 为当前目标串索引， j 为当前模式串索引<br>模式串的最大相等前缀<br>if(text[i + j] == pattern[j]){<br>    j++;<br>} else{</p>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://vollen.github.io/2020/01/16/algorithm/字符串/" data-id="ck5gjqsp8000mhms6msqgp3js" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gjo3q1000mces6bq4qcvtf" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/cocos/console/" data-id="ck5gjqsp9000nhms60xdrdh2z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gjo3q2000pces6qhv9s904" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/daily/2017-3/" data-id="ck5gjqsp9000ohms6hyduvzye" class="article-share-link">Share</a>
       
       
     </footer>
@@ -244,10 +273,10 @@
 
 
   
-    <article id="post-algorithm/learn_algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-H5/js_libs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/16/algorithm/learn_algorithm/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.639Z" itemprop="datePublished">2020-01-16</time>
+    <a href="/2020/01/16/H5/js_libs/" class="article-date">
+  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
 </a>
     
   </div>
@@ -256,14 +285,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习小象学院算法课程笔记</p>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>将一个字符串循环左移, 要求时间复杂度为O(N), 空间复杂度为O(1).<br>理论： (A’B’)’ = (BA)’<br>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (from &lt; to)&#123;</span><br><span class="line">        <span class="keyword">char</span> t = str[from];</span><br><span class="line">        str[from ++] = str[to];</span><br><span class="line">        str[to --] = t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leftRotate</span><span class="params">(<span class="keyword">char</span> * str, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    reverse(str, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    reverse(str, k, n - <span class="number">1</span>);</span><br><span class="line">    reverse(str, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><p>最长公共子序列</p>
+        <p><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">md5</a><br>Zepto 针对移动端的精简jQuery<br>[createjs] 轻量级的js渲染框架，总大小只有不到 100 k<br>[threejs] 3d 渲染引擎<br>[pixijs] js 渲染引擎<br><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui</a> 轻量级的js控制库，用于页面中快速调整一些参数<br>[statsjs] 用于显示页面 fps<br>[howlerjs] 网页播放音频库<br>[wavesurfer] 显示音波图<br>[FileSaver] 提供了一个SaveAs 接口， 用于 H5 保存文件到本地<br>[jszip] js的 zip 库</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/algorithm/learn_algorithm/" data-id="ck5gjo3q4000sces6mey7ps0m" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gjqsp1000fhms6fosahf4a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,34 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gjo3px000fces66uq6lfcl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-H5/js_libs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/16/H5/js_libs/" class="article-date">
-  <time datetime="2020-01-16T04:11:46.638Z" itemprop="datePublished">2020-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">md5</a><br>Zepto 针对移动端的精简jQuery<br>[createjs] 轻量级的js渲染框架，总大小只有不到 100 k<br>[threejs] 3d 渲染引擎<br>[pixijs] js 渲染引擎<br><a href="https://github.com/dataarts/dat.gui" target="_blank" rel="noopener">dat.gui</a> 轻量级的js控制库，用于页面中快速调整一些参数<br>[statsjs] 用于显示页面 fps<br>[howlerjs] 网页播放音频库<br>[wavesurfer] 显示音波图<br>[FileSaver] 提供了一个SaveAs 接口， 用于 H5 保存文件到本地<br>[jszip] js的 zip 库</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/js_libs/" data-id="ck5gjo3py000gces6lf27ok03" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/H5/js_skills/" data-id="ck5gjqsp1000ghms61cnygpxn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gjo3py000hces6eltc1bg0" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/H5/pixi.js/" data-id="ck5gjqsp5000hhms6kg4w6bqc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -452,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gjo3pz000ices6mr7uvca4" class="article-share-link">Share</a>
+      <a data-url="https://vollen.github.io/2020/01/16/H5/vue/" data-id="ck5gjqsp6000ihms6qx3nwws4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -528,7 +528,7 @@
           </li>
         
           <li>
-            <a href="/2020/01/16/webserver/cross-origin/">(no title)</a>
+            <a href="/2020/01/16/wxgame/download-source-code/">(no title)</a>
           </li>
         
       </ul>
