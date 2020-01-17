@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="倚楼听风雨，淡看江湖路">
+    <link rel="shortcut icon" href="http://some.url/to/favicon.ico">
+    <title>Adagio</title>
+    
+        
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/academicons/1.8.6/css/academicons.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        
+    
+    <link rel="stylesheet" href="/css/adagio.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+            
+            <div class="navbar-nav">
+                <a href="https://leafflow.top" class="nav-item nav-link">首页</a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #e9ecef">
+    
+    <div class="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sm"
+            aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item pl-2 pr-2 ">
+                    <a class="nav-link" href="https://leafflow.top">首页</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+</div>
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+        <h1 class="mt-4 article-title page-title"></h1>
+        
+        <p class="lead text-gray mt-3">By Anonymous; Published on 2020-01-16</p>
+        
+        <div class="tags">
+            <ul class="tag-list">
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 pt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <main>
+                            <article class="article-text page-content"><h1 id="白鹭引擎"><a href="#白鹭引擎" class="headerlink" title="白鹭引擎"></a>白鹭引擎</h1><h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><ul>
+<li>display 封装好的显示对象及容器</li>
+<li>events  事件分发模块</li>
+<li>filters 各种渲染效果</li>
+<li>geom 几何对象定义</li>
+<li>i18n 国际化</li>
+<li>localStorage 本地存储</li>
+<li>media 声音</li>
+</ul>
+<h2 id="加载流程"><a href="#加载流程" class="headerlink" title="加载流程"></a>加载流程</h2><h2 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h2><h2 id="事件机制"><a href="#事件机制" class="headerlink" title="事件机制"></a>事件机制</h2><h2 id="更新机制"><a href="#更新机制" class="headerlink" title="更新机制"></a>更新机制</h2><ol>
+<li>html 文件有可能被缓存，不应在内部写过多文件</li>
+<li>每次请求manifest.json获取代码文件列表，文件列表可更新。</li>
+<li>文件根据内容计算MD5, 并用作文件名，每次文件内容修改会生成不一样的文件名，可避免被缓存。</li>
+<li>图集文件与对应的png文件使用同名放在同一目录下，并修改sheet加载器，使能正确加载</li>
+</ol>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="加载优化"><a href="#加载优化" class="headerlink" title="加载优化"></a>加载优化</h3><ul>
+<li>代码压缩</li>
+<li>gzip</li>
+<li>图片压缩</li>
+<li>配置文件打包，加速下载</li>
+</ul>
+<h3 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h3><ul>
+<li>纹理集</li>
+<li>图集纹理连续使用</li>
+<li>文字渲染加速</li>
+<li>少用 alpha 混合</li>
+<li>少用 描边</li>
+<li>少用 mask</li>
+<li>少用 filter</li>
+<li>使用 cacheAsBitmap 减少重绘次数</li>
+</ul>
+<h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h3><ul>
+<li>对象池</li>
+<li>无用的内容，及时指向空，让它能被自动回收</li>
+<li>资源自动释放</li>
+<li>显存优化： 安全内存大概150M左右，2048*2048的图片占用16M内存</li>
+<li>纹理等比压缩</li>
+</ul>
+<h3 id="CPU运算优化"><a href="#CPU运算优化" class="headerlink" title="CPU运算优化"></a>CPU运算优化</h3><ul>
+<li>及时删除事件侦听</li>
+<li>显式禁用触摸交互</li>
+<li>合理使用DispatchEvents</li>
+<li>Tween 动画</li>
+<li>统一的计时器</li>
+<li>使用 ejs 的ui模式</li>
+<li>分帧计算</li>
+<li>处理网络协议的时候，当处理一条协议之后达到帧间隔上限，则留下一帧再处理，可减少卡顿感</li>
+<li>分帧加载</li>
+<li>不可见的节点及时从舞台移除或者设置visible= false</li>
+</ul>
+<h3 id="感受优化"><a href="#感受优化" class="headerlink" title="感受优化"></a>感受优化</h3><ul>
+<li>预加载</li>
+<li>原生html首屏loading</li>
+<li>地图分步加载</li>
+</ul>
+<h3 id="防作弊优化"><a href="#防作弊优化" class="headerlink" title="防作弊优化"></a>防作弊优化</h3><ul>
+<li>HTTPS</li>
+<li>二进制流传输</li>
+<li>协议文件加密</li>
+<li>内存数据加密</li>
+<li>防控制台输入</li>
+</ul>
+<h2 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h2><h2 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h2><ol>
+<li>使用 chrome://inspect</li>
+<li>Fildder</li>
+<li>Weinre</li>
+<li>修改Host</li>
+<li>修改WiFi设置，代理设为电脑</li>
+<li>console.log</li>
+<li>adb</li>
+<li>Chrome Dev Tools: profile, timeline, performance</li>
+<li>window.onerror 收集错误日志</li>
+<li>观察FPS面板的各项指标</li>
+</ol>
+<h2 id="为什么选择egret"><a href="#为什么选择egret" class="headerlink" title="为什么选择egret"></a>为什么选择egret</h2><ul>
+<li>工具流完善</li>
+<li>性能满足需求</li>
+<li>文档比较全</li>
+<li>论坛活跃</li>
+</ul>
+<h2 id="webGL-与-Canvas"><a href="#webGL-与-Canvas" class="headerlink" title="webGL 与 Canvas"></a>webGL 与 Canvas</h2><ol>
+<li>性能，webGL 超过Canvas 数倍。</li>
+<li>webGL 理论可支持2D 和 3D， 但Canvas 只支持2D</li>
+<li>普及率，Canvas100%支持， webGL支持率也很高</li>
+</ol>
+<h2 id="EnterFrame-事件-与-timer-有什么不一样，-各有什么特点？"><a href="#EnterFrame-事件-与-timer-有什么不一样，-各有什么特点？" class="headerlink" title="EnterFrame 事件 与 timer 有什么不一样， 各有什么特点？"></a>EnterFrame 事件 与 timer 有什么不一样， 各有什么特点？</h2><h2 id="资源加载流程是怎样的？有哪些类型的资源？-怎么缓存？-怎么释放？"><a href="#资源加载流程是怎样的？有哪些类型的资源？-怎么缓存？-怎么释放？" class="headerlink" title="资源加载流程是怎样的？有哪些类型的资源？ 怎么缓存？ 怎么释放？"></a>资源加载流程是怎样的？有哪些类型的资源？ 怎么缓存？ 怎么释放？</h2><h2 id="WebSocket-怎么兼容低版本浏览器？"><a href="#WebSocket-怎么兼容低版本浏览器？" class="headerlink" title="WebSocket 怎么兼容低版本浏览器？"></a>WebSocket 怎么兼容低版本浏览器？</h2><h2 id="内存泄漏都有哪些情况？-怎么去排查和修正？"><a href="#内存泄漏都有哪些情况？-怎么去排查和修正？" class="headerlink" title="内存泄漏都有哪些情况？ 怎么去排查和修正？"></a>内存泄漏都有哪些情况？ 怎么去排查和修正？</h2><h2 id="怎么解决跨域问题？"><a href="#怎么解决跨域问题？" class="headerlink" title="怎么解决跨域问题？"></a>怎么解决跨域问题？</h2><h2 id="白鹭音频有哪些兼容性问题？-怎么解决？"><a href="#白鹭音频有哪些兼容性问题？-怎么解决？" class="headerlink" title="白鹭音频有哪些兼容性问题？ 怎么解决？"></a>白鹭音频有哪些兼容性问题？ 怎么解决？</h2><h1 id="Cocos"><a href="#Cocos" class="headerlink" title="Cocos"></a>Cocos</h1><h2 id="引擎架构"><a href="#引擎架构" class="headerlink" title="引擎架构"></a>引擎架构</h2><h2 id="渲染流程-1"><a href="#渲染流程-1" class="headerlink" title="渲染流程"></a>渲染流程</h2><h2 id="内存管理-1"><a href="#内存管理-1" class="headerlink" title="内存管理"></a>内存管理</h2><h2 id="事件机制-1"><a href="#事件机制-1" class="headerlink" title="事件机制"></a>事件机制</h2><h2 id="更新机制-1"><a href="#更新机制-1" class="headerlink" title="更新机制"></a>更新机制</h2><h2 id="定制修改"><a href="#定制修改" class="headerlink" title="定制修改"></a>定制修改</h2><ul>
+<li>修改FileUtils.getPathForFilename 接口，处理资源路径混淆</li>
+<li>修改FileUtils.getData 接口， 对资源做解密处理</li>
+<li>新增保底纹理，以防资源丢失导致的闪退<h2 id="性能优化-1"><a href="#性能优化-1" class="headerlink" title="性能优化"></a>性能优化</h2><h2 id="从一个精灵添加到舞台到被绘制到屏幕上，-中间经历了什么？"><a href="#从一个精灵添加到舞台到被绘制到屏幕上，-中间经历了什么？" class="headerlink" title="从一个精灵添加到舞台到被绘制到屏幕上， 中间经历了什么？"></a>从一个精灵添加到舞台到被绘制到屏幕上， 中间经历了什么？</h2></li>
+</ul>
+<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><h2 id="框架的作用是什么？"><a href="#框架的作用是什么？" class="headerlink" title="框架的作用是什么？"></a>框架的作用是什么？</h2><h2 id="框架包含哪些部分？"><a href="#框架包含哪些部分？" class="headerlink" title="框架包含哪些部分？"></a>框架包含哪些部分？</h2><p>UI</p>
+<h1 id="图形渲染"><a href="#图形渲染" class="headerlink" title="图形渲染"></a>图形渲染</h1><h2 id="shaders"><a href="#shaders" class="headerlink" title="shaders"></a>shaders</h2><h2 id="有哪些图片格式？它们各有什么特点？"><a href="#有哪些图片格式？它们各有什么特点？" class="headerlink" title="有哪些图片格式？它们各有什么特点？"></a>有哪些图片格式？它们各有什么特点？</h2><h2 id="有哪些像素格式？-各占多少内存？"><a href="#有哪些像素格式？-各占多少内存？" class="headerlink" title="有哪些像素格式？ 各占多少内存？"></a>有哪些像素格式？ 各占多少内存？</h2><h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><h2 id="游戏内存占用有多少？"><a href="#游戏内存占用有多少？" class="headerlink" title="游戏内存占用有多少？"></a>游戏内存占用有多少？</h2><h2 id="游戏资源大小有多少？"><a href="#游戏资源大小有多少？" class="headerlink" title="游戏资源大小有多少？"></a>游戏资源大小有多少？</h2><h2 id="主城地图最多能多少人同屏？"><a href="#主城地图最多能多少人同屏？" class="headerlink" title="主城地图最多能多少人同屏？"></a>主城地图最多能多少人同屏？</h2><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>连续的存储结构，数据密度高， 随机访问， 快速遍历， 增删消耗较大<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2></li>
+<li>通过next指针来连接， 增删容易，无法随机访问<h2 id="hash-表"><a href="#hash-表" class="headerlink" title="hash 表"></a>hash 表</h2></li>
+<li>内部数据结构是数组。</li>
+<li>根据键值计算索引存储数据， 需要考虑冲突的处理情况。</li>
+<li>O(1)的查找效率，空间消耗比较大<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2>先进后出<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2>先进先出<h2 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h2>分为大根堆，小根堆， 能快速找到一组数据中的最大/小值。<h2 id="二叉找树"><a href="#二叉找树" class="headerlink" title="二叉找树"></a>二叉找树</h2></li>
+<li>用于维护易查找的数据</li>
+<li>每个结点最多只有两个子节点</li>
+<li>如果有左子树，则左子树的所有结点值均小于根结点的值</li>
+<li>如果有右子树，则右子树的所有结点值均大于根结点的值</li>
+<li>没有键值相等的值<br><a href="http://www.cnblogs.com/skywang12345/p/3576328.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h2 id="二叉平衡树（AVL）"><a href="#二叉平衡树（AVL）" class="headerlink" title="二叉平衡树（AVL）"></a>二叉平衡树（AVL）</h2><ul>
+<li>相对于二叉查找树，限制了同一结点的两颗子树高度差最大为1，使得查找效率相对稳定</li>
+<li>插入或删除可导致树不平衡，共有四种不同的失衡情况，可以通过左旋右旋子树来重新保持平衡。<br><a href="http://www.cnblogs.com/skywang12345/p/3576969.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="帧同步"><a href="#帧同步" class="headerlink" title="帧同步"></a>帧同步</h2><p>统一随机种子，或者使用固定的随机池；</p>
+<ol>
+<li>服务器端向各客户端同步随机种子</li>
+<li>服务器端以每秒固定帧率向前端发送帧步进消息。</li>
+<li>客户端操作的时候，随时将操作同步到服务器端，服务器端收集操作，并在帧消息中同步转发操作。</li>
+<li>客户端收到帧消息，按照消息中的操作，计算逻辑。</li>
+<li>客户端渲染帧根据逻辑帧的计算结果，做插值移动。</li>
+<li>如果客户端迟迟没有收到帧消息， 则逻辑帧不运算， 渲染帧继续播动画，不走路。</li>
+</ol>
+<h2 id="A-寻路"><a href="#A-寻路" class="headerlink" title="A*寻路"></a>A*寻路</h2><ul>
+<li>启发式寻路算法</li>
+<li>从起点开始，遍历周边可达点，然后计算每个格子的分值（消耗 + 预期离终点距离），</li>
+<li>从所有候选点中，取出分值最低的， 然后重复上述循环， 直到到达终点.</li>
+<li>缺点： 起终点不可达的时候， 可能需要遍历整个地图也找不到。</li>
+<li>方法： 可以考虑从起终点同时开始往对方查找，可以及时种植。<br>  记录失败情况，尽快返回。<h3 id="路径平滑"><a href="#路径平滑" class="headerlink" title="路径平滑"></a>路径平滑</h3><h3 id="障碍点突围"><a href="#障碍点突围" class="headerlink" title="障碍点突围"></a>障碍点突围</h3><h2 id="CRC-与-Md5"><a href="#CRC-与-Md5" class="headerlink" title="CRC 与 Md5"></a>CRC 与 Md5</h2></li>
+</ul>
+<h2 id="设计一个f-x-，-使得-f-f-x-1-x"><a href="#设计一个f-x-，-使得-f-f-x-1-x" class="headerlink" title="设计一个f(x)， 使得 f(f(x)) = 1/x;"></a>设计一个f(x)， 使得 f(f(x)) = 1/x;</h2><h2 id="如何判断一个字符串是否是另一个字符串旋转串？"><a href="#如何判断一个字符串是否是另一个字符串旋转串？" class="headerlink" title="如何判断一个字符串是否是另一个字符串旋转串？"></a>如何判断一个字符串是否是另一个字符串旋转串？</h2><h1 id="网络模块"><a href="#网络模块" class="headerlink" title="网络模块"></a>网络模块</h1><h2 id="长连接短连接"><a href="#长连接短连接" class="headerlink" title="长连接短连接"></a>长连接短连接</h2><p>短连接是每次连接发送厚接收完数据就马上断开连接<br>长连接是发起连接之后，一直保持连接，中途可以随时发送数据。</p>
+<h2 id="tcp"><a href="#tcp" class="headerlink" title="tcp"></a>tcp</h2><h3 id="粘包半包分包"><a href="#粘包半包分包" class="headerlink" title="粘包半包分包"></a>粘包半包分包</h3><p>因为tcp只有流的概念， 没有数据包的概念。<br>半包是指接收方一次没有接收到一个完整的包， 只接受到一部分<br>粘包是指发送方发送的若干个包数据在接收方接收时连在一起。</p>
+<h3 id="如何保证可靠性呢？"><a href="#如何保证可靠性呢？" class="headerlink" title="如何保证可靠性呢？"></a>如何保证可靠性呢？</h3><h3 id="三次握手的过程是怎样的？"><a href="#三次握手的过程是怎样的？" class="headerlink" title="三次握手的过程是怎样的？"></a>三次握手的过程是怎样的？</h3><ol>
+<li>第一次，C2S, SYN=1,seq=x; C进入SYN_SENT状态.<br>S收到C发来的建立连接请求后，</li>
+<li>第二次，S2C, SYN=1,ACK=1, seq=y, ack=x+1; S进入SYN_RECV状态.<br>C收到S发过来的确认报文之后，</li>
+<li>第三次，C2S, ACK=1,seq=x+1, ack=y+1; C 进入ESTABLISHED，该报文可以携带数据。<br>S收到C的确认报文之后，也进入ESTABLISHED状态。</li>
+</ol>
+<ul>
+<li>为什么要三次握手呢？<br>为了防止已失效的请求连接报文又被传到服务器而建立的连接。<br>下面是如果没有三次握手的情况：<br>C请求，丢失，C再请求，建立连接，发送数据，关闭连接， S收到了C第一次丢失的连接请求，错误的以为要建立连接，然后就处于一直等待状态，白白浪费资源。<h3 id="断开连接的过程是怎样的？"><a href="#断开连接的过程是怎样的？" class="headerlink" title="断开连接的过程是怎样的？"></a>断开连接的过程是怎样的？</h3>四次挥手</li>
+</ul>
+<ol>
+<li>第一次，C2S， FIN=1, C 进入FIN_WAIT_1 状态<br>S收到C结束报文之后</li>
+<li>第二次，S2C, ACK=1, S 进入CLOSE_WAIT状态<br>C收到S的确认报文之后，进入FIN_WAI_2状态<br>S如果有数据要发送，继续发送数据， 直到数据发送完毕</li>
+<li>第三次，S2C,FIN=1,S进入LAST_ACK状态,不再发送数据<br>C收到S的结束报文之后</li>
+<li>第四次，C2S,ACK=1,进入TIME_WAIT状态，<br>S收到ACK之后，断开连接，<br>C等待2MSL之后，关闭连接。</li>
+</ol>
+<h2 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h2><h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h1 id="对公司有什么要求"><a href="#对公司有什么要求" class="headerlink" title="对公司有什么要求"></a>对公司有什么要求</h1><h1 id="对团队有什么样的要求"><a href="#对团队有什么样的要求" class="headerlink" title="对团队有什么样的要求"></a>对团队有什么样的要求</h1><h1 id="unity"><a href="#unity" class="headerlink" title="unity"></a>unity</h1><h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="new-delete-和-malloc-free-之间有什么联系和区别？"><a href="#new-delete-和-malloc-free-之间有什么联系和区别？" class="headerlink" title="new/delete 和 malloc/free 之间有什么联系和区别？"></a>new/delete 和 malloc/free 之间有什么联系和区别？</h2><h2 id="有哪些内存分配方式？-以及他们之间的区别？"><a href="#有哪些内存分配方式？-以及他们之间的区别？" class="headerlink" title="有哪些内存分配方式？ 以及他们之间的区别？"></a>有哪些内存分配方式？ 以及他们之间的区别？</h2><h2 id="进程与线程有什么区别？"><a href="#进程与线程有什么区别？" class="headerlink" title="进程与线程有什么区别？"></a>进程与线程有什么区别？</h2><h2 id="进程之间如何实现数据交互？"><a href="#进程之间如何实现数据交互？" class="headerlink" title="进程之间如何实现数据交互？"></a>进程之间如何实现数据交互？</h2><h2 id="线程之间如何实现数据交互？"><a href="#线程之间如何实现数据交互？" class="headerlink" title="线程之间如何实现数据交互？"></a>线程之间如何实现数据交互？</h2><h2 id="单例模式在多线程环境下可能会有什么问题？如何避免？"><a href="#单例模式在多线程环境下可能会有什么问题？如何避免？" class="headerlink" title="单例模式在多线程环境下可能会有什么问题？如何避免？"></a>单例模式在多线程环境下可能会有什么问题？如何避免？</h2><h2 id="都有哪些标准特性用于支持多线程？"><a href="#都有哪些标准特性用于支持多线程？" class="headerlink" title="都有哪些标准特性用于支持多线程？"></a>都有哪些标准特性用于支持多线程？</h2><h2 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h2><h1 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h1><h1 id="lua"><a href="#lua" class="headerlink" title="lua"></a>lua</h1><h2 id="如何实现OOP"><a href="#如何实现OOP" class="headerlink" title="如何实现OOP?"></a>如何实现OOP?</h2><h2 id="如何防止外部给table添加属性？"><a href="#如何防止外部给table添加属性？" class="headerlink" title="如何防止外部给table添加属性？"></a>如何防止外部给table添加属性？</h2><h2 id="C-如何与lua-交互"><a href="#C-如何与lua-交互" class="headerlink" title="C++ 如何与lua 交互"></a>C++ 如何与lua 交互</h2><h2 id="tolua-内部实现机制？-是怎么将C-对象封装成userdata传到lua-中的？"><a href="#tolua-内部实现机制？-是怎么将C-对象封装成userdata传到lua-中的？" class="headerlink" title="tolua++ 内部实现机制？ 是怎么将C++对象封装成userdata传到lua 中的？"></a>tolua++ 内部实现机制？ 是怎么将C++对象封装成userdata传到lua 中的？</h2><h1 id="TS-相对于js-有什么优缺点？"><a href="#TS-相对于js-有什么优缺点？" class="headerlink" title="TS 相对于js, 有什么优缺点？"></a>TS 相对于js, 有什么优缺点？</h1><h1 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h1><h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><h3 id="在安卓打包过程中，都有哪些阶段？-各个阶段都生成了什么文件？"><a href="#在安卓打包过程中，都有哪些阶段？-各个阶段都生成了什么文件？" class="headerlink" title="在安卓打包过程中，都有哪些阶段？ 各个阶段都生成了什么文件？"></a>在安卓打包过程中，都有哪些阶段？ 各个阶段都生成了什么文件？</h3><h3 id="安卓包重签名？"><a href="#安卓包重签名？" class="headerlink" title="安卓包重签名？"></a>安卓包重签名？</h3><h3 id="如何避免安卓包被重新签名？"><a href="#如何避免安卓包被重新签名？" class="headerlink" title="如何避免安卓包被重新签名？"></a>如何避免安卓包被重新签名？</h3><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>23种设计模式</p>
+<h2 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h2><ol>
+<li>Factory Method (工厂方法)</li>
+<li>Abstract Factory (抽象工厂)</li>
+<li>Builder (建造者)</li>
+<li>Prototype (原型)</li>
+<li>Singleton (单例)<h2 id="结构型"><a href="#结构型" class="headerlink" title="结构型"></a>结构型</h2></li>
+<li>Adapter Class/Object (适配器)</li>
+<li>Bridge (桥接)</li>
+<li>Composite (组合)</li>
+<li>Decorator (装饰)</li>
+<li>Facade (外观)</li>
+<li>Flyweight (亨元)</li>
+<li>Proxy (代理)<h2 id="行为型"><a href="#行为型" class="headerlink" title="行为型"></a>行为型</h2></li>
+<li>Interpreter (解释器)</li>
+<li>Template Method (模板方法)</li>
+<li>Chain of Responsibility (责任链)</li>
+<li>Command (命令)</li>
+<li>Iterator (迭代器)</li>
+<li>Mediator (中介者)</li>
+<li>Mementor (备忘录)</li>
+<li>Observer (观察者)</li>
+<li>State (状态)</li>
+<li>Strategy (策略)</li>
+<li>Visitor (访问者)<h1 id="编程原则"><a href="#编程原则" class="headerlink" title="编程原则"></a>编程原则</h1><a href="http://www.cnblogs.com/breaktop/archive/2016/07/17/5679302.html" target="_blank" rel="noopener">良好的额编程原则</a><br><a href="http://www.cnblogs.com/muzongyan/category/256115.html" target="_blank" rel="noopener">java 设计模式</a><br>良好的编程原则与良好的设计工程原则密切相关。本文总结的这些设计原则，帮助开发者更有效率的编写代码，并帮助成为一名优秀的程序员。</li>
+<li><p>避免重复原则（DRY – Don’t repeat yourself）<br>编程的最基本原则是避免重复。在程序代码中总会有很多结构体，如循环、函数、类等等。一旦你重复某个语句或概念，就会很容易形成一个抽象体。</p>
+</li>
+<li><p>抽象原则（Abstraction Principle ）<br>与DRY原则相关。要记住，程序代码中每一个重要的功能，只能出现在源代码的一个位置。</p>
+</li>
+<li><p>简单原则（Keep It Simple and Stupid ）<br>简单是软件设计的目标，简单的代码占用时间少，漏洞少，并且易于修改。</p>
+</li>
+<li><p>避免创建你不要的代码 Avoid Creating a YAGNI (You aren’t going to need it)<br>除非你需要它，否则别创建新功能。</p>
+</li>
+<li><p>尽可能做可运行的最简单的事（Do the simplest thing that could possibly work）<br>尽可能做可运行的最简单的事。在编程中，一定要保持简单原则。作为一名程序员不断的反思“如何在工作中做到简化呢？”这将有助于在设计中保持简单的路径。</p>
+</li>
+<li><p>别让我思考(Don’t make me think )<br>这是Steve Krug一本书的标题，同时也和编程有关。所编写的代码一定要易于读易于理解，这样别人才会欣赏，也能够给你提出合理化的建议。相反，若是繁杂难解的程序，其他人总是会避而远之的。</p>
+</li>
+<li><p>开闭原则(Open/Closed Principle)<br>一个软件实体如类、模块和函数应该对扩展开放，对修改关闭。<br>一个软件实体应该通过扩展来实现变化，而不是通过修改已有代码来实现变化。</p>
+</li>
+<li><p>代码维护(Write Code for the Maintainer)<br>一个优秀的代码，应当使本人或是他人在将来都能够对它继续编写或维护。代码维护时，或许本人会比较容易，但对他人却比较麻烦。因此你写的代码要尽可能保证他人能够容易维护。用书中原话说“如果一个维护者不再继续维护你的代码，很可能他就有想杀了你的冲动。</p>
+</li>
+<li><p>最小惊讶原则(Principle of least astonishment)<br>最小惊讶原则通常是在用户界面方面引用，但同样适用于编写的代码。代码应该尽可能减少让读者惊喜。也就是说，你编写的代码只需按照项目的要求来编写。其他华丽的功能就不必了，以免弄巧成拙。</p>
+</li>
+<li><p>单一责任原则(Single Responsibility Principle)<br>应该有且仅有一个原因引起类的变更。</p>
+</li>
+<li><p>低耦合原则(Minimize Coupling)<br>代码的任何一个部分应该减少对其他区域代码的依赖关系。尽量不要使用共享参数。低耦合往往是完美结构系统和优秀设计的标志。</p>
+</li>
+<li><p>最大限度凝聚原则(Maximize Cohesion)<br>相似的功能代码应尽量放在一个部分。</p>
+</li>
+<li><p>隐藏实现细节（Hide Implementation Details）<br>隐藏实现细节原则，当其他功能部分发生变化时，能够尽可能降低对其他组件的影响。</p>
+</li>
+<li><p>迪米特法则又叫作最少知识原则(Law of Demeter)</p>
+</li>
+</ol>
+<ul>
+<li>只和朋友交流<br>朋友类的定义是这样的：出现在成员变量、方法的输入输出参数中的类称为成员朋友类，而出现在方法体内部的类不属于朋友类。</li>
+<li>暴露尽量少的接口</li>
+</ul>
+<ol start="15">
+<li><p>避免过早优化(Avoid Premature Optimization)<br>除非你的代码运行的比你想像中的要慢，否则别去优化。假如你真的想优化，就必须先想好如何用数据证明，它的速度变快了。</p>
+<blockquote>
+<blockquote>
+<p>过早的优化是一切罪恶的根源”——Donald Knuth</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>代码重用原则（Code Reuse is Good）<br>重用代码能提高代码的可读性，缩短开发时间。</p>
+</li>
+<li><p>关注点分离（Separation of Concerns）<br>不同领域的功能，应该由不同的代码和最小重迭的模块组成。</p>
+</li>
+<li><p>拥抱改变（Embrace Change）<br>这是Kent Beck一本书的标题，同时也被认为是极限编程和敏捷方法的宗旨。<br>许多其他原则都是基于这个概念的，即你应该积极面对变化。事实上，一些较老的编程原则如最小化耦合原则都是为了使代码能够容易变化。无论你是否是个极限编程者，基于这个原则去编写代码会让你的工作变得更有意义。</p>
+</li>
+<li><p>接口隔离原则（ISP）<br>接口隔离原则要求接口尽量小<br>接口要高内聚，高内聚就是要提高接口、类、模块的处理能力，减少对外的交互。</p>
+</li>
+<li><p>依赖倒置原则（DIP）</p>
+</li>
+</ol>
+<ul>
+<li>高层模块不应该依赖底层模块，两者都应该依赖其抽象；</li>
+<li>抽象不应该依赖细节；</li>
+<li>细节应该依赖抽象。</li>
+</ul>
+<ol start="21">
+<li>里氏替换原则（LSP）<br>所有引用基类的地方必须能透明地使用其子类的对象。</li>
+</ol>
+<h1 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h1><p>Normal Form （NF）<br>范式的好处， 消除异常（插入，删除，更新），减少冗余数据。</p>
+<h2 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h2><p>列的原子性，即每一列都不能再拆分。<br>EX: 一个人有<code>工作电话</code>和<code>家庭电话</code>两个属性，那么数据库设计时， 就不应该只有一个<code>电话</code>列。</p>
+<h2 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h2><p>基于1NF，表必须有主键，且非主键列必须完全依赖所有主键，而不能只依赖部分主键列。<br>EX: 订单id和商品id 作主键的表，如果商品价格只依赖于商品id, 即所有同一商品id,价钱必定相同， 那么商品价格就不应该在这个表中。因为它只依赖部分主键列。</p>
+<h2 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h2><p>基于2NF，非主键列必须直接依赖主键列，不能传递依赖。<br>EX: 订单id 作主键的表， 商品id依赖订单id, 商品价格依赖订单id. 商品价格不应该在这个表中， 存在传递依赖。</p>
+<h2 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h2><p>基于3NF, 消除主键列对于部分主键列的依赖。</p>
+</article>
+                        </main>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/typescript/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/开源协议/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/typescript/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/开源协议/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container pt-4 page-sidebar">
+                    
+                    <div class="row">
+    <div class="col">
+        <h6>APPLAUSE FOR ME</h6>
+        <div id="applause-easy"></div>
+    </div>
+</div>
+                    
+                    <hr class="row">
+                    <div class="row toc-container">
+                        <div class="col-12">
+                            <h6>NAVIGATION</h6>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#白鹭引擎"><span class="toc-text">白鹭引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#整体架构"><span class="toc-text">整体架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载流程"><span class="toc-text">加载流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染流程"><span class="toc-text">渲染流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件机制"><span class="toc-text">事件机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新机制"><span class="toc-text">更新机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化"><span class="toc-text">性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载优化"><span class="toc-text">加载优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#渲染优化"><span class="toc-text">渲染优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存管理"><span class="toc-text">内存管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU运算优化"><span class="toc-text">CPU运算优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感受优化"><span class="toc-text">感受优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防作弊优化"><span class="toc-text">防作弊优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性问题"><span class="toc-text">兼容性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#debug"><span class="toc-text">debug</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么选择egret"><span class="toc-text">为什么选择egret</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webGL-与-Canvas"><span class="toc-text">webGL 与 Canvas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EnterFrame-事件-与-timer-有什么不一样，-各有什么特点？"><span class="toc-text">EnterFrame 事件 与 timer 有什么不一样， 各有什么特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资源加载流程是怎样的？有哪些类型的资源？-怎么缓存？-怎么释放？"><span class="toc-text">资源加载流程是怎样的？有哪些类型的资源？ 怎么缓存？ 怎么释放？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSocket-怎么兼容低版本浏览器？"><span class="toc-text">WebSocket 怎么兼容低版本浏览器？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄漏都有哪些情况？-怎么去排查和修正？"><span class="toc-text">内存泄漏都有哪些情况？ 怎么去排查和修正？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么解决跨域问题？"><span class="toc-text">怎么解决跨域问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#白鹭音频有哪些兼容性问题？-怎么解决？"><span class="toc-text">白鹭音频有哪些兼容性问题？ 怎么解决？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cocos"><span class="toc-text">Cocos</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引擎架构"><span class="toc-text">引擎架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染流程-1"><span class="toc-text">渲染流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存管理-1"><span class="toc-text">内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件机制-1"><span class="toc-text">事件机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新机制-1"><span class="toc-text">更新机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定制修改"><span class="toc-text">定制修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能优化-1"><span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从一个精灵添加到舞台到被绘制到屏幕上，-中间经历了什么？"><span class="toc-text">从一个精灵添加到舞台到被绘制到屏幕上， 中间经历了什么？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#框架"><span class="toc-text">框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#框架的作用是什么？"><span class="toc-text">框架的作用是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架包含哪些部分？"><span class="toc-text">框架包含哪些部分？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图形渲染"><span class="toc-text">图形渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shaders"><span class="toc-text">shaders</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有哪些图片格式？它们各有什么特点？"><span class="toc-text">有哪些图片格式？它们各有什么特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有哪些像素格式？-各占多少内存？"><span class="toc-text">有哪些像素格式？ 各占多少内存？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#性能"><span class="toc-text">性能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏内存占用有多少？"><span class="toc-text">游戏内存占用有多少？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏资源大小有多少？"><span class="toc-text">游戏资源大小有多少？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主城地图最多能多少人同屏？"><span class="toc-text">主城地图最多能多少人同屏？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-text">链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash-表"><span class="toc-text">hash 表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆栈"><span class="toc-text">堆栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列"><span class="toc-text">队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉堆"><span class="toc-text">二叉堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉找树"><span class="toc-text">二叉找树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉平衡树（AVL）"><span class="toc-text">二叉平衡树（AVL）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跳表"><span class="toc-text">跳表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#帧同步"><span class="toc-text">帧同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-寻路"><span class="toc-text">A*寻路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路径平滑"><span class="toc-text">路径平滑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#障碍点突围"><span class="toc-text">障碍点突围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC-与-Md5"><span class="toc-text">CRC 与 Md5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计一个f-x-，-使得-f-f-x-1-x"><span class="toc-text">设计一个f(x)， 使得 f(f(x)) = 1/x;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何判断一个字符串是否是另一个字符串旋转串？"><span class="toc-text">如何判断一个字符串是否是另一个字符串旋转串？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络模块"><span class="toc-text">网络模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#长连接短连接"><span class="toc-text">长连接短连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp"><span class="toc-text">tcp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#粘包半包分包"><span class="toc-text">粘包半包分包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何保证可靠性呢？"><span class="toc-text">如何保证可靠性呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三次握手的过程是怎样的？"><span class="toc-text">三次握手的过程是怎样的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断开连接的过程是怎样的？"><span class="toc-text">断开连接的过程是怎样的？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#socket"><span class="toc-text">socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket"><span class="toc-text">websocket</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对公司有什么要求"><span class="toc-text">对公司有什么要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对团队有什么样的要求"><span class="toc-text">对团队有什么样的要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unity"><span class="toc-text">unity</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#new-delete-和-malloc-free-之间有什么联系和区别？"><span class="toc-text">new/delete 和 malloc/free 之间有什么联系和区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有哪些内存分配方式？-以及他们之间的区别？"><span class="toc-text">有哪些内存分配方式？ 以及他们之间的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程与线程有什么区别？"><span class="toc-text">进程与线程有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程之间如何实现数据交互？"><span class="toc-text">进程之间如何实现数据交互？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程之间如何实现数据交互？"><span class="toc-text">线程之间如何实现数据交互？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例模式在多线程环境下可能会有什么问题？如何避免？"><span class="toc-text">单例模式在多线程环境下可能会有什么问题？如何避免？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#都有哪些标准特性用于支持多线程？"><span class="toc-text">都有哪些标准特性用于支持多线程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存对齐"><span class="toc-text">内存对齐</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-1"><span class="toc-text">C</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lua"><span class="toc-text">lua</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现OOP"><span class="toc-text">如何实现OOP?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何防止外部给table添加属性？"><span class="toc-text">如何防止外部给table添加属性？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-如何与lua-交互"><span class="toc-text">C++ 如何与lua 交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tolua-内部实现机制？-是怎么将C-对象封装成userdata传到lua-中的？"><span class="toc-text">tolua++ 内部实现机制？ 是怎么将C++对象封装成userdata传到lua 中的？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TS-相对于js-有什么优缺点？"><span class="toc-text">TS 相对于js, 有什么优缺点？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OS"><span class="toc-text">OS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android"><span class="toc-text">Android</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在安卓打包过程中，都有哪些阶段？-各个阶段都生成了什么文件？"><span class="toc-text">在安卓打包过程中，都有哪些阶段？ 各个阶段都生成了什么文件？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安卓包重签名？"><span class="toc-text">安卓包重签名？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何避免安卓包被重新签名？"><span class="toc-text">如何避免安卓包被重新签名？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式"><span class="toc-text">设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建型"><span class="toc-text">创建型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构型"><span class="toc-text">结构型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行为型"><span class="toc-text">行为型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编程原则"><span class="toc-text">编程原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库范式"><span class="toc-text">数据库范式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1NF"><span class="toc-text">1NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2NF"><span class="toc-text">2NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3NF"><span class="toc-text">3NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BCNF"><span class="toc-text">BCNF</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy; 听风楼
+                    <br>
+                    Thanks for coming!
+                    <br>
+                    <a href="https://github.com/Hanlin-Dong/hexo-theme-adagio">Adagio</a> - A <a href="https://hexo.io">Hexo</a> theme made with love by
+                    <a href="http://www.hanlindong.com">Hanlin Dong</a>.
+                    京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.bootcss.com/font-awesome/5.9.0/js/all.min.js"></script>
+         
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    CommonHTML: { linebreaks: { automatic: true } },
+                    "HTML-CSS": { linebreaks: { automatic: true } },
+                    SVG: { linebreaks: { automatic: true } }
+                });
+            </script>
+            <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    
+
+
+<script src="/js/av.min.js"></script>
+<script src="/js/valine.min.js"></script>
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    var a = new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px"
+    })
+})
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+    
+</body>
+</html>

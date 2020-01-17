@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="倚楼听风雨，淡看江湖路">
+    <link rel="shortcut icon" href="http://some.url/to/favicon.ico">
+    <title>Adagio</title>
+    
+        
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/academicons/1.8.6/css/academicons.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        
+    
+    <link rel="stylesheet" href="/css/adagio.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+            
+            <div class="navbar-nav">
+                <a href="https://leafflow.top" class="nav-item nav-link">首页</a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #e9ecef">
+    
+    <div class="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sm"
+            aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item pl-2 pr-2 ">
+                    <a class="nav-link" href="https://leafflow.top">首页</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+</div>
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+        <h1 class="mt-4 article-title page-title"></h1>
+        
+        <p class="lead text-gray mt-3">By Anonymous; Published on 2020-01-16</p>
+        
+        <div class="tags">
+            <ul class="tag-list">
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 pt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <main>
+                            <article class="article-text page-content"><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="mac-os"><a href="#mac-os" class="headerlink" title="mac os"></a>mac os</h2><p>brew install mongodb</p>
+<h2 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h2><p><a href="https://www.cnblogs.com/kimkat/p/9192785.html" target="_blank" rel="noopener">设置远程连接访问mongodb数据库</a></p>
+<p>##</p>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p><code>db.foo.insert({&quot;bar&quot;:&quot;baz&quot;})</code></p>
+<ul>
+<li>导入原始数据<br>mongoimport<h3 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h3>传递一个由文档组成的数组给数据库,能实现批量插入, 加快运行速度.<br>批量插入有最大长度限制，<h3 id="插入原理"><a href="#插入原理" class="headerlink" title="插入原理"></a>插入原理</h3>驱动程序将数据转换成 <code>BSON</code> 数据格式传入数据库，数据库解析 <code>BSON</code> 并检查大小和是否包含<code>_id</code>键。<br>然后直接存入数据库中。<br>–objcheck选项,启动插入之前检查文档结构<br><code>Object.bsonsize(doc)</code> 计算文档的转换为bson的大小 </li>
+</ul>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><code>db.users.remove()</code><br>删除所有文档,但不删除集合本身</li>
+<li><code>db.users.remove($matcher)</code><br>删除匹配 <code>matcher</code> 的文档<br>数据删除是永久性的，不能撤销，也不能恢复.</li>
+<li>如果要清除整个集合，那么直接删除集合会更快.<br><code>db.drop_collection(&#39;bar&#39;)</code><h2 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h2><code>db.users.update($matcher, $modifier)</code></li>
+<li>更新是原子的,先到达</li>
+<li><code>modifier</code> 会替换整个文档内容.</li>
+<li>当<code>matcher</code>匹配到多个文档的时候，更新会失败。在<code>shell</code>中会报错，在其他程序中使用<code>getLastError</code>可以获取错误信息。 <h3 id="更新修改器"><a href="#更新修改器" class="headerlink" title="更新修改器"></a>更新修改器</h3>当文档只有一部分要更新时，可以更高效的更新。</li>
+<li>使用修改器时，”_id”不能修改.</li>
+<li>更新修改器是原子的<h4 id="修改键值对"><a href="#修改键值对" class="headerlink" title="修改键值对"></a>修改键值对</h4>$set 用来指定一个键的值，如果这个键不存在，则创建它.<br>$set 可以修改除<code>_id</code>之外的一切, 包括数据类型。<br>$unset 用于将键完全删除。<h4 id="增加和减少"><a href="#增加和减少" class="headerlink" title="增加和减少"></a>增加和减少</h4></li>
+<li>$inc 用于使指定键的值增加, 如果键不存在，则直接将键值设为增加量;<br>只能用于整数、长整数和双精度浮点数<br><code>db.users.update({name:&#39;vollen&#39;}, {&quot;$inc&quot;:{&quot;age&quot;, 1}})</code><h4 id="数组修改器"><a href="#数组修改器" class="headerlink" title="数组修改器"></a>数组修改器</h4>只能用在值为数组的键上</li>
+<li>$push<br>如果指定键存在，则向已有数组末尾加入元素，否则会创建一个新数组。</li>
+<li>$ne<br>查找到不含值得数组</li>
+<li>$addToSet<br>将值添加到数组，如果已经存在，则不处理</li>
+<li><p>$each</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.users.update(&#123;<span class="attr">_id</span>:ObjectId(<span class="string">"xxxxx"</span>)&#125;,</span><br><span class="line">    &#123;<span class="string">"$addToSet"</span>:</span><br><span class="line">        &#123;<span class="string">"emails"</span>:</span><br><span class="line">            &#123;<span class="string">"$each"</span>:</span><br><span class="line">                [<span class="string">'vollen@a.com'</span>, <span class="string">'vollen@b.com'</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$pop<br>将值当做队列来使用。<br>从数组末尾删除<br><code>{$pop:{key: 1}}</code><br>从数组开头删除<br><code>{$pop:{key: -1}}</code></p>
+</li>
+<li>$pull<br>使用特定条件将所有匹配项从数组中删除元素<br><code>{$pill:$matcher}</code></li>
+<li>定位器<br><code>db.user.update({&quot;friends.name&quot;:&quot;vollen&quot;}, {&quot;$set&quot;:{&quot;friends.$.name&quot;:&quot;vollen2&quot;}})</code>;<br>找到好友数组中，”name” 为 “vollen” 的数据, 并将这一条数据的 “name” 改为 “vollen2”;<br><code>$</code>用于定位数组中匹配的那一项，每次只能更新第一个匹配的元素.<h3 id="修改器速度"><a href="#修改器速度" class="headerlink" title="修改器速度"></a>修改器速度</h3></li>
+<li>$inc 原地就能修改，所以非常快</li>
+<li>$set 如果不修改文档大小，就会非常快。否则性能会下降。</li>
+<li><code>数组修改器</code>可能更改文档大小，会慢一些<h3 id="upsert"><a href="#upsert" class="headerlink" title="upsert"></a>upsert</h3><code>update</code> 第三个函数传入<code>true</code>,当更新的文档不存在时，会执行插入操作</li>
+</ul>
+<h2 id="游标-cursor"><a href="#游标-cursor" class="headerlink" title="游标 cursor"></a>游标 cursor</h2><h2 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h2><p>$maxscan 指定查询最多扫描的文档数量<br>$min 查询的开始条件<br>$max 查询的结束条件</p>
+</article>
+                        </main>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/docker/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/egret/egret小刚/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">egret小刚
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/docker/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/egret/egret小刚/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">egret小刚
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container pt-4 page-sidebar">
+                    
+                    <div class="row">
+    <div class="col">
+        <h6>APPLAUSE FOR ME</h6>
+        <div id="applause-easy"></div>
+    </div>
+</div>
+                    
+                    <hr class="row">
+                    <div class="row toc-container">
+                        <div class="col-12">
+                            <h6>NAVIGATION</h6>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mac-os"><span class="toc-text">mac os</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程连接"><span class="toc-text">远程连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入数据"><span class="toc-text">插入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#批量插入"><span class="toc-text">批量插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入原理"><span class="toc-text">插入原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文档"><span class="toc-text">删除文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新文档"><span class="toc-text">更新文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新修改器"><span class="toc-text">更新修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改键值对"><span class="toc-text">修改键值对</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增加和减少"><span class="toc-text">增加和减少</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组修改器"><span class="toc-text">数组修改器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改器速度"><span class="toc-text">修改器速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#upsert"><span class="toc-text">upsert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游标-cursor"><span class="toc-text">游标 cursor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级"><span class="toc-text">高级</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy; 听风楼
+                    <br>
+                    Thanks for coming!
+                    <br>
+                    <a href="https://github.com/Hanlin-Dong/hexo-theme-adagio">Adagio</a> - A <a href="https://hexo.io">Hexo</a> theme made with love by
+                    <a href="http://www.hanlindong.com">Hanlin Dong</a>.
+                    京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.bootcss.com/font-awesome/5.9.0/js/all.min.js"></script>
+         
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    CommonHTML: { linebreaks: { automatic: true } },
+                    "HTML-CSS": { linebreaks: { automatic: true } },
+                    SVG: { linebreaks: { automatic: true } }
+                });
+            </script>
+            <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    
+
+
+<script src="/js/av.min.js"></script>
+<script src="/js/valine.min.js"></script>
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    var a = new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px"
+    })
+})
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+    
+</body>
+</html>

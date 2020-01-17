@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="倚楼听风雨，淡看江湖路">
+    <link rel="shortcut icon" href="http://some.url/to/favicon.ico">
+    <title>opengl_interface-Adagio</title>
+    
+        
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/academicons/1.8.6/css/academicons.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        
+    
+    <link rel="stylesheet" href="/css/adagio.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+            
+            <div class="navbar-nav">
+                <a href="https://leafflow.top" class="nav-item nav-link">首页</a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #e9ecef">
+    
+    <div class="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sm"
+            aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item pl-2 pr-2 ">
+                    <a class="nav-link" href="https://leafflow.top">首页</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+</div>
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+        <h1 class="mt-4 article-title page-title">opengl_interface</h1>
+        
+        <p class="lead text-gray mt-3">By Anonymous; Published on 2016-04-12</p>
+        
+        <div class="tags">
+            <ul class="tag-list">
+                
+                <li class="tag-list-item">
+                    <a class="tag-list-link" href="/tags/opengl/">opengl</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 pt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <main>
+                            <article class="article-text page-content"><h1 id="VAO"><a href="#VAO" class="headerlink" title="VAO"></a>VAO</h1><ul>
+<li>void glGenVertexArrays(GLsizei n, Gluint * arrays)<ul>
+<li>创建n个VAO对象，并将索引存储在arrays中</li>
+</ul>
+</li>
+<li>void glBindVertexArray(GLuint array​)<ul>
+<li>绑定VAO</li>
+</ul>
+</li>
+<li><p>void glEnableVertexAttribArray(GLuint index​)</p>
+</li>
+<li><p>void glDisableVertexAttribArray(GLuint index​)</p>
+<ul>
+<li>启用或禁用指定VAO</li>
+</ul>
+</li>
+<li>void glDeleteVertexArrays(GLsizei n, const GLuint * arrays)<ul>
+<li>根据 arrays 数组中的索引， 删除n个VAO</li>
+</ul>
+</li>
+<li>void glVertexAttribPointer(GLuint index​, GLint size​, GLenum type​, GLboolean normalized​, GLsizei stride​, const GLvoid * pointer​)<a id="more"></a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h1 id="VBO"><a href="#VBO" class="headerlink" title="VBO"></a>VBO</h1><ul>
+<li><p>void glGenBuffers(GLsizei n, GLuint * buffers)</p>
+<ul>
+<li>创建 n 个VBO, 并将索引存储在buffers 中</li>
+</ul>
+</li>
+<li><p>void glBindBuffer(GLenum target, GLuint buffer)</p>
+<ul>
+<li>绑定buffer到<a href="#ENUM_BUFFER_TARGET">target</a>的缓存， 同一种类型的缓存只能指向一个buffer</li>
+</ul>
+</li>
+<li><p>void glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage)</p>
+<ul>
+<li>为绑定到<a href="#ENUM_BUFFER_TARGET">target</a>的缓存分配size大小的空间， 如果data不为NULL, 则会被拷贝至目标缓存，用法被限定为<a href="#ENUM_BUFFER_USAGE">usage</a></li>
+</ul>
+</li>
+<li><p>void glBufferSubData(GLenum target, GLintptr offset, GLsizeptr size, const GLvoid * data)</p>
+<ul>
+<li>以data为数据源， 缓存对象 + offset 为目标地址， 拷贝size大小的数据 </li>
+</ul>
+</li>
+<li><p>void * glMapBuffer(GLenum target, GLenum access)</p>
+<ul>
+<li>将当前绑定到<a href="#ENUM_BUFFER_TARGET">target</a>的VBO的地址，使用这个地址可以直接操作缓冲区。 <a href="#ENUM_ACCESS">access</a>该指针指向数据的访问策略</li>
+</ul>
+</li>
+<li><p>GLboolean glUnmapBuffer(GLenum target)</p>
+<ul>
+<li>解除<a href="#ENUM_BUFFER_TARGET">target</a></li>
+</ul>
+</li>
+<li><p>void glDeleteBuffers(GLsizei n, const GLuint * buffers)</p>
+<ul>
+<li>根据 buffers数组中的索引，删除n个VBO</li>
+</ul>
+</li>
+<li><p>深度测试<br>  void glDepthFunc(GLenum func)</p>
+<ul>
+<li>指定深度测试时使用的函数类型， func必须是<a href="#ENUM_DEPTH_TEST_FUNC">深度测试函数</a>中的一个。</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://blog.csdn.net/myarrow/article/details/7737313" target="_blank" rel="noopener">Shader and Program编程基本概念</a></p>
+<h1 id="SHADER"><a href="#SHADER" class="headerlink" title="SHADER"></a>SHADER</h1><ul>
+<li><p>GLuint glCreateShader()</p>
+</li>
+<li><p>void glShaderSource(GLuint prog, GLsizei size, const GLchar*<em> source, const Glint </em> length)</p>
+</li>
+<li><p>void glCompileShader(GLuint shader)</p>
+</li>
+<li><p>void glGetShaderiv(GLuint shader, GLenum pname, GLint * params)</p>
+<ul>
+<li>获取指定shader的<a href="ENUM_SHADER_PARAM">pname</a>属性</li>
+</ul>
+</li>
+<li>void glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei<em> length, GLchar</em> source)<ul>
+<li>将shader的源码写入source， bufSize 为缓冲区长度，length为返回的代码长度</li>
+</ul>
+</li>
+</ul>
+<h1 id="PROGRAM"><a href="#PROGRAM" class="headerlink" title="PROGRAM"></a>PROGRAM</h1><ul>
+<li><p>GLuint glCreateProgram()</p>
+</li>
+<li><p>void glAttachShader(GLuint prog, GLuint shader)</p>
+</li>
+<li><p>void glLinkProgram(GLuint prog)</p>
+</li>
+<li><p>void glUseProgran(GLuint prog)</p>
+</li>
+<li><p>void glGetProgramiv(GLuint prog, GLenum panme, GLint* params)</p>
+</li>
+<li><p>void glGetActiveAttrib(GLuint program​, GLuint index​, GLsizei bufSize​, GLsizei <em>length​, GLint </em>size​, GLenum <em>type​, GLchar </em>name​)</p>
+</li>
+<li><p>void glGetActiveUniform(GLuint program​, GLuint index​, GLsizei bufSize​, GLsizei <em>length​, GLint </em>size​, GLenum <em>type​, GLchar </em>name​)</p>
+</li>
+<li><p>void glGetProgramInfoLog(GLuint program​, GLsizei maxLength​, GLsizei <em>length​, GLchar </em>infoLog​)</p>
+</li>
+<li><p>GLuint glGetUniformLocation(GLuint prog, const GLchar* name)</p>
+</li>
+<li><p>void glUniform{1234}{fdi ui}(GLint location, TYPE value)<br>void glUniform{1234}{fdi ui}v(GLint location, GLsizei count, const TYPE<em> values)<br>void glUniformMatrix{234}{fd}v(GLint location, GLsizei count, GLboolean transpose, const GLfloat</em> values)</p>
+<pre><code>--对角矩阵
+</code></pre><p>void glUniformMatrix{2x3,2x4,3x2,3x4,4x2,4x3}{fd}v(GLint location, GLsizei count, GLboolean transpose, const GLfloat* values)</p>
+<pre><code>-- 设置与locate索引位置对应的uniform变量的值,其中向量形式的函数会载入count个数据的集合
+--transpose 为GL_TRUE, 已行主序读入，为GL_FALSE则以列主序读入。
+</code></pre></li>
+</ul>
+<h1 id="变量储存限定符"><a href="#变量储存限定符" class="headerlink" title="变量储存限定符"></a>变量储存限定符</h1><ul>
+<li><p>attribute     –顶点着色器中声明的变量, 可使用函数glAttrib*来操作</p>
+<ul>
+<li>void glBindAttribLocation(GLuint prog, GLuint index, const Glchar* name)<ul>
+<li>将prog程序中的name变量关联到index上</li>
+</ul>
+</li>
+<li>void glGetAttribLocation(GLuint prog, const GLchar* name)</li>
+</ul>
+</li>
+<li><p>uniform       –由应用程序指定，所有着色器共享但无法更改的变量，可使用glUniform*操作</p>
+</li>
+<li><p>varying       –顶点着色器声明赋值，片元着色器使用的变量</p>
+</li>
+</ul>
+<h1 id="TEXTURE"><a href="#TEXTURE" class="headerlink" title="TEXTURE"></a><a href="https://www.opengl.org/wiki/Texture" target="_blank" rel="noopener">TEXTURE</a></h1><p><a href="http://blog.csdn.net/lixiang996/article/details/6859575" target="_blank" rel="noopener">OpenGL学习笔记（一） 纹理基础知识</a></p>
+<ul>
+<li><p>void glActiveTexture(GLenum texture​)</p>
+</li>
+<li><p>void glBindTexture(GLenum target​, GLuint texture​)</p>
+</li>
+<li><p>void glDeleteTextures(GLsizei n​, const GLuint * textures​)</p>
+</li>
+<li><p>void glPixelStore*(GLenum pname, type, param)</p>
+</li>
+<li><p>void glTexParameter*(GLenum target​, GLenum pname​, Type param​)</p>
+</li>
+<li><p>void glCompressedTexImage2D(GLenum target​, GLint level​, GLenum internalformat​, GLsizei width​, GLsizei height​, GLint border​, GLsizei imageSize​, const GLvoid * data​)</p>
+</li>
+<li><p>void glTexSubImage2D(GLenum target​, GLint level​, GLint xoffset​, GLint yoffset​, GLsizei width​, GLsizei height​, GLenum format​, GLenum type​, const GLvoid * data​)</p>
+</li>
+<li><p>void glGenerateMipmap(GLenum target​)</p>
+</li>
+</ul>
+<h1 id="DRAW"><a href="#DRAW" class="headerlink" title="DRAW"></a>DRAW</h1><ul>
+<li>void glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid * indices) <ul>
+<li>使用 GL_ELEMENT_ARRAY_BUFFER中起始偏移为indeices的count个顶点索引来绘制<a href="#ENUM_PRIMITIVE">mode</a>图元</li>
+</ul>
+</li>
+<li>void glDrawArrays(GLenum mode​, GLint first​, GLsizei count​);</li>
+</ul>
+<h1 id="STATE"><a href="#STATE" class="headerlink" title="STATE"></a>STATE</h1><ul>
+<li>void glGetXXX(GLenum pname, type)<ul>
+<li>返回pname属性的当前设置</li>
+</ul>
+</li>
+<li><p>void glEnable(GLenum cap​)</p>
+</li>
+<li><p>void glDisable(GLenum cap​)</p>
+<ul>
+<li>启用/停用 cap指定状态</li>
+</ul>
+</li>
+<li>void glBlendFunc(GLenum sfactor, GLenum dfactor)</li>
+<li>void glBlendFunci(GlUint buf, GLenum sfactor, GLenum dfactor)<ul>
+<li>设置[指定缓存]颜色混合逻辑</li>
+</ul>
+</li>
+<li><p>void glBlendFuncSeparate(GLenum srcRGB​, GLenum dstRGB​, GLenum srcAlpha​, GLenum dstAlpha​)</p>
+</li>
+<li><p>void glBlendFuncSeparatei(GLuint buf​, GLenum srcRGB​, GLenum dstRGB​, GLenum srcAlpha​, GLenum dstAlpha​)</p>
+<ul>
+<li>逐分量设置[指定缓存]颜色混合逻辑</li>
+</ul>
+</li>
+<li>void glBlendEquation(GLenum mode​)      –todo 不甚了解，大概是设置混合方程？</li>
+</ul>
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a><span id="ENUM">枚举</span></h1><ul>
+<li><p><span id="ENUM_DEPTH_TEST_FUNC">深度测试函数</span></p>
+<ul>
+<li>GL_NEVER      <strong>所有</strong>都<strong>不</strong>通过</li>
+<li>GL_LESS       当输入深度<strong>小于</strong>缓冲深度时通过</li>
+<li>GL_EQUAL      当输入深度<strong>等于</strong>缓冲深度时通过</li>
+<li>GL_LEQUAL     <strong>小于等于时*</strong>通过</li>
+<li>GL_GREATER    <strong>大于时</strong> 通过</li>
+<li>GL_NOTEQUAL   <strong>不等于</strong>时通过</li>
+<li>GL_GEQUAL     <strong>大于或等于</strong>时通过    </li>
+<li>GL_ALWAYS     <strong>无条件</strong>通过</li>
+</ul>
+</li>
+<li><p><span id="ENUM_BUFFER_TARGET">缓冲区类型</span></p>
+</li>
+<li><p><span id="ENUM_BUFFER_USAGE">缓冲区使用限定</span></p>
+</li>
+<li><p><span id="ENUM_ACCESS">访问策略</span></p>
+<ul>
+<li>GL_READ_ONLY      只能从该地址读取数据</li>
+<li>GL_WRITE_ONLY     只能向该地址写入数据</li>
+<li>GL_READ_WRITE     既可以从地址读数据，也可以向地址写数据</li>
+</ul>
+</li>
+<li><p><span id="ENUM_PRIMITIVE"><a href="https://www.opengl.org/wiki/Primitive" target="_blank" rel="noopener">图元类型</a></span> </p>
+<ul>
+<li>GL_POINTS                 点(直接使用顶点数据)</li>
+<li>GL_LINES                  线(每两个连续的点绘制成一条线段[01],[23])</li>
+<li>GL_LINE_STRIP             条带线(相邻的两个顶点绘制成一条线段[01],[12])</li>
+<li>GL_LINE_LOOP              循环线(与条带线类似，而且末点与首点相连成线)</li>
+<li>GL_TRIANGLES              三角形(每三个连续顶点组成一个三角形[012],[345])</li>
+<li>GL_TRIANGLE_STRIP         三角形条带(相邻的三个顶点组成一个三角形[012][123])</li>
+<li>GL_TRIANGLE_FAN           扇形带(从第二个点起每两个连续的顶点与第一个顶点组成三角形[012][034][056])</li>
+<li>GL_PATCHES                批量渲染(每一组顶点一起渲染， 可通过 glPatchParameteri​ 来设置)<br><a href="http://blog.csdn.net/pizi0475/article/details/7932900" target="_blank" rel="noopener">邻接图元</a><br>邻接图元与以上基本图元不同的是，这些图元会附带邻接数据，邻接数据只会在几何着色器中被处理，如果没有几何着色器，则邻接数据会被直接抛弃。</li>
+<li>GL_LINES_ADJACENCY        包含4个顶点，第23个顶点构成线段，1,4为邻接信息</li>
+<li>GL_LINE_STRIP_ADJACENCY   相邻的四个顶点([0123][1234]为一个GL_LINES_ADJACENCY</li>
+<li>GL_TRIANGLES_ADJACENCY    包含6个顶点， 第1,3,5个顶点构成三角形，第2,4,6个保存邻接信息</li>
+<li>GL_TRIANGLE_STRIP_ADJACENCY 需要配合图例解释，详见以上链接</li>
+</ul>
+</li>
+<li><p><span id="ENUM_SHADER_PARAM">Shader属性</span></p>
+<ul>
+<li>GL_SHADER_TYPE            shader类型</li>
+<li>GL_DELETE_STATUS          shader是否待删除</li>
+<li>GL_COMPILE_STATUS         shader编译状态，返回GL_TRUE表示编译成功</li>
+<li>GL_INFO_LOG_LENGTH        shader LOG信息长度</li>
+<li>GL_SHADER_SOURCE_LENGTH   shader源码长度</li>
+</ul>
+</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.<a href="www.opengl.org/wiki/GLAPI">官方文档</a></p>
+</article>
+                        </main>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2016/04/12/other/openresty-2016-04-12/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            openresty</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2016/04/12/other/mysql-2016-04-12/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">mysql
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2016/04/12/other/openresty-2016-04-12/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            openresty</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2016/04/12/other/mysql-2016-04-12/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">mysql
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container pt-4 page-sidebar">
+                    
+                    <div class="row">
+    <div class="col">
+        <h6>APPLAUSE FOR ME</h6>
+        <div id="applause-easy"></div>
+    </div>
+</div>
+                    
+                    <hr class="row">
+                    <div class="row toc-container">
+                        <div class="col-12">
+                            <h6>NAVIGATION</h6>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VAO"><span class="toc-text">VAO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VBO"><span class="toc-text">VBO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHADER"><span class="toc-text">SHADER</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PROGRAM"><span class="toc-text">PROGRAM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#变量储存限定符"><span class="toc-text">变量储存限定符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TEXTURE"><span class="toc-text">TEXTURE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DRAW"><span class="toc-text">DRAW</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#STATE"><span class="toc-text">STATE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#枚举"><span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy; 听风楼
+                    <br>
+                    Thanks for coming!
+                    <br>
+                    <a href="https://github.com/Hanlin-Dong/hexo-theme-adagio">Adagio</a> - A <a href="https://hexo.io">Hexo</a> theme made with love by
+                    <a href="http://www.hanlindong.com">Hanlin Dong</a>.
+                    京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.bootcss.com/font-awesome/5.9.0/js/all.min.js"></script>
+         
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    CommonHTML: { linebreaks: { automatic: true } },
+                    "HTML-CSS": { linebreaks: { automatic: true } },
+                    SVG: { linebreaks: { automatic: true } }
+                });
+            </script>
+            <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    
+
+
+<script src="/js/av.min.js"></script>
+<script src="/js/valine.min.js"></script>
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    var a = new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px"
+    })
+})
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+    
+</body>
+</html>

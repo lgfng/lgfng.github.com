@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="倚楼听风雨，淡看江湖路">
+    <link rel="shortcut icon" href="http://some.url/to/favicon.ico">
+    <title>linux小命令-Adagio</title>
+    
+        
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/academicons/1.8.6/css/academicons.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        
+    
+    <link rel="stylesheet" href="/css/adagio.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+            
+            <div class="navbar-nav">
+                <a href="https://leafflow.top" class="nav-item nav-link">首页</a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #e9ecef">
+    
+    <div class="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sm"
+            aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item pl-2 pr-2 ">
+                    <a class="nav-link" href="https://leafflow.top">首页</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+</div>
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+        <h1 class="mt-4 article-title page-title">linux小命令</h1>
+        
+        <p class="lead text-gray mt-3">By Anonymous; Published on 2015-11-20</p>
+        
+        <div class="tags">
+            <ul class="tag-list">
+                
+                <li class="tag-list-item">
+                    <a class="tag-list-link" href="/tags/linux/">linux</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 pt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <main>
+                            <article class="article-text page-content"><p>linux环境下的一些小命令：</p>
+<ul>
+<li><p>统计文件夹下的目录数<br>  ls -l | grep “^ｄ” |wc -l<br>  <a href="http://www.cnblogs.com/peida/archive/2012/12/18/2822758.html" target="_blank" rel="noopener">wc命令</a><br>  <a href="http://www.cnblogs.com/fullhouse/archive/2011/07/17/2108786.html" target="_blank" rel="noopener">linux统计文件</a></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统计文件夹下ts文件数量</span></span><br><span class="line"><span class="builtin-name">find</span> ./ -name <span class="string">"*.ts"</span> | wc -l</span><br><span class="line"><span class="comment"># 统计文件夹下ts文件行数</span></span><br><span class="line">wc -l `<span class="builtin-name">find</span> ./ -name <span class="string">"*.ts"</span>`</span><br><span class="line"><span class="comment"># 统计文件夹下ts文件总行数</span></span><br><span class="line">wc -l `<span class="builtin-name">find</span> ./ -name <span class="string">"*.ts"</span>` | tail -n1</span><br><span class="line"><span class="comment"># 统计文件夹下ts文件总行数(过滤空行)</span></span><br><span class="line"><span class="builtin-name">find</span> ./ -name <span class="string">"*.ts"</span> | xargs cat | grep -v ^$ | wc -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改命令行提示符<br>  <a href="http://www.linux521.com/2009/system/201206/18120.html" target="_blank" rel="noopener">环境变量PS1、PS2、PS3以及PS4来自定义用户命令行的字符显示</a><br>  linux系统的命令号提示符格式是设置在 环境变量 PS1 中的，可以通过<code>export PS1=&quot;\u@\h \w $ &quot;</code> 来临时指定。</p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>环境变量</li>
+</ul>
+<ul>
+<li>export NAME=”value”<br>export 可定义环境变量</li>
+<li>set<br>使用 set 命令会显示普通变量和环境变量</li>
+<li>unset NAME<br>使用 unset 可以删除环境变量</li>
+<li>env<br>使用 env 命令只会显示环境变量</li>
+<li>/ext/profile, /etc/bashrc<br>对所有用户有效的环境配置文件</li>
+<li>~/.bashrc, ~/.bash_profile<br>只对当前用户有效的环境配置文件</li>
+</ul>
+<ul>
+<li><p>动态链接库</p>
+<ul>
+<li>查看符号表  <code>nm</code></li>
+<li>查看库的依赖关系 <code>ldd</code>  </li>
+</ul>
+</li>
+<li><p>查找<br>  <a href="http://www.path8.net/tn/archives/4257" target="_blank" rel="noopener">Linux的五个查找命令的区别</a></p>
+<ul>
+<li><code>locate</code>      根据文件数据库,快速查找文件位置<ul>
+<li>locate – u  重新建立文件数据库(u前面有空格)</li>
+</ul>
+</li>
+<li><code>find</code>        根据各种条件,查找文件 <ul>
+<li>真实遍历查找,速度较慢</li>
+</ul>
+</li>
+<li><code>whereis</code>     查找指定命令的位置(包括可执行文件/说明文件/源代码),</li>
+<li><code>which</code> 指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果</li>
+</ul>
+</li>
+<li><p>库文件相关</p>
+<ul>
+<li>/etc/ld.so.conf 文件中,配置了系统默认查找目录<ul>
+<li>修改配置(或新加库)之后,可通过<code>ldconfig</code> 命令来更新库缓存</li>
+<li>库文件缓存保存在 /etc/ld.so.cache 文件中, 程序查找库时,直接搜索这个文件,而不会去每个目录找</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>alias 自定义命令别名<br>  – alias  ll=’ls -lF’  自定义ll命令<br>  – unalias ll          删除ll 别名</p>
+</li>
+<li><p>xmodmap 修改键盘映射<br>  <a href="http://blog.csdn.net/xiaoqin515515/article/details/18840035" target="_blank" rel="noopener"> linux修改键盘按键</a></p>
+</li>
+<li><p>fuser 命令</p>
+<ul>
+<li>Show which processes use the named files, sockets, or filesystems.</li>
+<li>显示正在使用 指定 文件/端口/文件系统 的进程</li>
+<li>示例: 杀掉正在使用 80端口的进程<ul>
+<li>sudo fuser -k 80/tcp</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="http://binyan17.iteye.com/blog/1444452" target="_blank" rel="noopener">linux 权限</a></p>
+</li>
+<li><p>tail 命令</p>
+<ul>
+<li><code>tail [选项] [filename]</code></li>
+<li>查看文件尾部内容, 默认为最后10行</li>
+<li>常见用法为 <code>tail -f [filename]</code>, 能即时输出文件追加的内容,常用于查看正在被写入的日志.</li>
+</ul>
+</li>
+<li><p>top 命令</p>
+<ul>
+<li><code>top</code> </li>
+<li>显示当前正在运行的所有进程,并按消耗资源数排序</li>
+</ul>
+<ul>
+<li>P – 以 CPU 占用率大小的顺序排列进程列表</li>
+<li>M – 以内存占用率大小的顺序排列进程列表</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>namei 命令</p>
+<ul>
+<li><code>namei [filename]</code></li>
+<li>从追溯一个文件,直到最后, 常用于查看多层嵌套的符号链接. </li>
+</ul>
+</li>
+<li><p>file 命令</p>
+<ul>
+<li><code>file [filename]</code></li>
+<li>查看一个文件的文件类型 (可执行文件, 库文件, 符号链接, 压缩包文件, …)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>添加系统启动项<br>假设要启动的程序为nginx, 启动脚本可<a href="http://library.linode.com/assets/660-init-deb.sh" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mv xxx.sh /etc/init.d/nginx</span><br><span class="line">sudo chmod +x /etc/init.d/nginx</span><br><span class="line">sudo /usr/sbin/updare-rc.d -f nginx defaults</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://www.jb51.net/LINUXjishu/151820.html" target="_blank" rel="noopener">深入理解linux系统的目录结构</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/vincedotnet/p/4017574.html" target="_blank" rel="noopener">ubuntu中管理用户和用户组</a><br>  <a href="https://wiki.centos.org/zh/TipsAndTricks/BecomingRoot" target="_blank" rel="noopener">如何成为 Root 用户</a></p>
+<ol>
+<li>用户组<ul>
+<li><code>groupadd</code>        新增用户组</li>
+<li><code>groupdel</code>        删除用户组</li>
+<li><code>cat /etc/group</code>  查看所有用户组</li>
+</ul>
+</li>
+<li>用户<ul>
+<li><code>useradd</code>         新增用户</li>
+<li><code>userdel</code>         删除用户</li>
+<li><code>passwd [user]</code>   修改用户密码, 可以使用sudo 修改root密码</li>
+<li><code>usermod</code>         修改用户权限</li>
+<li><code>cat /etc/passwd</code> 查看所有用户</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>字符集<br>  <code>locale -a</code>     查看本机支持的所有字符集<br>  <code>cd /usr/share/locales &amp;&amp; sudo ./install-language-pack zh_CN</code> 安装中文字符集<br>  <code>cd /usr/share/locales &amp;&amp; sudo ./remove-language-pack zh_CN</code> 卸载中文字符集</p>
+</li>
+<li><p><a href="http://blog.chinaunix.net/uid-20766194-id-1850375.html" target="_blank" rel="noopener">批量修改文件名</a></p>
+<ul>
+<li>find + grep + awk</li>
+<li>脚本批量 mv</li>
+<li>rename</li>
+</ul>
+</li>
+<li><p><a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html" target="_blank" rel="noopener">netstat 命令</a><br>  Netstat 命令用于显示各种网络相关信息，如网络连接，路由表，接口状态 (Interface Statistics)，masquerade 连接，多播成员 (Multicast Memberships) 等等<br>  #查看某端口号被哪个程序占用<br>  <code>netstat -apn | grep  portno</code></p>
+</li>
+<li><p>应用程序错误报告<br>  有时候, 系统中的某个应用出现了问题, 那么你就会在每次启动的时候, 看到一个提示框, 问你要不要报告错误. 如果去掉这个提示呢? </p>
+<ol>
+<li>消除这一次的提示<br> 删除 <code>/var/crash/*</code></li>
+<li>彻底摆脱错误弹窗<br> 编辑<code>/etc/default/apport</code> 文件, 并修改enable为0</li>
+</ol>
+</li>
+<li><p>大多数linux 命令行工具, 都会把参数 <code>-</code> 当作标准输入流(通常是读取命令行输入).</p>
+<ul>
+<li>比如 <code>cat -</code>, 会输出命令行输入.</li>
+</ul>
+</li>
+<li><p>查看/切换 shell</p>
+<ul>
+<li><code>echo $SHELL</code>         查看当前使用的shell程序</li>
+<li><code>chsh -s /bin/zsh</code>    切换shell为shell, 最后参数为执行文件路径</li>
+</ul>
+</li>
+<li><p>系统时间相关</p>
+<ul>
+<li>查看当前时间  <code>date</code></li>
+<li>修改系统时区<br>  <code>tzselect</code><br>  <code>sudo cp /usr/share/zoneinfo/Asia/ShangHai /etc/localtime</code></li>
+<li>同步网络时间  <code>ntpdate time.windows.com</code></li>
+</ul>
+</li>
+<li><p><a href="https://blog.kghost.info/2011/02/11/%E4%BD%BF%E7%94%A8fakeroot%E6%A8%A1%E6%8B%9Froot%E6%9D%83%E9%99%90%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F/" target="_blank" rel="noopener">fakeroot</a><br>  在一个虚拟的环境中，模拟root操作， 但实际权限还是当前用户权限，常用于debian编译打包。</p>
+</li>
+<li><p>du<br>  统计文件大小的一个命令, -s 只显示最终结果，  -B[M|G] 指定显示单位</p>
+</li>
+<li><p>objdump</p>
+<ul>
+<li>objdump -s –section=.comment [filename]<br>  查看库或可执行文件的编译器信息</li>
+</ul>
+</li>
+<li><p>nohup<br>  用这个命令启动的程序, 不会收到HUP信号, 并且会自动把输出重定向到nohup.out<br>  可配合<code>&amp;</code><a href="http://www.ruanyifeng.com/blog/2016/02/linux-daemon.html" target="_blank" rel="noopener">启动deamon进程</a></p>
+</li>
+<li><p>压缩文件 </p>
+<ul>
+<li>zip<br>  <code>zip -r xxx.zip file1 file2 dir1 dir2</code></li>
+</ul>
+</li>
+<li><p>linux解压windows压缩的文件， 出现中文乱码<br>  解压的时候指定字符集, <a href="https://www.zhihu.com/question/20523036" target="_blank" rel="noopener">详情</a><br>  <code>unzip -O CP936 filename</code></p>
+</li>
+</ul>
+<ul>
+<li><p>mtr<br>  查看本地服务器 到 目标服务器的路由路径情况.<br>  <a href="https://meiriyitie.com/2015/05/26/diagnosing-network-issues-with-mtr/" target="_blank" rel="noopener">使用 MTR 诊断网络问题</a></p>
+</li>
+<li><p>ubuntu 开机自动启动</p>
+<ul>
+<li>命令行运行 <code>gnome-session-properties</code> 可以修改登陆后 </li>
+<li><code>sysv-rc-conf</code> 工具可以管理开机启动的服务.</li>
+<li><code>/etc/lightdm/lightdm.conf</code></li>
+</ul>
+</li>
+<li><p>在GUI打开隐藏文件夹</p>
+<ul>
+<li>Ctrl +　H </li>
+<li>Alt + F12 直接输入文件路径</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>sed 命令<br>sed [-nefri] ‘command’ 输入文本</li>
+</ul>
+<ul>
+<li>选项<ul>
+<li>n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。</li>
+<li>e∶直接在指令列模式上进行 sed 的动作编辑；</li>
+<li>f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；</li>
+<li>r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)</li>
+<li>i∶直接修改读取的档案内容，而不是由萤幕输出。       </li>
+</ul>
+</li>
+<li>命令<ul>
+<li>a   ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</li>
+<li>c   ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</li>
+<li>d   ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</li>
+<li>i   ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</li>
+<li>p  ∶打印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～</li>
+<li>s  ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g</li>
+</ul>
+</li>
+<li>一个比较复杂的修改例子<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将一段匹配pattern1--pattern2之间的匹配pattern3的字符串用pattern4替换</span></span><br><span class="line">sed -i <span class="string">'/pattern1/,/pattern2/s/pattern3/pattern4/g'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>man 帮助手册<br><code>man -k [word]</code>  查看所有包含 word 关键字的文档<br>mandb 生成 whatis 数据库</p>
+</li>
+<li><p>info<br>与 man 类似， 不过是以页面树的形式组织。<br><code>/usr/share/doc</code> 很多有用的说明文档目录</p>
+</li>
+<li><p>查看当前系统状态</p>
+</li>
+</ul>
+<ul>
+<li>who 查看当前连接的用户</li>
+<li>netstat -a 查看网络使用状况</li>
+<li>ps -aux  查看运行的进程</li>
+</ul>
+<ul>
+<li>sync<br>同步内存数据到硬盘</li>
+<li><p>od<br>以二进制形式输出文件</p>
+</li>
+<li><p>rsync<br><a href="http://www.cnblogs.com/kevingrace/p/5766139.html" target="_blank" rel="noopener">参考</a><br>同步文件<br><code>rsync -avz --delete ${source_dir} ${VPS}:${midDir}</code></p>
+</li>
+</ul>
+<p>$ python 启动一个简单的 webserver<br>python -m SimpleHTTPServer port</p>
+<h1 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h1><p><a href="https://www.jianshu.com/p/6d32b166f47d" target="_blank" rel="noopener">linux下的/etc/profile、/etc/bashrc、~/.bash_profile、~/.bashrc文件</a><br>O(<a href="http://blog.chinaunix.net/uid-23842323-id-2656618.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23842323-id-2656618.html</a>)<br><a href="https://blog.csdn.net/sfhawx/article/details/49969321" target="_blank" rel="noopener">login shell和non-login shell</a></p>
+<h2 id="设置变量默认值"><a href="#设置变量默认值" class="headerlink" title="设置变量默认值"></a>设置变量默认值</h2><h3 id="当变量a为null时则var-b"><a href="#当变量a为null时则var-b" class="headerlink" title="当变量a为null时则var=b"></a>当变量a为null时则var=b</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var=<span class="variable">$&#123;a-b&#125;</span></span><br></pre></td></tr></table></figure>
+<p>#当变量a为null或为空字符串时则var=b<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var=<span class="variable">$&#123;a:-b&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="禁用密码登录"><a href="#禁用密码登录" class="headerlink" title="禁用密码登录"></a>禁用密码登录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi /etc/ssh/sshd_config  </span></span><br><span class="line">PasswordAuthentication no //禁止使用基于口令认证的方式登陆</span><br><span class="line">PubkeyAuthentication yes //允许使用基于密钥认证的方式登陆</span><br><span class="line"><span class="comment"># /etc/init.d/sshd reload</span></span><br></pre></td></tr></table></figure>
+</article>
+                        </main>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2016/04/12/other/JavaScript基础入门-2016-04-12/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            JavaScript基础入门</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2015/10/27/other/ui资源站-2015-10-27/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">ui资源站
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2016/04/12/other/JavaScript基础入门-2016-04-12/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            JavaScript基础入门</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2015/10/27/other/ui资源站-2015-10-27/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">ui资源站
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container pt-4 page-sidebar">
+                    
+                    <div class="row">
+    <div class="col">
+        <h6>APPLAUSE FOR ME</h6>
+        <div id="applause-easy"></div>
+    </div>
+</div>
+                    
+                    <hr class="row">
+                    <div class="row toc-container">
+                        <div class="col-12">
+                            <h6>NAVIGATION</h6>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#bash"><span class="toc-text">bash</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置变量默认值"><span class="toc-text">设置变量默认值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当变量a为null时则var-b"><span class="toc-text">当变量a为null时则var=b</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#禁用密码登录"><span class="toc-text">禁用密码登录</span></a></li></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy; 听风楼
+                    <br>
+                    Thanks for coming!
+                    <br>
+                    <a href="https://github.com/Hanlin-Dong/hexo-theme-adagio">Adagio</a> - A <a href="https://hexo.io">Hexo</a> theme made with love by
+                    <a href="http://www.hanlindong.com">Hanlin Dong</a>.
+                    京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.bootcss.com/font-awesome/5.9.0/js/all.min.js"></script>
+         
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    CommonHTML: { linebreaks: { automatic: true } },
+                    "HTML-CSS": { linebreaks: { automatic: true } },
+                    SVG: { linebreaks: { automatic: true } }
+                });
+            </script>
+            <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    
+
+
+<script src="/js/av.min.js"></script>
+<script src="/js/valine.min.js"></script>
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    var a = new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px"
+    })
+})
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+    
+</body>
+</html>

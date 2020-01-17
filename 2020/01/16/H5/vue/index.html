@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="倚楼听风雨，淡看江湖路">
+    <link rel="shortcut icon" href="http://some.url/to/favicon.ico">
+    <title>Adagio</title>
+    
+        
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/academicons/1.8.6/css/academicons.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        
+    
+    <link rel="stylesheet" href="/css/adagio.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+            
+            <div class="navbar-nav">
+                <a href="https://leafflow.top" class="nav-item nav-link">首页</a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #e9ecef">
+    
+    <div class="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sm"
+            aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item pl-2 pr-2 ">
+                    <a class="nav-link" href="https://leafflow.top">首页</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+</div>
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+        <h1 class="mt-4 article-title page-title"></h1>
+        
+        <p class="lead text-gray mt-3">By Anonymous; Published on 2020-01-16</p>
+        
+        <div class="tags">
+            <ul class="tag-list">
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 pt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <main>
+                            <article class="article-text page-content"><h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><ul>
+<li>el<br>绑定到的结点</li>
+<li>methods<br>成员函数</li>
+<li>data<br>成员属性</li>
+<li><p>computed<br>计算属性<br>基于他们的依赖进行，只有当依赖属性发生变化时，计算属性才会重新求值。<br>当不需要缓存时，可以使用 <code>method</code> 组合 <code>双大括号法</code> 来替代。<br>直接给计算属性一个方法时，它默认是该属性的 <code>getter</code> 方法。<br>也可以给计算属性设置 <code>setter</code> 方法，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">    attr:&#123;</span><br><span class="line">        <span class="keyword">get</span> : function()&#123; <span class="keyword">return</span> val;&#125;,</span><br><span class="line">        <span class="keyword">set</span> : function(val)&#123;&#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>watch<br>侦听属性，watch 的属性为 data 中声明的属性， 当属性值变化的时候，会调用 watch 的方法。</p>
+</li>
+<li>components</li>
+</ul>
+<h2 id="内置属性方法"><a href="#内置属性方法" class="headerlink" title="内置属性方法"></a>内置属性方法</h2><p>$data<br>$el<br>$watch</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><a href="https://cn.vuejs.org/images/lifecycle.png" target="_blank" rel="noopener">生命周期图</a><br>beforeCreate<br>created<br>beforeMount<br>mounted<br>beforeUpdate<br>updated<br>beforeDestory<br>destoryed</p>
+<h2 id="Vue-component"><a href="#Vue-component" class="headerlink" title="Vue.component"></a>Vue.component</h2><p>声明自定义组件<br>props<br>template</p>
+<h1 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h1><h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><ul>
+<li>“Mustache”语法(双大括号)
+不能作用在 HTML特性中， 这时应该使用 v-bind 指令。</li>
+<li>v-html<br>将属性输出为真正的html<br>只应该对信任内容使用该指令，绝不要对用户提供的内容使用插值，否则可能会导致xss 攻击。</li>
+<li>数据绑定支持完全的 JavaScript 表达式。<br>会在所属 Vue 实例的数据作用于下被解析<br>只能支持表达式，语句或流控制都不会生效<br>除了 Math 和 Date， 不能访问任何别的全局变量。<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3>部分指令能接收一个“参数”，在指令后以冒号(:)表示。<br>例如： <code>v-on:click=&quot;funcName&quot;</code><h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3>修饰回复是以半角句号<code>.</code> 知名的特殊后缀， 用于指出一个指令应该以特殊方式绑定。</li>
+<li><code>.prevent</code> 告诉 <code>v-on</code> 指令对于触发的事件调用 <code>event.preventDefault()</code><h3 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h3></li>
+<li>v-bind 使用 :<br><code>&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</code><br>等价于<br><code>&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</code></li>
+<li>v-on 使用 @<br><code>&lt;a v-on:click=&quot;doSome&quot;&gt;&lt;/a&gt;</code><br>等价于<br><code>&lt;a @click=&quot;doSom&quot;&gt;&lt;/a&gt;</code><h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3>v-for=”todo in todos”<br>v-bind<br>v-on<br>v-model<br>v-once<br>v-html</li>
+</ul>
+<h1 id="绑定Class"><a href="#绑定Class" class="headerlink" title="绑定Class"></a>绑定Class</h1><h2 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"active"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="comment">//active class 是否存在取决于 isActive 属性</span></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"&#123;active: isActive&#125;"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObj"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">data：&#123;</span><br><span class="line">    classObj:&#123;</span><br><span class="line">        active : <span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;<span class="attr">activeClass</span>:<span class="string">'active'</span>&#125;</span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"[activeClass]"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"[&#123;active: isActive&#125;]"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;a v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"[isActive ? activeClass : '']"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="用在组件上"><a href="#用在组件上" class="headerlink" title="用在组件上"></a>用在组件上</h2><p>在一个自定义组件上使用 class 时，它们会被添加到该组件的根元素上面，已经存在的类不会被覆盖。</p>
+<h1 id="绑定-Style"><a href="#绑定-Style" class="headerlink" title="绑定 Style"></a>绑定 Style</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    styleObject:&#123;</span><br><span class="line">        color: <span class="string">'red'</span>,</span><br><span class="line">        fontSize: <span class="string">'13px'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div v-bind:style=<span class="string">"styleObject"</span>&gt; <span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="comment">//也可以直接将对象写在模板中</span></span><br></pre></td></tr></table></figure>
+<h2 id="也可以使用数组语法，-将多个样式对象应用到同一元素上"><a href="#也可以使用数组语法，-将多个样式对象应用到同一元素上" class="headerlink" title="也可以使用数组语法， 将多个样式对象应用到同一元素上"></a>也可以使用数组语法， 将多个样式对象应用到同一元素上</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>当使用需要添加浏览器引擎前缀的 CSS 属性是， Vue 会自动检测并添加。</p>
+<h1 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h1><p>v-if<br>v-else<br>v-else-if</p>
+<h2 id="使用-template-控制多个元素"><a href="#使用-template-控制多个元素" class="headerlink" title="使用 template 控制多个元素"></a>使用 template 控制多个元素</h2><p>template 并不会出现在最终的渲染结果中。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="元素复用"><a href="#元素复用" class="headerlink" title="元素复用"></a>元素复用</h2><p>当你在 if else 之间来回切换的时候，如果有相同的元素， Vue 会复用它们.<br>如果你不想它们被复用，可以使用 key 属性来标识它们。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"loginType === 'username'"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span> <span class="attr">key</span>=<span class="string">"username-input"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">"Enter your email address"</span> <span class="attr">key</span>=<span class="string">"email-input"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>上例中 <code>&lt;label&gt;</code> 元素会被复用， 但是 <code>&lt;input&gt;</code> 不会， 因为它们有各自不同的key.</p>
+<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h2><p>v-show 也可以根据条件来控制元素的展示。 不同的是 v-show 会始终存在于 DOM 中， 只不过切换了 <code>display</code> 属性。</p>
+<h1 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h1><p>v-for</p>
+<ul>
+<li>v-for 有对父作用域的完全访问。</li>
+<li>可以遍历数组或对象<h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2></li>
+<li>可以有第二个可选的参数为当前项的索引<h2 id="遍历对象"><a href="#遍历对象" class="headerlink" title="遍历对象"></a>遍历对象</h2></li>
+<li>可以有第二个可选的参数为当前项的键</li>
+<li>可以有第三个可选的参数为当前项的索引</li>
+<li>按 Object.keys() 的结果遍历， 不保证在不同的 JS 引擎中有相同的便利顺序<h2 id="key-属性"><a href="#key-属性" class="headerlink" title="key 属性"></a>key 属性</h2></li>
+<li>更新时， 默认使用 “就地复用” 策略，即按索引复用</li>
+<li>可以给子节点绑定一个 key 属性， 以便 vue 能根据 key 快速的复用之前的子节点。<h2 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h2>vue 能检测到大部分对数组的方法操作。但是有两种情况检测不到。</li>
+</ul>
+<ol>
+<li>当你直接利用索引设置新项时<br>vm.items[index] = newValue<br>可以使用下面几种方式来触发状态更新。</li>
+</ol>
+<ul>
+<li>Vue.set(vm.items, index, newValue)</li>
+<li>vm.items.splice(index, 1, newValue)</li>
+<li>vm.$set(vm.items, index, newValue)</li>
+</ul>
+<ol start="2">
+<li>当你直接修改数组长度时<br>vm.length = newLength<br>使用下面方法触发更新。</li>
+</ol>
+<ul>
+<li>vm.items.splice(newLength)<h2 id="对象操作"><a href="#对象操作" class="headerlink" title="对象操作"></a>对象操作</h2>vue 不能检测到对象属性的添加或删除。<br>可以使用 <code>Vue.set</code> 来触发属性更新<h2 id="可以与-计算属性或-method-结合使用"><a href="#可以与-计算属性或-method-结合使用" class="headerlink" title="可以与 计算属性或 method 结合使用"></a>可以与 计算属性或 method 结合使用</h2><h2 id="范围取值"><a href="#范围取值" class="headerlink" title="范围取值"></a>范围取值</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-for</span>=<span class="string">"n in 10"</span>&gt;</span>&#123;&#123;n&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="与-v-if"><a href="#与-v-if" class="headerlink" title="与 v-if"></a>与 v-if</h2><p>v-for 优先级更高， 会遍历 v-for 的所有属性， 然后对每个属性执行 v-if</p>
+<h1 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h1><p>v-on</p>
+<ul>
+<li>直接在事件监听中触发 js 代码</li>
+<li>指向一个方法名称</li>
+<li>监听中调用方法</li>
+<li>监听中使用特殊变量 $event 将事件传入处理方法<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2>事件修饰符可以串联使用， 串联顺序很重要</li>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once</li>
+<li>.passive<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2><code>v.on:keyup.enter=&quot;submit&quot;</code> 监听了 enter 键被按下释放<br><code>v.on:keyup.ctrl.enter=&quot;submit&quot;</code> 监听了 ctrl + enter 键被按下释放<h3 id="exact"><a href="#exact" class="headerlink" title=".exact"></a>.exact</h3>有且只有定义的按键被按下时才会触发.<h3 id="自定义按键修饰符别名"><a href="#自定义按键修饰符别名" class="headerlink" title="自定义按键修饰符别名"></a>自定义按键修饰符别名</h3>Vue.config.keyCodes.f1 = 112</li>
+</ul>
+<h1 id="表单输入绑定"><a href="#表单输入绑定" class="headerlink" title="表单输入绑定"></a>表单输入绑定</h1><p>v-model 可以在表单元素上创建双向数据绑定</p>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><ul>
+<li>组件没有 el 选项</li>
+<li>组件的 data 必须是一个函数，这样每个实例都会有独立的数据域<h2 id="属性-props"><a href="#属性-props" class="headerlink" title="属性 props"></a>属性 props</h2><h2 id="向父级组件发送消息"><a href="#向父级组件发送消息" class="headerlink" title="向父级组件发送消息"></a>向父级组件发送消息</h2><code>$emit(eventName, data)</code> 可以向父组件发送消息<br>父组件可以使用 <code>v-on:eventName=func</code> 处理消息</li>
+</ul>
+</article>
+                        </main>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/H5/js_libs/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/H5/js_skills/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/H5/js_libs/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/H5/js_skills/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container pt-4 page-sidebar">
+                    
+                    <div class="row">
+    <div class="col">
+        <h6>APPLAUSE FOR ME</h6>
+        <div id="applause-easy"></div>
+    </div>
+</div>
+                    
+                    <hr class="row">
+                    <div class="row toc-container">
+                        <div class="col-12">
+                            <h6>NAVIGATION</h6>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue"><span class="toc-text">Vue</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内置属性方法"><span class="toc-text">内置属性方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-component"><span class="toc-text">Vue.component</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模板语法"><span class="toc-text">模板语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据绑定"><span class="toc-text">数据绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指令"><span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数"><span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修饰符"><span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缩写"><span class="toc-text">缩写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用指令"><span class="toc-text">常用指令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绑定Class"><span class="toc-text">绑定Class</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象语法"><span class="toc-text">对象语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组语法"><span class="toc-text">数组语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用在组件上"><span class="toc-text">用在组件上</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绑定-Style"><span class="toc-text">绑定 Style</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#也可以使用数组语法，-将多个样式对象应用到同一元素上"><span class="toc-text">也可以使用数组语法， 将多个样式对象应用到同一元素上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件渲染"><span class="toc-text">条件渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-template-控制多个元素"><span class="toc-text">使用 template 控制多个元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素复用"><span class="toc-text">元素复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-show"><span class="toc-text">v-show</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表渲染"><span class="toc-text">列表渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历数组"><span class="toc-text">遍历数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历对象"><span class="toc-text">遍历对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#key-属性"><span class="toc-text">key 属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组操作"><span class="toc-text">数组操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作"><span class="toc-text">对象操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可以与-计算属性或-method-结合使用"><span class="toc-text">可以与 计算属性或 method 结合使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#范围取值"><span class="toc-text">范围取值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与-v-if"><span class="toc-text">与 v-if</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件处理"><span class="toc-text">事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件修饰符"><span class="toc-text">事件修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按键修饰符"><span class="toc-text">按键修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exact"><span class="toc-text">.exact</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义按键修饰符别名"><span class="toc-text">自定义按键修饰符别名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表单输入绑定"><span class="toc-text">表单输入绑定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组件"><span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#属性-props"><span class="toc-text">属性 props</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向父级组件发送消息"><span class="toc-text">向父级组件发送消息</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy; 听风楼
+                    <br>
+                    Thanks for coming!
+                    <br>
+                    <a href="https://github.com/Hanlin-Dong/hexo-theme-adagio">Adagio</a> - A <a href="https://hexo.io">Hexo</a> theme made with love by
+                    <a href="http://www.hanlindong.com">Hanlin Dong</a>.
+                    京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.bootcss.com/font-awesome/5.9.0/js/all.min.js"></script>
+         
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    CommonHTML: { linebreaks: { automatic: true } },
+                    "HTML-CSS": { linebreaks: { automatic: true } },
+                    SVG: { linebreaks: { automatic: true } }
+                });
+            </script>
+            <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    
+
+
+<script src="/js/av.min.js"></script>
+<script src="/js/valine.min.js"></script>
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    var a = new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px"
+    })
+})
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+    
+</body>
+</html>

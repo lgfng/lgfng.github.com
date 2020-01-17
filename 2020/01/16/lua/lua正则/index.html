@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="倚楼听风雨，淡看江湖路">
+    <link rel="shortcut icon" href="http://some.url/to/favicon.ico">
+    <title>Adagio</title>
+    
+        
+            <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/academicons/1.8.6/css/academicons.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        
+    
+    <link rel="stylesheet" href="/css/adagio.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+            
+            <div class="navbar-nav">
+                <a href="https://leafflow.top" class="nav-item nav-link">首页</a>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #e9ecef">
+    
+    <div class="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sm"
+            aria-expanded="false" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            <img class="logo" src="https://via.placeholder.com/100x50.png?text=logo" />
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item pl-2 pr-2 ">
+                    <a class="nav-link" href="https://leafflow.top">首页</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </nav>
+</div>
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+        <h1 class="mt-4 article-title page-title"></h1>
+        
+        <p class="lead text-gray mt-3">By Anonymous; Published on 2020-01-16</p>
+        
+        <div class="tags">
+            <ul class="tag-list">
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 pt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <main>
+                            <article class="article-text page-content"><p><a href="http://www.cnblogs.com/whiteyun/archive/2009/09/02/1541043.html" target="_blank" rel="noopener">Lua模式匹配</a></p>
+<p>lua string 库使用模式匹配来处理字符串的查找和替换，但是它的正则表达式与一般的POSIX规范的正则表达式不一样。因为要保持程序精简。（只用了500行代码就实现咯）</p>
+<h1 id="模式："><a href="#模式：" class="headerlink" title="模式："></a>模式：</h1><ul>
+<li>%a                 匹配字母</li>
+<li>%c                  匹配控制字符</li>
+<li>%d                 数字</li>
+<li>%l                  小写字母</li>
+<li>%p                 标点字符</li>
+<li>%s                    空白符</li>
+<li>%u                  大写字母</li>
+<li>%w                 字母和数字</li>
+<li>%x                     十六进制数字</li>
+<li>%z                    代表0的字符</li>
+<li>^  一行的开头</li>
+<li>$  一行的结束</li>
+<li><p>%b<x><y> 匹配以 x 开头, y 结束的字符</y></x></p>
+</li>
+<li><p>以上字符类的大写，表示该字符类的补集。 比如%A 表示非字母的字符。</p>
+</li>
+<li>% 是模式中的转义字符（需要转义的特殊字符：( ) . % + - * ? [ ] ^ $ ）， </li>
+<li><p>\ 是LUA中字符串的转义字符（ “ , “）</p>
+</li>
+<li><p>可以用 [] 方括号来定义字符集如 </p>
+<ul>
+<li>[%w_]   用于匹配字母数字和下划线</li>
+<li>[%[%]]  用于匹配 一对方括号</li>
+<li>[0-9]    用于匹配数字， 与%d一样</li>
+<li>[0-9a-fA-F]  与%x一样，匹配十六进制数字</li>
+<li>[^xxx] 不包含后面的字符</li>
+</ul>
+</li>
+<li>在一个字符集的前面加一个 <code>^</code> 可以得到它的补集。</li>
+</ul>
+<h2 id="模式修饰符"><a href="#模式修饰符" class="headerlink" title="模式修饰符"></a>模式修饰符</h2><ul>
+<li>+ 匹配前一字符1次或多次</li>
+<li>* 匹配前一字符0次或多次</li>
+<li>- 匹配前一字符0次或多次</li>
+<li>\? 匹配前一字符0次或1次</li>
+</ul>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%a+   匹配一个字母，多个字母，或一个单词</span></span><br><span class="line"><span class="comment">%d+   匹配一个或多个数字</span></span><br><span class="line"><span class="comment">%a*   比%a+ 多匹配一个空白</span></span><br><span class="line"><span class="comment">%a-   与 %a*类似，不过是最短（懒惰）匹配，在能匹配到整个表达式的情况下，取   最短的</span></span><br></pre></td></tr></table></figure>
+<h1 id="贪婪与懒惰匹配"><a href="#贪婪与懒惰匹配" class="headerlink" title="贪婪与懒惰匹配"></a>贪婪与懒惰匹配</h1><h1 id="捕获"><a href="#捕获" class="headerlink" title="捕获"></a>捕获</h1><ul>
+<li><p>捕获机制允许一个模式串中的一部分来匹配目标串种的一部分。写法是模式串中你需要捕获的那部分用()括起来，例如：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> pair = <span class="string">"name = anna"</span></span><br><span class="line"><span class="keyword">local</span> key, value = <span class="built_in">string</span>.<span class="built_in">match</span>(pair, <span class="string">"(%a+)%s*=%s*(%a+)"</span>)</span><br><span class="line"><span class="built_in">print</span>(key, value) <span class="comment">--&gt; name anna</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们也可以将捕获用于模式串自身，”([\”‘])(.-)%1”,这里的%1表示匹配第一个捕获的一份拷贝。</p>
+</li>
+<li><code>()</code> 捕获的不是空内容， 而是捕获在目标字符串中的位置</li>
+</ul>
+</article>
+                        </main>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/lua/ltable/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/linux/linux 私房菜/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/lua/ltable/"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link"
+                        href="/2020/01/16/linux/linux 私房菜/"
+                        aria-label="Next">
+                        <span
+                            aria-hidden="true">
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container pt-4 page-sidebar">
+                    
+                    <div class="row">
+    <div class="col">
+        <h6>APPLAUSE FOR ME</h6>
+        <div id="applause-easy"></div>
+    </div>
+</div>
+                    
+                    <hr class="row">
+                    <div class="row toc-container">
+                        <div class="col-12">
+                            <h6>NAVIGATION</h6>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#模式："><span class="toc-text">模式：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模式修饰符"><span class="toc-text">模式修饰符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#贪婪与懒惰匹配"><span class="toc-text">贪婪与懒惰匹配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#捕获"><span class="toc-text">捕获</span></a></li></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy; 听风楼
+                    <br>
+                    Thanks for coming!
+                    <br>
+                    <a href="https://github.com/Hanlin-Dong/hexo-theme-adagio">Adagio</a> - A <a href="https://hexo.io">Hexo</a> theme made with love by
+                    <a href="http://www.hanlindong.com">Hanlin Dong</a>.
+                    京ICP备<a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784"  rel="nofollow">18031193号-1</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.bootcss.com/font-awesome/5.9.0/js/all.min.js"></script>
+         
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    CommonHTML: { linebreaks: { automatic: true } },
+                    "HTML-CSS": { linebreaks: { automatic: true } },
+                    SVG: { linebreaks: { automatic: true } }
+                });
+            </script>
+            <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    
+
+
+<script src="/js/av.min.js"></script>
+<script src="/js/valine.min.js"></script>
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    var a = new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px"
+    })
+})
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+    
+</body>
+</html>
